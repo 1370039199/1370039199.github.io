@@ -683,18 +683,6 @@ void CC1101_SetDataRate(INT16U value)
       </tags>
   </entry>
   <entry>
-    <title>记录生活的那点事儿</title>
-    <url>//post/7/</url>
-    <content><![CDATA[<h3 id="测试-2">测试</h3>
-]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>记录生活</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>链表学习笔记----双指针技巧</title>
     <url>//post/4/</url>
     <content><![CDATA[<h3 id="双指针技巧">双指针技巧</h3>
@@ -923,6 +911,23 @@ MyLinkedList<span class="token operator">*</span> <span class="token function">m
       <tags>
         <tag>LeetCode</tag>
         <tag>链表</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>To do List</title>
+    <url>//post/7/</url>
+    <content><![CDATA[<h3 id="To-Do-List（8-15-8-21）">To Do List（8.15~8.21）</h3>
+<ul>
+<li>完善相册功能。</li>
+<li>添加本地搜索功能。</li>
+<li>添加Artalk评论系统。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>TODO</tag>
       </tags>
   </entry>
 </search>
