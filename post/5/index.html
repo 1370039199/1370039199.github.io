@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><!-- hexo injector head_begin start -->
+        <link rel="preconnect" href="undefined" crossorigin="">
+        <link rel="preconnect" href="https://cdn.staticfile.org" crossorigin="">
+        <link rel="preconnect" href="https://cravatar.cn" crossorigin=""><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#e7ddc8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#181c27" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/resources/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/resources/favicon/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon/favicon.ico">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hyh1370039199.gitee.io","root":"/","images":"/resources/img/","scheme":"Gemini","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/config.min.js"></script>
+
+    <meta name="description" content="迈向全栈的第一步~🐲，也是为了以后与硬件工程师沟通，能理解硬件工程师说的是什么意思🤔">
+<meta property="og:type" content="article">
+<meta property="og:title" content="硬件设计学习笔记 ----（元器件系列）">
+<meta property="og:url" content="https://hyh1370039199.gitee.io/post/5/index.html">
+<meta property="og:site_name" content="归零">
+<meta property="og:description" content="迈向全栈的第一步~🐲，也是为了以后与硬件工程师沟通，能理解硬件工程师说的是什么意思🤔">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082145821.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082137615.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082139764.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082143472.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082147011.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082158501.png">
+<meta property="article:published_time" content="2022-08-05T10:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-14T12:15:05.176Z">
+<meta property="article:author" content="hyh">
+<meta property="article:tag" content="硬件设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082145821.png">
+
+
+<link rel="canonical" href="https://hyh1370039199.gitee.io/post/5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hyh1370039199.gitee.io/post/5/","path":"/post/5/","title":"硬件设计学习笔记 ----（元器件系列）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>硬件设计学习笔记 ----（元器件系列） | 归零</title>
+  
+
+
+
+
+<link rel="preconnect" href="https://hyh1370039199.gitee.io">
+<script async defer data-website-id="" src=""></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">归零</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">hyh's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-life"><a href="/life/" rel="section"><i class="fas fa-pizza-slice fa-fw"></i>生活</a></li><li class="menu-item menu-item-tech"><a href="/tech/" rel="section"><i class="fas fa-book fa-fw"></i>技术</a></li><li class="menu-item menu-item-reading"><a href="/reading/" rel="section"><i class="fas fa-book fa-fw"></i>阅读</a></li><li class="menu-item menu-item-album"><a href="/album/" rel="section"><i class="fas fa-camera-retro fa-fw"></i>光影</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fas fa-splotch fa-fw"></i>留言</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目 录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%83%E5%99%A8%E4%BB%B6%E9%80%89%E5%9E%8B%E9%80%9A%E5%88%99"><span class="nav-text">元器件选型通则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%BF%E4%BB%A3%E6%96%99%E8%AF%84%E4%BC%B0"><span class="nav-text">替代料评估</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B5%E9%98%BB"><span class="nav-text">电阻</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B5%E5%AE%B9"><span class="nav-text">电容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%B5%E6%84%9F"><span class="nav-text">电感</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MOS%E7%AE%A1"><span class="nav-text">MOS管</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E6%9E%81%E7%AE%A1"><span class="nav-text">二极管</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="hyh"
+      src="/resources/img/avatar.jpg">
+  <p class="site-author-name" itemprop="name">hyh</p>
+  <div class="site-description" itemprop="description">人生如逆旅，我亦是行人</div>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/hyh1370039199" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;hyh1370039199" rel="noopener" target="_blank"><i class="fa-brands fa-solid fa-g fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hyh1370039199.gitee.io/post/5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/resources/img/avatar.jpg">
+      <meta itemprop="name" content="hyh">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归零">
+      <meta itemprop="description" content="人生如逆旅，我亦是行人">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="硬件设计学习笔记 ----（元器件系列） | 归零">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          硬件设计学习笔记 ----（元器件系列）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-08-05 18:00:00" itemprop="dateCreated datePublished" datetime="2022-08-05T18:00:00+08:00">2022-08-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/tech/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+        
+        <span class="post-meta-item">
+          
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">评论数：</span>
+  
+          <a title="artalk" href="/post/5/#artalk" itemprop="discussionUrl">
+            <span id="ArtalkCount" class="post-comments-count" data-page-key="/post/5/" itemprop="commentCount"></span>
+          </a>
+        </span>
+        
+      
+        
+      
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="元器件选型通则">元器件选型通则</h3>
+<p>选型原则：</p>
+<ul>
+<li>复用性：尽量复用以前验证过的项目物料，减少风险，同时不用管理额外零件，还可以处理库存。</li>
+<li>成熟性：要是被广泛使用验证过的成熟方案，且生命周期良好，无EOL(停产)。最好有丰富的参考设计资料。</li>
+<li>适配性：在设计中电气参数/环境参数满足设计需求，降额等，性能满足，空间无干涉。</li>
+<li>替代性：价格成本，交付周期，无EOL，合适的供应商。成本很重要，料也得能买到，买到还能用的久~</li>
+<li>归一性：在出货量大的产品中，尽量减少物料种类。</li>
+</ul>
+<h3 id="替代料评估">替代料评估</h3>
+<ol>
+<li>通过采购、元件工程师或是自己找到相关的替代厂商。</li>
+<li>了解此物料涉及到的参数</li>
+<li>此料导入系统后涉及到的验证范围（信号、功能？）</li>
+<li>时间精力上能否让原厂进行验证，给出报告，EE负责评审。</li>
+</ol>
+<h3 id="电阻">电阻</h3>
+<p><strong>基本原理及分类：</strong></p>
+<ol>
+<li>定义式：欧姆定律$R = U/I$。（$U$表示电压，$I$表示电流）。</li>
+<li>$R=ρL/S$（$ρ$表示电阻的电阻率，是由其本身性质决定，$L$代表电阻的长度，$S$表示电阻的横截面积）</li>
+<li>电阻串联：$R=R1+R2+R3+…+Rn$。($R1…Rn$表示$n$个电阻，电阻值是由其本身性质决定)。</li>
+<li>电阻并联：$1/R = 1/R1+1/R2+1/R3+…+1/Rn$。($R1…Rn$表示$n$个电阻，电阻值是由其本身性质决定)。</li>
+<li>与电功率相关公式：$R=U<sup>2/P$;$R=P/I</sup>2$。（$U$表示电压，$I$表示电流，$P$表示电功率）。</li>
+<li>与电能（电热）相关公式：$R=U<sup>2t/W$;$R=W/I</sup>2t$。（$U$表示电压，$I$表示电流，$t$表示时间，$W$表示电热）。</li>
+</ol>
+<p>特点：</p>
+<div align=center><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082145821.png" alt="image-20220808214523378" style="zoom: 50%;" /></div>
+<p><strong>参数</strong></p>
+<p>阻值：</p>
+<div align=center><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082137615.png" alt="image-20220808213717251" style="zoom: 50%;" /></div>
+<p>封装：</p>
+<p>inch notation : 0402 、0603、0805、0201</p>
+<p>功率：</p>
+<div align=center><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082139764.png" alt="image-20220808213918238" style="zoom:50%;" /></div>
+<div align=center><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082143472.png" alt="image-20220808214316135" style="zoom:33%;" /></div>
+<p>精度：</p>
+<div align=center><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082147011.png" alt="image-20220808214701147" style="zoom:50%;" /></div>
+<p>温漂：</p>
+<p>$1PPM/°C$是指电阻温度每变化一摄氏度，电阻阻值变化一百万之一。</p>
+<div align=center><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082158501.png" alt="image-20220808215841036" style="zoom:50%;" /></div>
+<p><strong>应用与选型</strong></p>
+<p>应用：分压、限流、上拉、下拉电阻、匹配电阻、0欧电阻</p>
+<p><strong>上拉（Pull Up）或下拉（Pull Down）电阻的作用：</strong></p>
+<p>将状态不确定的信号线通过一个电阻将其箝位至高电平（上拉）或低电平（下拉）</p>
+<p>高有效的使能控制信号（EN），希望电路系统在上电后应处于无效状态，则会使用下拉电阻。</p>
+<p>低有效的复位控制信号（RST），希望上电复位后处于无效状态，则应使用上拉电阻。</p>
+<p><strong>上下拉电阻之补充：开漏、开集、推挽</strong></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/28512432/answer/41217074">如何正确的理解漏极开路输出跟推挽输出？ - 知乎 (zhihu.com)</a></p>
+<p><strong>0欧电阻</strong></p>
+<p>零欧姆电阻又称为跨接电阻器，是一种特殊用途的电阻（JUMPER）。零欧电阻并非真的阻值为0，<strong>特指阻值&lt;50mΩ的贴片电阻</strong>，其在电路中的作用等同于阻值小于50mΩ的一截导线，代替跨接线英文全称为THICK FILM CHIP JUMPER RESISTOR.</p>
+<p>0欧电阻作用：跳线 （COLAY用法）、预留，视回板后测试情况调整、增加测试点、PCB的跨接、不同GND的区分</p>
+<h3 id="电容">电容</h3>
+<h3 id="电感">电感</h3>
+<h3 id="MOS管">MOS管</h3>
+<h3 id="二极管">二极管</h3>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+
+
+
+
+
+
+
+<div class="license">
+  <div class="license-title">硬件设计学习笔记 ----（元器件系列）</div>
+  <div class="license-link">
+    <a href="https://hyh1370039199.gitee.io/post/5/">https://hyh1370039199.gitee.io/post/5/</a>
+  </div>
+  <div class="license-meta">
+    <div class="license-meta-item">
+      <div class="license-meta-title">本文作者</div>
+      <div class="license-meta-text">
+          hyh
+      </div>
+    </div>
+      <div class="license-meta-item">
+        <div class="license-meta-title">发布于</div>
+        <div class="license-meta-text">
+          2022-08-05
+        </div>
+      </div>
+      <div class="license-meta-item">
+        <div class="license-meta-title">更新于</div>
+        <div class="license-meta-text">
+          2022-08-14
+        </div>
+      </div>
+    <div class="license-meta-item">
+      <div class="license-meta-title">许可协议</div>
+      <div class="license-meta-text">
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank">CC BY-NC-SA 4.0</a>
+        
+      </div>
+    </div>
+  </div>
+  <div class="license-statement">
+      转载或引用本文时，请遵守上述许可协议，注明出处、不得用于商业用途！
+    
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1/" rel="tag"><i class="fa fa-tag"></i> 硬件设计</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/6/" rel="prev" title="硬件设计学习笔记（记录平时学习到的知识点）">
+                  <i class="fa fa-chevron-left"></i> 硬件设计学习笔记（记录平时学习到的知识点）
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/8/" rel="next" title="xxxx的读书笔记">
+                  xxxx的读书笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="artalk"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fas fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hyh</span>
+</div><div class="powered">  
+    该主题由<a href="https://dlzhang.com" rel="noopener" target="_blank">班班</a>使用 <a href="https://theme-next.js.org" rel="noopener" target="_blank">NexT</a> 主题设计
+    <br>
+    <a href="/tags/">文章标签</a> · <a href="/policy/">网站政策</a>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.staticfile.org/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.staticfile.org/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.staticfile.org/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/comments.min.js"></script><script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/utils.min.js"></script><script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/next-boot.min.js"></script><script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/pjax.min.js"></script>
+
+  
+
+
+
+  <script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/third-party/fancybox.min.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdn.staticfile.org/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/third-party/math/mathjax.min.js"></script>
+
+
+<script class="next-config" data-name="artalk" type="application/json">{"enable":true,"server":"https://hyh1370039199.gitee.io","site":null,"jsUrl":"https://hyh1370039199.gitee.io/artalk@2/dist/Artalk.js","cssUrl":"https://hyh1370039199.gitee.io/artalk@2/dist/Artalk.css","pvCount":false,"commentCount":true,"darkMode":"auto","el":"#artalk","pageKey":"/post/5/","pageTitle":"硬件设计学习笔记 ----（元器件系列）","locale":"zh-CN"}</script>
+
+<link rel="stylesheet" href="https://hyh1370039199.gitee.io/artalk@2/dist/Artalk.css">
+<style>.artalk{width:initial;}</style>
+
+<script data-pjax type="text/javascript">
+;(function() {
+  if (CONFIG.page.comments) {
+
+    NexT.utils.loadComments(CONFIG.artalk.el)
+      .then(() => NexT.utils.getScript(CONFIG.artalk.jsUrl, {
+        condition: window.Artalk 
+      }))
+      .then(() => {
+        new Artalk(CONFIG.artalk);
+      });
+
+  } else {
+
+    NexT.utils.getScript(CONFIG.artalk.jsUrl, {
+      condition: window.Artalk 
+    }).then(() => {
+      Artalk.LoadCountWidget({
+        server: CONFIG.artalk.server,
+        site: CONFIG.artalk.site,
+        pvEl: '#ArtalkPV',
+        countEl: '#ArtalkCount',
+      });
+    })
+
+  }
+})();
+</script>
+
+
+<script data-pjax type="text/javascript">
+  //jquery selector
+  var $linkList = $(".link-list");
+  if ($linkList.length != 0) {
+    var j = -1;
+    for	(var i = 0; i < $linkList.length; i++) {
+      const listPath = $linkList[i].getAttribute('json-src');
+      const iconPath = $linkList[i].getAttribute('icon-src');
+      //使用 getJSON 读取 JSON 文件中的数据
+      $.getJSON(listPath, function(data) {
+        j++;
+        //存储数据的变量 
+        var li = "";
+        //清空内容 
+        $linkList.eq(j).empty();
+        //将获取到的 json 格式数据遍历到 div 中
+        $.each(data, function(infoIndex, info) {
+          var labelWarn = '';
+          var labelInfo = '';
+          if (info['warn']) { 
+            labelWarn = '<span class="label warn">' + info['warn'] + '</span>';
+          }
+          if (info['info']) { 
+            labelInfo = '<span class="label info">' + info['info'] + '</span>';
+          }
+          li += '<div class="link-list-container">';
+          li += '<img class="link-list-image" src="' + iconPath + info['logo'] + '">';
+          li += '<p>' + info['title'] + labelInfo + labelWarn + '</p>';
+          li += '<p>' + info['intro'] + '</p>';
+          li += '<a href="' + info['url'] + '" rel="noopener" target="_blank" data-pjax-state=""></a>';
+          li += '</div>';
+        })
+        //显示处理后的数据 
+        $linkList.eq(j).html(li);
+      })
+    }
+  }
+</script>
+
+
+
+<script data-pjax type="text/javascript">
+  //jquery selector
+  var $cultureList = $(".culture-list");
+  if ($cultureList.length != 0) {
+    var j = -1;
+    for	(var i = 0; i < $cultureList.length; i++) {
+      const listPath = $cultureList[i].getAttribute('json-src');
+      const coverPath = $cultureList[i].getAttribute('cover-src');
+      //使用 getJSON 读取 JSON 文件中的数据
+      $.getJSON(listPath, function(data) {
+        j++;
+        //存储数据的变量 
+        var li = "";
+        //清空内容 
+        $cultureList.eq(j).empty();
+        //将获取到的 json 格式数据遍历到 div 中
+        $.each(data, function(infoIndex, info) {
+          //影评书评链接
+          var title = info['title'];
+          if (info['pid']) {
+            title = '<a href="/post/'+ info['pid'] +'/" >' + info['title'] +'</a>';
+          }
+
+          //作者
+          if (info['author']) {
+            var author = '<span class="author">' + info['author'] +'</span>';
+          } else {
+            var author = '';
+          }
+
+          //简介
+          if (info['intro']) {
+            var intro = info['intro'];
+          } else {
+            var intro = '';
+          }
+          
+          //分数
+          if (info['score'] == null) {
+            var star = '';
+          } else {
+            //初始化
+            var colorStar = '';
+            var greyStar = '';
+            var int = info['score'] - info['score'] % 1; //整数部分
+            //是否有小数
+            var fract = 0; 
+            if (info['score'] % 1 != 0) {
+              fract = 1;
+            }
+            //整数星级
+            for	(var m = 0; m < int; m++) {
+              colorStar += '★';
+            }
+            //半星级
+            if (fract != 0) {
+              colorStar += '☆';
+            }
+            //用空缺星补齐五星
+            for	(var m = 0; m < (5 - fract - int); m++) {
+              greyStar += '☆';
+            }
+            if (info['score'] != 5) {
+              star = '<span class="star-score">'+ colorStar +'<span class="grey-star">'+ greyStar +'</span></span>';
+            } else {
+              star = '<span class="star-score">'+ colorStar +'</span>';
+            }
+          }
+
+          li += '<div class="media">';
+          li += '<div class="media-cover" style="background-image:url(' + coverPath + info['cover'] + ')"></div>';
+          li += '<div class="media-meta">';
+          li += '<div class="media-meta-item title">' + title + '</div>';
+          li += '<div class="media-meta-item">' + author + star +'</div>';
+          li += '<div class="media-meta-item intro">' + intro + '</div>';
+          li += '</div></div>';
+        })
+        
+        //显示处理后的数据 
+        $cultureList.eq(j).html(li);
+      })
+    }
+  }
+</script>
+
+
+
+
+<script src="/resources/minigrid.min.js"></script>
+<script data-pjax type="text/javascript">
+  var $album = $(".album")[0];
+  if($album) {
+    // 相册列表 JSON 数据
+    var imgDataPath = $album.getAttribute('json-src');
+    // 照片存储路径
+    var imgPath = $album.getAttribute('photo-src');
+    // 最多显示数量
+    var imgMaxNum = 50;
+    // 获取窗口大小以决定图片宽度
+    var windowWidth = window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
+    if (windowWidth < 768) {
+        var imageWidth = 145; // 移动端图片宽度
+    } else {
+        var imageWidth = 235;
+    }
+
+    // 腾讯云自定义样式 (数据万象外网流量需要付费)
+    //var imgStyle = '!' + imageWidth + 'x';
+    //var imgStyle = '!300x';
+
+    // 生成相册
+    var LinkDataPath = imgDataPath;
+    photo = {
+        page: 1,
+        offset: imgMaxNum,
+        init: function () {
+            var that = this;
+            $.getJSON(LinkDataPath, function (data) {
+                that.render(that.page, data);
+            });
+        },
+        render: function (page, data) {
+            var begin = (page - 1) * this.offset;
+            var end = page * this.offset;
+            if (begin >= data.length) return;
+            var imgNameWithPattern, imgName, imageSize, imageX, imageY, li = "";
+            for (var i = begin; i < end && i < data.length; i++) {
+                imgNameWithPattern = data[i].split(' ')[1];
+                imgName = imgNameWithPattern.split('.')[0]
+                imageSize = data[i].split(' ')[0];
+                imageX = imageSize.split('.')[0];
+                imageY = imageSize.split('.')[1];
+                li += '<div class="card" style="width:' + imageWidth + 'px" >'
+                li += '<div class="album-photo" style="height:'+ imageWidth * imageY / imageX + 'px">'
+                li += '<a class="fancybox fancybox.image" href="' + imgPath + imgNameWithPattern + '" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url" data-fancybox="group" rel="group" data-caption="' + imgName + '" title="' +  imgName + '">'
+                li += '<img data-src="' + imgPath + imgNameWithPattern + '" src="' + imgPath + imgNameWithPattern + '" alt="' +  imgName + '" data-loaded="true">'
+                li += '</a>'
+                li += '</div>'
+                li += '</div>'
+            }
+            $(".album").append(li);
+            this.minigrid();
+        },
+
+        minigrid: function() {
+          var grid = new Minigrid({
+              container: '.album',
+              item: '.card',
+              gutter: 12
+          });
+          grid.mount();
+          $(window).resize(function() {
+              grid.mount();
+          });
+        }
+    }
+    photo.init();
+  }
+</script>
+</body>
+</html>

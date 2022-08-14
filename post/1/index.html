@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><!-- hexo injector head_begin start -->
+        <link rel="preconnect" href="undefined" crossorigin="">
+        <link rel="preconnect" href="https://cdn.staticfile.org" crossorigin="">
+        <link rel="preconnect" href="https://cravatar.cn" crossorigin=""><!-- hexo injector head_begin end -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#e7ddc8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#181c27" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/resources/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/resources/favicon/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/resources/favicon/favicon.ico">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hyh1370039199.gitee.io","root":"/","images":"/resources/img/","scheme":"Gemini","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/config.min.js"></script>
+
+    <meta name="description" content="记录本人在使用Ti公司的CC1101芯片所遇到的问题以及一些寄存器的使用方法😊">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CC1101研发笔记">
+<meta property="og:url" content="https://hyh1370039199.gitee.io/post/1/index.html">
+<meta property="og:site_name" content="归零">
+<meta property="og:description" content="记录本人在使用Ti公司的CC1101芯片所遇到的问题以及一些寄存器的使用方法😊">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/20220216155945.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602103723540.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602103755934.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602131750821.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602132924458.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602135909703.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602134312812.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602154628051.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602145108992.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602152334186.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602152906767.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602153129320.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602155207963.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602162005996.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602162715892.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/20220217171230.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210603130124787.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602183226222.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602184952243.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602190555165.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602192337874.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602192423301.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210603091927869.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/20220218110518.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210603094247653.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602110936806.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/20220218174423.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/20220218174524.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/20220221140556.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/20220221141806.png">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/20220221143645.png">
+<meta property="article:published_time" content="2022-06-01T10:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-14T12:14:19.999Z">
+<meta property="article:author" content="hyh">
+<meta property="article:tag" content="射频开发">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/20220216155945.png">
+
+
+<link rel="canonical" href="https://hyh1370039199.gitee.io/post/1/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hyh1370039199.gitee.io/post/1/","path":"/post/1/","title":"CC1101研发笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>CC1101研发笔记 | 归零</title>
+  
+
+
+
+
+<link rel="preconnect" href="https://hyh1370039199.gitee.io">
+<script async defer data-website-id="" src=""></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">归零</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">hyh's Blog</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-life"><a href="/life/" rel="section"><i class="fas fa-pizza-slice fa-fw"></i>生活</a></li><li class="menu-item menu-item-tech"><a href="/tech/" rel="section"><i class="fas fa-book fa-fw"></i>技术</a></li><li class="menu-item menu-item-reading"><a href="/reading/" rel="section"><i class="fas fa-book fa-fw"></i>阅读</a></li><li class="menu-item menu-item-album"><a href="/album/" rel="section"><i class="fas fa-camera-retro fa-fw"></i>光影</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fas fa-splotch fa-fw"></i>留言</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          目 录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%A0%94%E5%8F%91%E6%B5%81%E7%A8%8B%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-text">一、研发流程及注意事项</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E9%A2%91%E7%8E%87%E8%AE%BE%E7%BD%AE"><span class="nav-text">1.频率设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E8%BE%93%E5%87%BA%E5%8A%9F%E7%8E%87%E8%AE%BE%E7%BD%AE"><span class="nav-text">2.输出功率设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%95%B0%E6%8D%AE%E9%80%9F%E7%8E%87%E8%AE%BE%E7%BD%AE"><span class="nav-text">3.数据速率设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E6%8E%A5%E6%94%B6%E6%BB%A4%E6%B3%A2%E5%99%A8%E5%B8%A6%E5%AE%BD%E8%AE%BE%E7%BD%AE"><span class="nav-text">4.接收滤波器带宽设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E8%B0%83%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%AE%BE%E7%BD%AE"><span class="nav-text">5.调制类型设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-%E9%A2%91%E5%81%8F%E8%AE%BE%E7%BD%AE"><span class="nav-text">6.频偏设置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-%E6%95%B0%E6%8D%AE%E5%8C%85%E6%A0%BC%E5%BC%8F"><span class="nav-text">7.数据包格式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-Data-FIFO"><span class="nav-text">8.Data FIFO</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-WOR-Wake-On-Radio-%E6%A8%A1%E5%BC%8F"><span class="nav-text">9.WOR(Wake On Radio)模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-RSSI%E6%A8%A1%E5%BC%8F"><span class="nav-text">10.RSSI模式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E4%BB%A3%E7%A0%81%E5%AE%9E%E7%8E%B0"><span class="nav-text">二、代码实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-SPI%E9%85%8D%E7%BD%AE"><span class="nav-text">1.SPI配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%B0%84%E9%A2%91%E5%BA%95%E5%B1%82%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0"><span class="nav-text">2.射频底层基本操作实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E6%A0%B9%E6%8D%AE%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E5%AE%9E%E7%8E%B0%E7%AE%80%E5%8D%95%E6%94%B6%E5%8F%91%E5%8A%9F%E8%83%BD"><span class="nav-text">3.根据基本操作实现简单收发功能</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E6%80%BB%E7%BB%93"><span class="nav-text">三、总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="hyh"
+      src="/resources/img/avatar.jpg">
+  <p class="site-author-name" itemprop="name">hyh</p>
+  <div class="site-description" itemprop="description">人生如逆旅，我亦是行人</div>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/hyh1370039199" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;hyh1370039199" rel="noopener" target="_blank"><i class="fa-brands fa-solid fa-g fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hyh1370039199.gitee.io/post/1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/resources/img/avatar.jpg">
+      <meta itemprop="name" content="hyh">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="归零">
+      <meta itemprop="description" content="人生如逆旅，我亦是行人">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="CC1101研发笔记 | 归零">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          CC1101研发笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-06-01 18:00:00" itemprop="dateCreated datePublished" datetime="2022-06-01T18:00:00+08:00">2022-06-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/tech/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+        
+        <span class="post-meta-item">
+          
+    <span class="post-meta-item-icon">
+      <i class="far fa-comment"></i>
+    </span>
+    <span class="post-meta-item-text">评论数：</span>
+  
+          <a title="artalk" href="/post/1/#artalk" itemprop="discussionUrl">
+            <span id="ArtalkCount" class="post-comments-count" data-page-key="/post/1/" itemprop="commentCount"></span>
+          </a>
+        </span>
+        
+      
+        
+      
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="一、研发流程及注意事项">一、研发流程及注意事项</h3>
+<p>开发人员可在TI官网下载CC1101芯片相关手册及配置软件：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.ti.com.cn/cn/lit/ds/symlink/cc1101.pdf?ts=1644562100340&amp;ref_url=https%253A%252F%252Fwww.ti.com.cn%252Fproduct%252Fzh-cn%252FCC1101%253FkeyMatch%253DCC1101%2526tisearch%253Dsearch-everything%2526usecase%253DGPN">CC1101芯片数据手册</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.ti.com/tool/download/SMARTRFTM-STUDIO?_ticdt=MTY0NDU2MTk3NHwwMTc5Nzk5OTE3OGYwMDFmOTc0N2E5ZjE5MjNiMDMwODMwMDI3MDdiMDA5Nzh8R0ExLjMuMjEyNjkwNTg5MS4xNjIxMjQyNzQ4">芯片配置软件SmartRF Studio 7</a></li>
+</ul>
+<img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/20220216155945.png"  style="zoom:80%;" />
+<p>开发人员可以利用SmartRF Studio 7软件对各射频参数进行设定，软件右边会显示相关寄存器的值、各射频参数的具体设置如下：</p>
+<h4 id="1-频率设置">1.频率设置</h4>
+<p><strong>起始频率</strong>由<strong>FREQ2,FREQ1,FREQ0寄存器</strong>来设置。<strong>信道间隔</strong>由<strong>MDMCFG0寄存器中的CHANSPC_M[7:0]</strong>：尾数以及<strong>MDMCFG1寄存器中的CHANSPC_E[1:0]</strong>：指数来设置。<strong>信道号</strong>由**CHANNR寄存器中的CHAN[7:0]**来设置。<strong>载波频率</strong>的公式如下：<br>
+$$<br>
+f_{carrier}=\frac{ f_{XOSC} }{ 2^{16} }\cdot(FREQ+CHAN\cdot((256+CHANSPC_M)\cdot2^{ {CHANSPC_E}-2 } ))<br>
+$$<br>
+<strong>中频频率</strong>由  <strong>FSCTRL1寄存器中的FREQ_IF[4:0]</strong>  设置。中频频率的公式如下：<br>
+$$<br>
+f_{IF}=\frac{ f_{XOSC} }{ 2^{10} }\cdot{FREQ_{IF} }<br>
+$$<br>
+<strong>注意事项：</strong></p>
+<ul>
+<li>使用26M晶振时，最大可设置信道间隔为405KHz。如果想得到1MHz的信道间隔，解决办法是设置333KHz的信道间隔，每隔三个间隔选择一个实际信道。</li>
+<li>频率方面的设置只能在芯片处于空闲状态时更改。</li>
+</ul>
+<h4 id="2-输出功率设置">2.输出功率设置</h4>
+<p><strong>PATABLE</strong>寄存器可以存储8个用户选择的输出功率配置，<strong>FREND0寄存器中的PA_POWER[2:0]</strong>  设置了当前PATABLE中有效的功率值的个数。PA_POWER[2:0] = 0表示关闭了在数据包传输开始和结束时的功率斜坡变化，只使用PATABLE的索引0作为输出功率。</p>
+<ul>
+<li>
+<p>使用OOK调制时，逻辑0和逻辑1的功率电平分别由PATABLE的索引0和索引1来配置.</p>
+</li>
+<li>
+<p>使用ASK调制时，从<strong>索引0到FREND0.PA_POWER值</strong>的输出功率将被用于PA功率斜坡递增和递减整形。</p>
+</li>
+</ul>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602103723540.png" alt=""></p>
+<p>使用ASK调制时，调制器内部有一个计数器，其计数速率是发送信号速率的FREND0.PA_POWER倍，每递增或递减一次，则改变一次功率值，计数器计数到FREND0.PA_POWER又回复到0.</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602103755934.png" alt=""></p>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>如果想写入PATABLE[0]以外的条目，必须采用<strong>突发访问模式</strong>。</li>
+<li>进入SLEEP模式后，PATABLE除了索引0其余的信息都会丢失。</li>
+</ul>
+<h4 id="3-数据速率设置">3.数据速率设置</h4>
+<p>数据速率通过  <strong>MDMCFG3寄存器中的DRATE_M[7:0]以及MDMCFG4寄存器的DRATE_E[3:0]</strong>  来配置.公式如下：<br>
+$$<br>
+R_{DATA}=\frac{(256+DRATE_M)\cdot{2<sup>{DRATE_E}}}{2</sup>{28}}\cdot{f_{XOSC}}<br>
+$$<br>
+对于给定的速率值可以通过以下公式来得到相应的寄存器值。（当DRATE_M接近256时，可置DRATE_M = 0,DRATE_E加一，可理解成  <strong>进位操作</strong>  ）<br>
+$$<br>
+DRATE_E=log_{2}(\frac{R_{DATA}\cdot{2^{20}}}{f_{XOSC}})<br>
+$$</p>
+<p>$$<br>
+DRATE_{M}=\frac{R_{DATA}\cdot{2<sup>{28}}}{f_{XOSC}\cdot{2</sup>{DRATE_E}}}-256<br>
+$$</p>
+<h4 id="4-接收滤波器带宽设置">4.接收滤波器带宽设置</h4>
+<p>接收滤波带宽通过  <strong>MDMCFG4.CHANBW_E[7:6]和MDMCFG4.CHANBW_M[5:4]</strong>  来设置，以下为寄存器配置与滤波带宽的关系：<br>
+$$<br>
+BW_{channel}=\frac{f_{XOSC}}{8\cdot(4+CHANBW_M)\cdot2^{CHANBW_E}}<br>
+$$<br>
+下图是CC1101支持的接收滤波器带宽：</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602131750821.png" alt=""></p>
+<h4 id="5-调制类型设置">5.调制类型设置</h4>
+<p>调制类型由  <strong>MDMCFG2寄存器的MOD_FORMAT[6:4]</strong>  来设置，如下图不同的寄存器值对应不同的调制类型。</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602132924458.png" alt=""></p>
+<p><strong>注意事项：</strong></p>
+<ul>
+<li>MSK支持26Kbps以上的数据速率</li>
+<li>射频数据可选择曼彻斯特编码和解码来进行调制和解调。设置  <strong>MDMCFG2寄存器中的MANCHESTER[3]</strong>  值为1即可。</li>
+<li>曼彻斯特编码不支持与FEC前向纠错/Interleaver交织器或者MSK、4-FSK调制格式同时使用。</li>
+</ul>
+<h4 id="6-频偏设置">6.频偏设置</h4>
+<p>CC1101支持2-FSK和4-FSK调制，2-FSK可以选择由BT=0.5的高斯滤波器整形、产生GFSK调制信号。这种频谱整形的调制方式改善了ACP（相邻信道功率）和占用带宽。</p>
+<p>当使用2-FSK/4-FSK/GFSK调制格式时，使用<strong>DEVIATN</strong>寄存器来设置<strong>频率偏移</strong>。要保证TX频偏与RX预期频偏一致，以便可以稳定解调。频率偏移由<strong>DEVIATN寄存器中的DEVIATION_M和DEVIATION_E</strong>来设置。公式如下：<br>
+$$<br>
+f_{dev}=\frac{f_{XOSC}}{2<sup>{17}}\cdot{(8+DEVIATION_M)}\cdot{2</sup>{DEVIATION_E}}<br>
+$$<br>
+关于2-FSK/GFSK/4-FSK调制格式的符号编码如下图所示：</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602135909703.png" alt=""></p>
+<p>注意事项：</p>
+<ul>
+<li>
+<p>使用4-FSK调制时，前导码和同步字是使用2-FSK调制格式来发送的，如下图所示。</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602134312812.png" alt=""></p>
+</li>
+<li>
+<p>MSK最小频移键控，前导码、同步字、有效数据载荷均由MSK调制。相移以恒定的过渡时间执行，可以使用<strong>DEVIATN寄存器中的DEVIATION_M</strong>设置<strong>相位的符号周期</strong>。</p>
+</li>
+<li>
+<p>OOK开关键控使用PA功率的开关分别来调制逻辑1和逻辑0，<strong>DEVIATN</strong>寄存器在使用OOK/ASK时无作用。</p>
+</li>
+</ul>
+<h4 id="7-数据包格式">7.数据包格式</h4>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602154628051.png" alt=""></p>
+<p><strong>数据包格式：前导码+同步字+长度+地址+数据段+CRC16</strong></p>
+<h5 id="①前导码">①前导码</h5>
+<p>在时域下， 一般由 1010 或者 0101 二进制码构成。</p>
+<p><strong>MDMCFG寄存器中的NUM_PREABLE[2:0]</strong>  设置了传输时前导码的最小字节数。</p>
+<p><strong>PKTCTRL1寄存器中的PQT[7:5]</strong>  设置了前导质量阈值，只有RX接收了超过该前导质量阈值的前导码，这个数据才可被接收。</p>
+<h5 id="②同步字">②同步字</h5>
+<p><strong>MDMCFG2寄存器中的SYNC_MODE[2:0]</strong>  设置了同步字传输和检测模式。例如：值3（011）和值7（111）启用了TX的重复同步字传输和RX的32位同步字检测，需要32位中的30位匹配上。</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602145108992.png" alt=""></p>
+<p><strong>SYNC1[7:0],SYNC0[7:0]<strong>设置了</strong>同步字的16位字段</strong>，该字段可以被重复调用为32位，解调器可以通过该字段来找到数据流的字节边界。</p>
+<h5 id="③CRC校验">③CRC校验</h5>
+<p><strong>PKTCTRL0寄存器中的CRC_EN[2]</strong>  值设置为1代表CRC校验使能。</p>
+<p><strong>PKTCTRL1寄存器中的APPEND_STATUS[2]</strong>  值设置为1代表两个状态字节会添加到数据包的有效数据之后。</p>
+<p>第一个字节表示<strong>RSSI[7:0]</strong>.</p>
+<p>第二个字节包含<strong>CRC_OK[7]和LQI[6:0]</strong>,CRC_OK这个标志位在收到数据包CRC校验成功或者CRC校验未使能时为1；在收到数据包后CRC校验失败为0。LQI代表链路质量。</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602152334186.png" alt=""></p>
+<h5 id="④地址校验">④地址校验</h5>
+<p>接收数据包的地址校验配置由  <strong>PKTCTRL1寄存器中的ADR_CHK[1:0]</strong>  来配置。</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602152906767.png" alt=""></p>
+<p>如果地址校验位配置为01/10/11,则在发送的数据包中需添加一个设备地址字节，并在接收时校验该设备地址。</p>
+<h5 id="⑤数据包长度校验">⑤数据包长度校验</h5>
+<p><strong>PKTCTRL0寄存器中的LENGTH_CONFIG[1:0]</strong>  设置数据包长度。</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602153129320.png" alt=""></p>
+<p>00代表固定包长模式，数据包长度由PKTLEN寄存器来配置。（支持数据包长度到255字节）</p>
+<p>01代表可变包长模式，数据包长度配置在数据包中同步字之后的第一个字节。（支持数据包长度到255字节）。</p>
+<p>10代表无限包长模式，更长的数据包必须采用该模式。</p>
+<p>**对于大于255个字节数的数据发送：**因为在发送和接收时，PKTCTRL寄存器都是可编程的。所以允许芯片接收大于255个字节的数据。实现方式为，先将数据包发送接收模式设置为无限数据包格式，当剩余数据包个数小于256个字节时，将数据包格式切换为固定数据包长度格式.把剩余的字节数写入PKTLEN寄存器。</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602155207963.png" alt=""></p>
+<h5 id="⑥白化">⑥白化</h5>
+<p>通过加白噪声来提高数据的抗干扰能力。通过<strong>PKTCTRL0寄存器的WHITE_DATA[6] 设置为1</strong>来使能<strong>数据白化</strong>功能，将数据包中从数据包长度部分到CRC校验部分的所有数据通过和一个9位的虚拟随机数相异或。在接收方通过相同的序列将数据异或恢复成原来数据。数据白化要在FEC或者交织编码前完成。</p>
+<p>PN9序列初始值均为1.（111111111）</p>
+<p>这一方法的提出起源于时钟同步，为了同步发射信号和接收信号的时钟，可以利用数据来对两者的时钟进行微调，而数据中0和1的交替出现频率越大，微调的效率就越高，如果出现长串的0或者1，微调就很困难，出现连续的0或者1，就可以通过白化算法生成0和1尽可能均匀出现的序列。</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602162005996.png" alt=""></p>
+<p>Data ：发送端的原始数据      Whitening Key：白化序列    Whiten Data：Whitening Key与Data 做XOR运算 异或：值相同输出为0，值不同输出为1.下图是数据白化和反白化的例子：</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602162715892.png" alt=""></p>
+<p>**Whitening的更新：**9位白化序列，最高位MSB不参与XOR运算。如上图生成多项式为：<br>
+$$<br>
+g(x) = x<sup>9+x</sup>5+1<br>
+$$<br>
+更新算法如下：</p>
+<p>1.新的第9位由第0位和第五位XOR产生</p>
+<p>2.整体右移一位</p>
+<p>3.重复1，2步骤8次</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">MSB（X<sup>8</sup>）</th>
+<th style="text-align:center">X<sup>7</sup></th>
+<th style="text-align:center">X<sup>6</sup></th>
+<th style="text-align:center"><strong>X<sup>5</sup></strong></th>
+<th style="text-align:center">X<sup>4</sup></th>
+<th style="text-align:center">X<sup>3</sup></th>
+<th style="text-align:center">X<sup>2</sup></th>
+<th style="text-align:center">X<sup>1</sup></th>
+<th style="text-align:center">X<sup>0</sup></th>
+<th style="text-align:center">Counter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">---------</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">6</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">7</td>
+</tr>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">0</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">8</td>
+</tr>
+</tbody>
+</table>
+<p>如上图Whiten Key：11111111更新后得到11100001</p>
+<p>参考资料：<a target="_blank" rel="noopener" href="https://www.silabs.com/documents/public/application-notes/AN592.pdf">AN592.pdf (silabs.com)</a></p>
+<h5 id="⑦FEC-交织编码">⑦FEC/交织编码</h5>
+<p><strong>MDMCFG1寄存器中的FEC_EN[7] 值置为1</strong>代表使能FEC并与交织搭配使用（仅支持固定包长模式）。</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/20220217171230.png" alt=""></p>
+<p>交织编码的目的是把一个较长的突发差错离散成随机差错，再用纠正随机差错的编码（FEC）技术消除随机差错。交织深度越大，则离散度越大，抗突发差错能力也就越强。但交织深度越大，交织编码处理越长，从而造成数据传输时延增大，交织编码是以时间为代价的。</p>
+<p><strong>交织编码器工作原理：</strong></p>
+<p>信道编码采用交织技术，可打乱码、字、比特之间的相关性，将信道中传输过程中的成群突发错误转换为随机错误，从而提高整个通信系统的可靠性。交织器有两种结构类型：分组结构和卷积结构。分组结构是把待编码的m×n个数据位放入一个m行n列的矩阵，即每次对m×n个数据位进行交织，由下图可知，数据位按行填入，而在发送时按列读出，这样就产生了对原始数据位以m个比特为周期进行分隔的效果。在接受端的解交织操作则与此相反。</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210603130124787.png" alt=""></p>
+<p>对于FEC算法是如何实现纠错的，有兴趣的可以看下这篇文章<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/103888948">理解FEC（Reed-Solomon）编码</a></p>
+<h4 id="8-Data-FIFO">8.Data FIFO</h4>
+<p>CC1101包含两个64字节的FIFO，一个用于发送数据，一个用于接收数据。RX FIFO,TX FIFO内的字节数可通过读<strong>RXBYTES寄存器中的NUM_RXBYTES[6:0]值和TXBYTES寄存器中的NUM_TXBYTES[6:0]值</strong>来获取。</p>
+<p>当数据包长小于64字节时，推荐等待完整的数据包被接收到后再从RX FIFO读出来。</p>
+<p>当数据包长大于64字节时，MCU必须要判断可以从RX FIFO读多少个字节。</p>
+<p>可以使用下列软件流程参考：</p>
+<p>①以至少两倍的接收 RF 字节的速率重复读取 RXBYTES.NUM_RXBYTES，直到返回相同的值两次； 并且把值存储在n中。</p>
+<p>②如果n&lt;数据包剩余的字节数，则从RX FIFO读取n-1个字节。</p>
+<p>③重复①②过程，直到n=数据包剩余的字节数。</p>
+<p>④从RX FIFO读取剩余的字节数。</p>
+<p><strong>FIFOTHR寄存器中的FIFO_THR[3:0]</strong>  用于设置TX FIFO和RX FIFO的阈值。当达到阈值时，这为FIFO上溢和下溢留下了相同的余量。如下图所示。</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602183226222.png" alt=""></p>
+<p>可以选择GDOx_CFG[5:0]为RX FIFO 上溢，TX FIFO 下溢事件，触发相应的GDO引脚电平变化。</p>
+<h4 id="9-WOR-Wake-On-Radio-模式">9.WOR(Wake On Radio)模式</h4>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602184952243.png" alt=""></p>
+<p>如上图所示，表示WOR的过程，Event0，Event1代表两个定时器，Event0控制WOR的周期长度，Event1表示芯片从唤醒到空闲状态的时间即等待晶振起振到稳定的时间。</p>
+<p>在休眠模式中（WOR使能），到达Event0将会开启数字稳压器和晶振。WOR周期由  <strong>WOREVT1寄存器中的EVENT0[7:0]和WOREVT2寄存器中的EVENT0[7:0]</strong>,<strong>WORCTRL寄存器中的WOR_RES[1:0]</strong>  来设置。公式如下：<br>
+$$<br>
+t_{Event0}=\frac{750}{f_{XOSC}}\cdot{EVENT_0}\cdot{2^{5\cdot{WOR_{RES}}}}<br>
+$$<br>
+对于26M晶振，芯片进入休眠模式到到达下一个Event0的时间应不小于11.08ms。计算公式如下：<br>
+$$<br>
+t_{SLEEP_{min}} = \frac{750}{f_{xosc}}\cdot384<br>
+$$<br>
+WOR周期的最小值应为：</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602190555165.png" alt=""></p>
+<p><strong>Event1的周期时间可由WORCTRL寄存器的EVENT1[6:4]</strong>  来设置。公式为：<br>
+$$<br>
+t_{Event1}=x\cdot{\frac{750}{f_{xosc}}}<br>
+$$<br>
+<strong>WOR设置步骤：</strong></p>
+<p><strong>1.首先要确定接收时间：</strong></p>
+<p>一般WOR设计中的接收方是由发送方决定的，若要成功唤醒或在其醒来过程中可靠地接收数据必须使接收时间&gt;=发送周期时间的两倍。例如：发射周期为7.5ms，则在一个WOR周期内唤醒设备，WOR接收时间需要&gt;=15ms，这里取15ms。</p>
+<p><strong>发射周期应该与空速相关，可配置MDMCFG4,MDMCFG3寄存器来验证。</strong></p>
+<p><strong>2.确定接收时间</strong></p>
+<p>占空比的大小决定了WOR过程的功耗，占空比越小对应的功耗就越小。</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602192337874.png" alt=""></p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602192423301.png" alt=""></p>
+<p>接收时间为15ms，</p>
+<p><strong>3.根据占空比和接收时间确定Tevent0值</strong><br>
+$$<br>
+t_{RXtimeout}=t_{Event0}\cdot{DutyCycle}<br>
+$$<br>
+所以假如选择默认的EVENT0 = 0x876B，WOR_RES = 0时，应选择1.563%的占空比，即MCSM2.RX_TIME = 3,此时$t_{Event0}=1s$,$t_{RXtimeout}=15.93ms$</p>
+<p><strong>4.确定Tevent1时间</strong></p>
+<p>t<sub>Event1</sub>时间取决于晶振起振并稳定的时间，其对寄存器设置公式如下图：</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210603091927869.png" alt=""></p>
+<p><strong>5.确定与WOR周期有关寄存器的值</strong></p>
+<p>WOREVT1:0x87</p>
+<p>WOREVT0:0x6B</p>
+<p>WORCTRL:0x78</p>
+<p>MCSM0:0x38 （MCSM0.FS_AUTOCAL[5:4] = 11 见CC1101数据手册P82，可以降低功耗）</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/20220218110518.png" alt=""></p>
+<p>MCSM2:0x13（MCSM2.RX_TIME_RSSI[4] = 1,见CC1101数据手册P9，可以降低功耗，见下图）<strong>重要！！！</strong></p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210603094247653.png" alt=""></p>
+<p>该WOR模式配置实现仅提供参考，基于CC1101来做WOR模式采用硬件实现还是软件实现还需实际调试来衡量优缺点！</p>
+<h4 id="10-RSSI模式">10.RSSI模式</h4>
+<p>RSSI值是当前信道的信号强度的估计值。其以 dBm 为单位。<strong>RSSI 更新率 $f_{RSSI}$ 取决于接收器滤波器带宽$BW_{channel}$和 AGCCTRL0寄存器的FILTER_LENGTH值</strong>。公式如下：<br>
+$$<br>
+f_{RSSI} = \frac{ 2\cdot{ BW_{channel} } }{8\cdot{ 2^{FILTER_{LENGTH} }}}<br>
+$$<br>
+PKTCTRL1寄存器中的APPEND_STATUS值使能后， RSSI 值自动添加到数据包后附加的第一个字节。</p>
+<p>从RSSI寄存器读取的RSSI值为二进制补码。需要经过以下程序转换为实际信号强度（$RSSI_{dBm}$）。</p>
+<p>①读取RSSI状态寄存器。</p>
+<p>②将读数从十六进制转换为十进制数（$RSSI_{dec}$）</p>
+<p>③如果$RSSI_{dec}$ &gt;= 128 则 $RSSI_{dBm} = (RSSI_{dec}- 256)/ 2 - RSSI_{offset}$。</p>
+<p>④如果$RSSI_{dec}$&lt; 128 则 $RSSI_{dBm}  = RSSI_{dec}/ 2 - RSSI_{offset}$。</p>
+<h3 id="二、代码实现">二、代码实现</h3>
+<h4 id="1-SPI配置">1.SPI配置</h4>
+<p>CC1101通过SPI进行配置。数据发送时先发<strong>高位</strong>，所有在SPI传输的数据包含<strong>读写位（R:1/W:0）+突发访问位+六位地址的头字节。</strong></p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602110936806.png" alt=""></p>
+<p>对于单片机如何配置SPI，有两个重要参数：SPI的<strong>时钟极性CPOL</strong>表示时钟信号在空闲时是高电平还是低电平；<strong>时钟相位CPHA</strong>表示何时进行信号采样，在第一个跳变沿，还是第二个跳变沿。由上图可判断时钟信号在空闲时为低电平，并在第一个跳变沿进行采样。</p>
+<p><strong>注意事项：</strong></p>
+<p>当片选CSn拉低后，发送起始头字节前一定要判断<strong>SO引脚的电平是否为低电平</strong>，为低则说明CC1101晶振已经起振，为高则说明CC1101处于SLEEP模式或晶振关闭模式。</p>
+<h4 id="2-射频底层基本操作实现">2.射频底层基本操作实现</h4>
+<p>SPI功能准备好了，接下来我们就可以实现射频芯片的基本操作：读写寄存器、读写状态/命令，由于SPI传输数据时的头字节格式为<strong>读写位（R:1/W:0）+突发访问位+六位地址</strong>的形式。所以读写寄存器时头字节可以写为如下形式：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"><strong>写</strong>（W：0,突发访问位：0）</th>
+<th style="text-align:center"><strong>0x00|六位地址</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>连续写（W：0,突发访问位：1）</strong></td>
+<td style="text-align:center"><strong>0x40|六位地址</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>读（R：1,突发访问位：1）</strong></td>
+<td style="text-align:center"><strong>0x80|六位地址</strong></td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>连续读（R：1,突发访问位：1）</strong></td>
+<td style="text-align:center"><strong>0xC0|六位地址</strong></td>
+</tr>
+</tbody>
+</table>
+<p>那么CC1101读写寄存器的操作便可实现为如下伪代码形式：</p>
+<pre class="language-c" data-language="c"><code class="language-c"><span class="token comment">/*!
+ *  @brief   读寄存器
+ *  @param   addr：寄存器地址
+ *  @return  对应寄存器的值
+*/</span>
+INT8U <span class="token function">CC1101_ReadRegister</span><span class="token punctuation">(</span>INT8U addr<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    INT8U value<span class="token punctuation">;</span>
+    CSN_LOW<span class="token punctuation">;</span><span class="token comment">//片选拉低</span>
+    value <span class="token operator">=</span> <span class="token function">SPI_ExchangeByte</span><span class="token punctuation">(</span><span class="token number">0x80</span><span class="token operator">|</span>addr<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//SPI写入0x80|addr字节，把读取到的值存储在value中。</span>
+    CSN_HIGH<span class="token punctuation">;</span><span class="token comment">//片选拉高</span>
+    <span class="token keyword">return</span> value<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">/*!
+ *  @brief   读多个寄存器
+ *  @param   addr：寄存器地址;buffer:将读取到的值存储到该buffer中;
+*/</span>
+<span class="token keyword">void</span> <span class="token function">CC1101_ReadRegisters</span><span class="token punctuation">(</span>INT8U addr<span class="token punctuation">,</span>INT8U <span class="token operator">*</span>buffer<span class="token punctuation">,</span>INT8U size<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    INT8U i<span class="token punctuation">;</span>
+    CSN_LOW<span class="token punctuation">;</span><span class="token comment">//片选拉低</span>
+    <span class="token function">SPI_ExchangeByte</span><span class="token punctuation">(</span><span class="token number">0xC0</span><span class="token operator">|</span>addr<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//SPI写入0xC0|addr字节->连续读取</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>size<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+    	<span class="token operator">*</span><span class="token punctuation">(</span>buffer<span class="token operator">+</span>i<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token function">SPI_ExchangeByte</span><span class="token punctuation">(</span>SPI_NOP<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//写入无操作指令，将读取的值存储在buffer中。</span>
+	<span class="token punctuation">&#125;</span>
+    CSN_HIGH<span class="token punctuation">;</span><span class="token comment">//片选拉高</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">/*!
+ *  @brief   写寄存器
+ *  @param   addr：寄存器地址;value：将写入寄存器的值
+*/</span>
+<span class="token keyword">void</span> <span class="token function">CC1101_WriteRegister</span><span class="token punctuation">(</span>INT8U addr<span class="token punctuation">,</span>INT8U value<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    CSN_LOW<span class="token punctuation">;</span><span class="token comment">//片选拉低</span>
+    <span class="token function">SPI_ExchangeByte</span><span class="token punctuation">(</span><span class="token number">0x00</span><span class="token operator">|</span>addr<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//SPI写入0x00|地址</span>
+    <span class="token function">SPI_ExchangeByte</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//SPI写入寄存器的值</span>
+    CSN_HIGH<span class="token punctuation">;</span><span class="token comment">//片选拉高</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">/*!
+ *  @brief   写多个寄存器
+ *  @param   addr：寄存器地址;buffer：存储将要写入值的buffer;size：将要写入的大小
+*/</span>
+<span class="token keyword">void</span> <span class="token function">CC1101_WriteRegisters</span><span class="token punctuation">(</span>INT8U addr<span class="token punctuation">,</span>INT8U <span class="token operator">*</span>buffer<span class="token punctuation">,</span>INT8U size<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    CSN_LOW<span class="token punctuation">;</span><span class="token comment">//片选拉低</span>
+    <span class="token function">SPI_ExchangeByte</span><span class="token punctuation">(</span><span class="token number">0x40</span><span class="token operator">|</span>addr<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//SPI写入0x40|地址</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>size<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+		<span class="token function">SPI_ExchangeByte</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">(</span>buffer<span class="token operator">+</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//SPI写入寄存器的值</span>
+	<span class="token punctuation">&#125;</span>
+    CSN_HIGH<span class="token punctuation">;</span><span class="token comment">//片选拉高</span>
+<span class="token punctuation">&#125;</span></code></pre>
+<p><strong>写入命令</strong>：命令选通寄存器通过传输单个头字节来访问（没有数据正在传输）。即只有 R/W位、突发访问位（设置为 0）和六位地址(范围为0x30-0x3D)。</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/20220218174423.png" alt=""></p>
+<p>CC1101写入命令的操作便可实现为如下伪代码形式：</p>
+<pre class="language-c" data-language="c"><code class="language-c"><span class="token comment">/*!
+ *  @brief   写命令到命令选通寄存器
+ *  @param   addr：寄存器地址
+*/</span>
+<span class="token keyword">void</span> <span class="token function">CC1101_WriteCommand</span><span class="token punctuation">(</span>INT8U cmd<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    CSN_LOW<span class="token punctuation">;</span><span class="token comment">//片选拉低</span>
+    <span class="token function">SPI_ExchangeByte</span><span class="token punctuation">(</span><span class="token number">0x00</span><span class="token operator">|</span>cmd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    CSN_HIGH<span class="token punctuation">;</span><span class="token comment">//片选拉高</span>
+<span class="token punctuation">&#125;</span></code></pre>
+<p><strong>读取状态</strong>：对于0x30-0x3D的寄存器地址，当突发位为1时，会访问状态寄存器。</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/20220218174524.png" alt=""></p>
+<p>CC1101读取状态的操作便可实现为如下伪代码形式：</p>
+<pre class="language-c" data-language="c"><code class="language-c"><span class="token comment">/*!
+ *  @brief   读状态寄存器
+ *  @param   addr：状态寄存器地址
+ *  @return  对应寄存器的值
+*/</span>
+INT8U <span class="token function">CC1101_ReadStatus</span><span class="token punctuation">(</span>INT8U addr<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    INT8U status<span class="token punctuation">;</span>
+    CSN_LOW<span class="token punctuation">;</span><span class="token comment">//片选拉低</span>
+    <span class="token function">SPI_ExchangeByte</span><span class="token punctuation">(</span><span class="token number">0xC0</span><span class="token operator">|</span>addr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    status <span class="token operator">=</span> <span class="token function">SPI_ExchangeByte</span><span class="token punctuation">(</span>SPI_NOP<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    CSN_HIGH<span class="token punctuation">;</span><span class="token comment">//片选拉高</span>
+<span class="token punctuation">&#125;</span></code></pre>
+<h4 id="3-根据基本操作实现简单收发功能">3.根据基本操作实现简单收发功能</h4>
+<h5 id="①初始化部分">①初始化部分</h5>
+<p>包括频率、空速、功率、数据包格式、及 中断触发事件等参数设置。下面以设置空速为例，其余参数设置与其相似，具体可参考CC1101底层函数库。设置空速的代码如下：</p>
+<pre class="language-C" data-language="C"><code class="language-C">&#x2F;*!
+ *  @brief   空速设置 
+ *  @param   value:需要写入MDMCFG3、MDMCFG4寄存器的值,可封装为查表形式来传入索引值
+ *&#x2F;
+void CC1101_SetDataRate(INT16U value)
+&#123;
+    INT8U mask;
+    mask &#x3D; CC1101_ReadRegister(CC1101_MDMCFG4);&#x2F;&#x2F;读取MDMCFG4寄存器的值
+    mask &amp;&#x3D; 0xF0;
+    mask |&#x3D; 0x0F &amp; (value &gt;&gt; 8);
+    CC1101_WriteRegister(CC1101_MDMCFG4,mask);
+    CC1101_WriteRegister(CC1101_MDMCFG3,value &amp; 0xFF);
+&#125;</code></pre>
+<p>如下图，这是将空速设置为1.2kbps，接收滤波器带宽设置为58KHz时，MDMCFG4、MDMCFG3寄存器的值的显示情况（红框部分）。</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/20220221140556.png" alt=""></p>
+<h5 id="②发送部分">②发送部分</h5>
+<p>实现射频发送功能的流程图如下：</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/20220221141806.png" alt="CC1101_Tx流程"></p>
+<h5 id="③接收部分">③接收部分</h5>
+<p>实现射频接收功能的流程图如下：</p>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/20220221143645.png" alt="CC1101_Rx流程"></p>
+<p>开发人员可根据产品需求，对简单收发通信进行扩展，以及利用芯片的特性去实现一些复杂的应用，例如LBT，WOR等。</p>
+<h3 id="三、总结">三、总结</h3>
+<p>以上就是我结合CC1101的数据手册以及使用CC1101开发的研发笔记，文中若有出错之处，望大家指正出来，一起共同交流！</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+
+
+
+
+
+
+
+<div class="license">
+  <div class="license-title">CC1101研发笔记</div>
+  <div class="license-link">
+    <a href="https://hyh1370039199.gitee.io/post/1/">https://hyh1370039199.gitee.io/post/1/</a>
+  </div>
+  <div class="license-meta">
+    <div class="license-meta-item">
+      <div class="license-meta-title">本文作者</div>
+      <div class="license-meta-text">
+          hyh
+      </div>
+    </div>
+      <div class="license-meta-item">
+        <div class="license-meta-title">发布于</div>
+        <div class="license-meta-text">
+          2022-06-01
+        </div>
+      </div>
+      <div class="license-meta-item">
+        <div class="license-meta-title">更新于</div>
+        <div class="license-meta-text">
+          2022-08-14
+        </div>
+      </div>
+    <div class="license-meta-item">
+      <div class="license-meta-title">许可协议</div>
+      <div class="license-meta-text">
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank">CC BY-NC-SA 4.0</a>
+        
+      </div>
+    </div>
+  </div>
+  <div class="license-statement">
+      转载或引用本文时，请遵守上述许可协议，注明出处、不得用于商业用途！
+    
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%B0%84%E9%A2%91%E5%BC%80%E5%8F%91/" rel="tag"><i class="fa fa-tag"></i> 射频开发</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/3/" rel="prev" title="链表学习笔记----单链表">
+                  <i class="fa fa-chevron-left"></i> 链表学习笔记----单链表
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="artalk"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fas fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">hyh</span>
+</div><div class="powered">  
+    该主题由<a href="https://dlzhang.com" rel="noopener" target="_blank">班班</a>使用 <a href="https://theme-next.js.org" rel="noopener" target="_blank">NexT</a> 主题设计
+    <br>
+    <a href="/tags/">文章标签</a> · <a href="/policy/">网站政策</a>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.staticfile.org/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdn.staticfile.org/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+  <script src="https://cdn.staticfile.org/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdn.staticfile.org/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/comments.min.js"></script><script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/utils.min.js"></script><script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/next-boot.min.js"></script><script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/pjax.min.js"></script>
+
+  
+
+
+
+  <script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/third-party/fancybox.min.js"></script>
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdn.staticfile.org/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/third-party/math/mathjax.min.js"></script>
+
+
+<script class="next-config" data-name="artalk" type="application/json">{"enable":true,"server":"https://hyh1370039199.gitee.io","site":null,"jsUrl":"https://hyh1370039199.gitee.io/artalk@2/dist/Artalk.js","cssUrl":"https://hyh1370039199.gitee.io/artalk@2/dist/Artalk.css","pvCount":false,"commentCount":true,"darkMode":"auto","el":"#artalk","pageKey":"/post/1/","pageTitle":"CC1101研发笔记","locale":"zh-CN"}</script>
+
+<link rel="stylesheet" href="https://hyh1370039199.gitee.io/artalk@2/dist/Artalk.css">
+<style>.artalk{width:initial;}</style>
+
+<script data-pjax type="text/javascript">
+;(function() {
+  if (CONFIG.page.comments) {
+
+    NexT.utils.loadComments(CONFIG.artalk.el)
+      .then(() => NexT.utils.getScript(CONFIG.artalk.jsUrl, {
+        condition: window.Artalk 
+      }))
+      .then(() => {
+        new Artalk(CONFIG.artalk);
+      });
+
+  } else {
+
+    NexT.utils.getScript(CONFIG.artalk.jsUrl, {
+      condition: window.Artalk 
+    }).then(() => {
+      Artalk.LoadCountWidget({
+        server: CONFIG.artalk.server,
+        site: CONFIG.artalk.site,
+        pvEl: '#ArtalkPV',
+        countEl: '#ArtalkCount',
+      });
+    })
+
+  }
+})();
+</script>
+
+
+<script data-pjax type="text/javascript">
+  //jquery selector
+  var $linkList = $(".link-list");
+  if ($linkList.length != 0) {
+    var j = -1;
+    for	(var i = 0; i < $linkList.length; i++) {
+      const listPath = $linkList[i].getAttribute('json-src');
+      const iconPath = $linkList[i].getAttribute('icon-src');
+      //使用 getJSON 读取 JSON 文件中的数据
+      $.getJSON(listPath, function(data) {
+        j++;
+        //存储数据的变量 
+        var li = "";
+        //清空内容 
+        $linkList.eq(j).empty();
+        //将获取到的 json 格式数据遍历到 div 中
+        $.each(data, function(infoIndex, info) {
+          var labelWarn = '';
+          var labelInfo = '';
+          if (info['warn']) { 
+            labelWarn = '<span class="label warn">' + info['warn'] + '</span>';
+          }
+          if (info['info']) { 
+            labelInfo = '<span class="label info">' + info['info'] + '</span>';
+          }
+          li += '<div class="link-list-container">';
+          li += '<img class="link-list-image" src="' + iconPath + info['logo'] + '">';
+          li += '<p>' + info['title'] + labelInfo + labelWarn + '</p>';
+          li += '<p>' + info['intro'] + '</p>';
+          li += '<a href="' + info['url'] + '" rel="noopener" target="_blank" data-pjax-state=""></a>';
+          li += '</div>';
+        })
+        //显示处理后的数据 
+        $linkList.eq(j).html(li);
+      })
+    }
+  }
+</script>
+
+
+
+<script data-pjax type="text/javascript">
+  //jquery selector
+  var $cultureList = $(".culture-list");
+  if ($cultureList.length != 0) {
+    var j = -1;
+    for	(var i = 0; i < $cultureList.length; i++) {
+      const listPath = $cultureList[i].getAttribute('json-src');
+      const coverPath = $cultureList[i].getAttribute('cover-src');
+      //使用 getJSON 读取 JSON 文件中的数据
+      $.getJSON(listPath, function(data) {
+        j++;
+        //存储数据的变量 
+        var li = "";
+        //清空内容 
+        $cultureList.eq(j).empty();
+        //将获取到的 json 格式数据遍历到 div 中
+        $.each(data, function(infoIndex, info) {
+          //影评书评链接
+          var title = info['title'];
+          if (info['pid']) {
+            title = '<a href="/post/'+ info['pid'] +'/" >' + info['title'] +'</a>';
+          }
+
+          //作者
+          if (info['author']) {
+            var author = '<span class="author">' + info['author'] +'</span>';
+          } else {
+            var author = '';
+          }
+
+          //简介
+          if (info['intro']) {
+            var intro = info['intro'];
+          } else {
+            var intro = '';
+          }
+          
+          //分数
+          if (info['score'] == null) {
+            var star = '';
+          } else {
+            //初始化
+            var colorStar = '';
+            var greyStar = '';
+            var int = info['score'] - info['score'] % 1; //整数部分
+            //是否有小数
+            var fract = 0; 
+            if (info['score'] % 1 != 0) {
+              fract = 1;
+            }
+            //整数星级
+            for	(var m = 0; m < int; m++) {
+              colorStar += '★';
+            }
+            //半星级
+            if (fract != 0) {
+              colorStar += '☆';
+            }
+            //用空缺星补齐五星
+            for	(var m = 0; m < (5 - fract - int); m++) {
+              greyStar += '☆';
+            }
+            if (info['score'] != 5) {
+              star = '<span class="star-score">'+ colorStar +'<span class="grey-star">'+ greyStar +'</span></span>';
+            } else {
+              star = '<span class="star-score">'+ colorStar +'</span>';
+            }
+          }
+
+          li += '<div class="media">';
+          li += '<div class="media-cover" style="background-image:url(' + coverPath + info['cover'] + ')"></div>';
+          li += '<div class="media-meta">';
+          li += '<div class="media-meta-item title">' + title + '</div>';
+          li += '<div class="media-meta-item">' + author + star +'</div>';
+          li += '<div class="media-meta-item intro">' + intro + '</div>';
+          li += '</div></div>';
+        })
+        
+        //显示处理后的数据 
+        $cultureList.eq(j).html(li);
+      })
+    }
+  }
+</script>
+
+
+
+
+<script src="/resources/minigrid.min.js"></script>
+<script data-pjax type="text/javascript">
+  var $album = $(".album")[0];
+  if($album) {
+    // 相册列表 JSON 数据
+    var imgDataPath = $album.getAttribute('json-src');
+    // 照片存储路径
+    var imgPath = $album.getAttribute('photo-src');
+    // 最多显示数量
+    var imgMaxNum = 50;
+    // 获取窗口大小以决定图片宽度
+    var windowWidth = window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
+    if (windowWidth < 768) {
+        var imageWidth = 145; // 移动端图片宽度
+    } else {
+        var imageWidth = 235;
+    }
+
+    // 腾讯云自定义样式 (数据万象外网流量需要付费)
+    //var imgStyle = '!' + imageWidth + 'x';
+    //var imgStyle = '!300x';
+
+    // 生成相册
+    var LinkDataPath = imgDataPath;
+    photo = {
+        page: 1,
+        offset: imgMaxNum,
+        init: function () {
+            var that = this;
+            $.getJSON(LinkDataPath, function (data) {
+                that.render(that.page, data);
+            });
+        },
+        render: function (page, data) {
+            var begin = (page - 1) * this.offset;
+            var end = page * this.offset;
+            if (begin >= data.length) return;
+            var imgNameWithPattern, imgName, imageSize, imageX, imageY, li = "";
+            for (var i = begin; i < end && i < data.length; i++) {
+                imgNameWithPattern = data[i].split(' ')[1];
+                imgName = imgNameWithPattern.split('.')[0]
+                imageSize = data[i].split(' ')[0];
+                imageX = imageSize.split('.')[0];
+                imageY = imageSize.split('.')[1];
+                li += '<div class="card" style="width:' + imageWidth + 'px" >'
+                li += '<div class="album-photo" style="height:'+ imageWidth * imageY / imageX + 'px">'
+                li += '<a class="fancybox fancybox.image" href="' + imgPath + imgNameWithPattern + '" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url" data-fancybox="group" rel="group" data-caption="' + imgName + '" title="' +  imgName + '">'
+                li += '<img data-src="' + imgPath + imgNameWithPattern + '" src="' + imgPath + imgNameWithPattern + '" alt="' +  imgName + '" data-loaded="true">'
+                li += '</a>'
+                li += '</div>'
+                li += '</div>'
+            }
+            $(".album").append(li);
+            this.minigrid();
+        },
+
+        minigrid: function() {
+          var grid = new Minigrid({
+              container: '.album',
+              item: '.card',
+              gutter: 12
+          });
+          grid.mount();
+          $(window).resize(function() {
+              grid.mount();
+          });
+        }
+    }
+    photo.init();
+  }
+</script>
+</body>
+</html>
