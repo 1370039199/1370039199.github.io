@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.1.2/css/all.min.css" integrity="sha256-xejo6yLi6vGtAjcMIsY8BHdKsLg7QynVlFMzdQgUuy8=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"hyh1370039199.gitee.io","root":"/","images":"/resources/img/","scheme":"Gemini","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/config.min.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"hyh1370039199.gitee.io","root":"/","images":"/resources/img/","scheme":"Gemini","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":{"gitalk":{"order":-2}}},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/config.min.js"></script>
 
     <meta name="description" content="人生如逆旅，我亦是行人">
 <meta property="og:type" content="website">
@@ -85,6 +85,7 @@
 
   <div class="site-nav-right">
     <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
     </div>
   </div>
 </div>
@@ -93,11 +94,37 @@
 
 <nav class="site-nav">
   <ul class="main-menu menu"><li class="menu-item menu-item-life"><a href="/life/" rel="section"><i class="fas fa-pizza-slice fa-fw"></i>生活</a></li><li class="menu-item menu-item-tech"><a href="/tech/" rel="section"><i class="fas fa-book fa-fw"></i>技术</a></li><li class="menu-item menu-item-reading"><a href="/reading/" rel="section"><i class="fas fa-book fa-fw"></i>阅读</a></li><li class="menu-item menu-item-album"><a href="/album/" rel="section"><i class="fas fa-camera-retro fa-fw"></i>光影</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fas fa-splotch fa-fw"></i>留言</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 </nav>
 
 
 
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
 
 </div>
         
@@ -224,6 +251,8 @@
 <script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/comments.min.js"></script><script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/utils.min.js"></script><script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/next-boot.min.js"></script><script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/pjax.min.js"></script>
 
   
+<script src="https://cdn.staticfile.org/hexo-generator-searchdb/1.4.0/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/third-party/search/local-search.min.js"></script>
 
 
 

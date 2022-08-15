@@ -563,6 +563,64 @@ void CC1101_SetDataRate(INT16U value)
       </tags>
   </entry>
   <entry>
+    <title>硬件设计学习笔记（记录平时学习到的知识点）</title>
+    <url>//post/6/</url>
+    <content><![CDATA[<h2 id="（记录平时学习到的知识点，一直更新-）">（记录平时学习到的知识点，一直更新~）</h2>
+<h3 id="系统框图">系统框图</h3>
+<p>系统框图是展示硬件设计思路的一张图，复杂的系统必须有系统框图。</p>
+<p>其包含以下几个方面：</p>
+<ol>
+<li>**整机接口：**接口名称、数量、接口信号</li>
+<li>**芯片方案：**CPU、各外设芯片。应绘制出各模块最小系统框图。</li>
+<li><strong>电源树</strong>：各级电源转换关系，电流流向及路径。</li>
+</ol>
+<h3 id="datasheet阅读">datasheet阅读</h3>
+<p>阅读数据手册更应该是搜索，是带着目的去读。<strong>需求—位置—提取目标内容</strong></p>
+<p>技巧：</p>
+<ol>
+<li>尽量知道datasheet的内容排布，大多数手册都是有目录的，可以从目录跳转，提高搜索效率。</li>
+<li>搜索，CTRL+F</li>
+<li>要注意一些note的标注，有可能有特殊的设计用法，要格外注意。</li>
+<li>选用最新的手册，避免漏掉一些勘误。</li>
+</ol>
+<h3 id="SOC最小系统">SOC最小系统</h3>
+<p>单片机最小系统是指单片机可以正常执行程序的最简工作环境。</p>
+<p><strong>最小系统的组成：</strong></p>
+<ul>
+<li>
+<p>电源：注意去耦电容的选择、电压供电范围、电流大小、时序</p>
+</li>
+<li>
+<p>复位：<img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208072219451.png" alt="image-20220807213434574" style="zoom:33%;" /></p>
+<p>在上电瞬间，电容充电，RESET会出现短暂的低电平，该低电平持续时间由电阻和电容共同决定，计算方式：$t = 1.1RC$</p>
+</li>
+<li>
+<p>时钟：$32.768KHz$，$32768 = 2^{15}$  芯片分频设置寄存器通常为2的次幂形式。</p>
+</li>
+<li>
+<p>调试接口</p>
+</li>
+<li>
+<p>启动</p>
+</li>
+</ul>
+<h3 id="逻辑电平">逻辑电平</h3>
+<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208072114711.png" alt=""></p>
+<h3 id="建立时间和保持时间">建立时间和保持时间</h3>
+<img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208072121091.png" alt="image-20220807212121640" style="zoom: 50%;" />
+<ul>
+<li>建立时间：在时钟沿到来之前，输入数据需要提前准备好的时间。</li>
+<li>保持时间：在时钟沿触发之后，输入数据需要保持不变的时间。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>硬件设计</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>硬件设计学习笔记 ----（元器件系列）</title>
     <url>//post/5/</url>
     <content><![CDATA[<h3 id="元器件选型通则">元器件选型通则</h3>
@@ -639,64 +697,6 @@ void CC1101_SetDataRate(INT16U value)
       </categories>
       <tags>
         <tag>读书笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>硬件设计学习笔记（记录平时学习到的知识点）</title>
-    <url>//post/6/</url>
-    <content><![CDATA[<h2 id="（记录平时学习到的知识点，一直更新-）">（记录平时学习到的知识点，一直更新~）</h2>
-<h3 id="系统框图">系统框图</h3>
-<p>系统框图是展示硬件设计思路的一张图，复杂的系统必须有系统框图。</p>
-<p>其包含以下几个方面：</p>
-<ol>
-<li>**整机接口：**接口名称、数量、接口信号</li>
-<li>**芯片方案：**CPU、各外设芯片。应绘制出各模块最小系统框图。</li>
-<li><strong>电源树</strong>：各级电源转换关系，电流流向及路径。</li>
-</ol>
-<h3 id="datasheet阅读">datasheet阅读</h3>
-<p>阅读数据手册更应该是搜索，是带着目的去读。<strong>需求—位置—提取目标内容</strong></p>
-<p>技巧：</p>
-<ol>
-<li>尽量知道datasheet的内容排布，大多数手册都是有目录的，可以从目录跳转，提高搜索效率。</li>
-<li>搜索，CTRL+F</li>
-<li>要注意一些note的标注，有可能有特殊的设计用法，要格外注意。</li>
-<li>选用最新的手册，避免漏掉一些勘误。</li>
-</ol>
-<h3 id="SOC最小系统">SOC最小系统</h3>
-<p>单片机最小系统是指单片机可以正常执行程序的最简工作环境。</p>
-<p><strong>最小系统的组成：</strong></p>
-<ul>
-<li>
-<p>电源：注意去耦电容的选择、电压供电范围、电流大小、时序</p>
-</li>
-<li>
-<p>复位：<img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208072219451.png" alt="image-20220807213434574" style="zoom:33%;" /></p>
-<p>在上电瞬间，电容充电，RESET会出现短暂的低电平，该低电平持续时间由电阻和电容共同决定，计算方式：$t = 1.1RC$</p>
-</li>
-<li>
-<p>时钟：$32.768KHz$，$32768 = 2^{15}$  芯片分频设置寄存器通常为2的次幂形式。</p>
-</li>
-<li>
-<p>调试接口</p>
-</li>
-<li>
-<p>启动</p>
-</li>
-</ul>
-<h3 id="逻辑电平">逻辑电平</h3>
-<p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208072114711.png" alt=""></p>
-<h3 id="建立时间和保持时间">建立时间和保持时间</h3>
-<img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208072121091.png" alt="image-20220807212121640" style="zoom: 50%;" />
-<ul>
-<li>建立时间：在时钟沿到来之前，输入数据需要提前准备好的时间。</li>
-<li>保持时间：在时钟沿触发之后，输入数据需要保持不变的时间。</li>
-</ul>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>硬件设计</tag>
       </tags>
   </entry>
   <entry>
