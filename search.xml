@@ -1,73 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>硬件设计学习笔记 ----（元器件系列）</title>
-    <url>//post/5/</url>
-    <content><![CDATA[<h3 id="元器件选型通则">元器件选型通则</h3>
-<p>选型原则：</p>
-<ul>
-<li>复用性：尽量复用以前验证过的项目物料，减少风险，同时不用管理额外零件，还可以处理库存。</li>
-<li>成熟性：要是被广泛使用验证过的成熟方案，且生命周期良好，无EOL(停产)。最好有丰富的参考设计资料。</li>
-<li>适配性：在设计中电气参数/环境参数满足设计需求，降额等，性能满足，空间无干涉。</li>
-<li>替代性：价格成本，交付周期，无EOL，合适的供应商。成本很重要，料也得能买到，买到还能用的久~</li>
-<li>归一性：在出货量大的产品中，尽量减少物料种类。</li>
-</ul>
-<h3 id="替代料评估">替代料评估</h3>
-<ol>
-<li>通过采购、元件工程师或是自己找到相关的替代厂商。</li>
-<li>了解此物料涉及到的参数</li>
-<li>此料导入系统后涉及到的验证范围（信号、功能？）</li>
-<li>时间精力上能否让原厂进行验证，给出报告，EE负责评审。</li>
-</ol>
-<h3 id="电阻">电阻</h3>
-<p><strong>基本原理及分类：</strong></p>
-<ol>
-<li>定义式：欧姆定律$R = U/I$。（$U$表示电压，$I$表示电流）。</li>
-<li>$R=ρL/S$（$ρ$表示电阻的电阻率，是由其本身性质决定，$L$代表电阻的长度，$S$表示电阻的横截面积）</li>
-<li>电阻串联：$R=R1+R2+R3+…+Rn$。($R1…Rn$表示$n$个电阻，电阻值是由其本身性质决定)。</li>
-<li>电阻并联：$1/R = 1/R1+1/R2+1/R3+…+1/Rn$。($R1…Rn$表示$n$个电阻，电阻值是由其本身性质决定)。</li>
-<li>与电功率相关公式：$R=U<sup>2/P$;$R=P/I</sup>2$。（$U$表示电压，$I$表示电流，$P$表示电功率）。</li>
-<li>与电能（电热）相关公式：$R=U<sup>2t/W$;$R=W/I</sup>2t$。（$U$表示电压，$I$表示电流，$t$表示时间，$W$表示电热）。</li>
-</ol>
-<p>特点：</p>
-<div align=center><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082145821.png" alt="image-20220808214523378" style="zoom: 50%;" /></div>
-<p><strong>参数</strong></p>
-<p>阻值：</p>
-<div align=center><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082137615.png" alt="image-20220808213717251" style="zoom: 50%;" /></div>
-<p>封装：</p>
-<p>inch notation : 0402 、0603、0805、0201</p>
-<p>功率：</p>
-<div align=center><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082139764.png" alt="image-20220808213918238" style="zoom:50%;" /></div>
-<div align=center><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082143472.png" alt="image-20220808214316135" style="zoom:33%;" /></div>
-<p>精度：</p>
-<div align=center><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082147011.png" alt="image-20220808214701147" style="zoom:50%;" /></div>
-<p>温漂：</p>
-<p>$1PPM/°C$是指电阻温度每变化一摄氏度，电阻阻值变化一百万之一。</p>
-<div align=center><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082158501.png" alt="image-20220808215841036" style="zoom:50%;" /></div>
-<p><strong>应用与选型</strong></p>
-<p>应用：分压、限流、上拉、下拉电阻、匹配电阻、0欧电阻</p>
-<p><strong>上拉（Pull Up）或下拉（Pull Down）电阻的作用：</strong></p>
-<p>将状态不确定的信号线通过一个电阻将其箝位至高电平（上拉）或低电平（下拉）</p>
-<p>高有效的使能控制信号（EN），希望电路系统在上电后应处于无效状态，则会使用下拉电阻。</p>
-<p>低有效的复位控制信号（RST），希望上电复位后处于无效状态，则应使用上拉电阻。</p>
-<p><strong>上下拉电阻之补充：开漏、开集、推挽</strong></p>
-<p><a href="https://www.zhihu.com/question/28512432/answer/41217074">如何正确的理解漏极开路输出跟推挽输出？ - 知乎 (zhihu.com)</a></p>
-<p><strong>0欧电阻</strong></p>
-<p>零欧姆电阻又称为跨接电阻器，是一种特殊用途的电阻（JUMPER）。零欧电阻并非真的阻值为0，<strong>特指阻值&lt;50mΩ的贴片电阻</strong>，其在电路中的作用等同于阻值小于50mΩ的一截导线，代替跨接线英文全称为THICK FILM CHIP JUMPER RESISTOR.</p>
-<p>0欧电阻作用：跳线 （COLAY用法）、预留，视回板后测试情况调整、增加测试点、PCB的跨接、不同GND的区分</p>
-<h3 id="电容">电容</h3>
-<h3 id="电感">电感</h3>
-<h3 id="MOS管">MOS管</h3>
-<h3 id="二极管">二极管</h3>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>硬件设计</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CC1101研发笔记</title>
     <url>//post/1/</url>
     <content><![CDATA[<h3 id="一、研发流程及注意事项">一、研发流程及注意事项</h3>
@@ -613,6 +546,102 @@ void CC1101_SetDataRate(INT16U value)
       </tags>
   </entry>
   <entry>
+    <title>To do List</title>
+    <url>//post/7/</url>
+    <content><![CDATA[<h3 id="To-Do-List（8-15-8-21）">To Do List（8.15~8.21）</h3>
+<ul>
+<li>完善相册功能。</li>
+<li>添加本地搜索功能。</li>
+<li>添加Artalk评论系统。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>TODO</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>硬件设计学习笔记 ----（元器件系列）</title>
+    <url>//post/5/</url>
+    <content><![CDATA[<h3 id="元器件选型通则">元器件选型通则</h3>
+<p>选型原则：</p>
+<ul>
+<li>复用性：尽量复用以前验证过的项目物料，减少风险，同时不用管理额外零件，还可以处理库存。</li>
+<li>成熟性：要是被广泛使用验证过的成熟方案，且生命周期良好，无EOL(停产)。最好有丰富的参考设计资料。</li>
+<li>适配性：在设计中电气参数/环境参数满足设计需求，降额等，性能满足，空间无干涉。</li>
+<li>替代性：价格成本，交付周期，无EOL，合适的供应商。成本很重要，料也得能买到，买到还能用的久~</li>
+<li>归一性：在出货量大的产品中，尽量减少物料种类。</li>
+</ul>
+<h3 id="替代料评估">替代料评估</h3>
+<ol>
+<li>通过采购、元件工程师或是自己找到相关的替代厂商。</li>
+<li>了解此物料涉及到的参数</li>
+<li>此料导入系统后涉及到的验证范围（信号、功能？）</li>
+<li>时间精力上能否让原厂进行验证，给出报告，EE负责评审。</li>
+</ol>
+<h3 id="电阻">电阻</h3>
+<p><strong>基本原理及分类：</strong></p>
+<ol>
+<li>定义式：欧姆定律$R = U/I$。（$U$表示电压，$I$表示电流）。</li>
+<li>$R=ρL/S$（$ρ$表示电阻的电阻率，是由其本身性质决定，$L$代表电阻的长度，$S$表示电阻的横截面积）</li>
+<li>电阻串联：$R=R1+R2+R3+…+Rn$。($R1…Rn$表示$n$个电阻，电阻值是由其本身性质决定)。</li>
+<li>电阻并联：$1/R = 1/R1+1/R2+1/R3+…+1/Rn$。($R1…Rn$表示$n$个电阻，电阻值是由其本身性质决定)。</li>
+<li>与电功率相关公式：$R=U<sup>2/P$;$R=P/I</sup>2$。（$U$表示电压，$I$表示电流，$P$表示电功率）。</li>
+<li>与电能（电热）相关公式：$R=U<sup>2t/W$;$R=W/I</sup>2t$。（$U$表示电压，$I$表示电流，$t$表示时间，$W$表示电热）。</li>
+</ol>
+<p>特点：</p>
+<div align=center><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082145821.png" alt="image-20220808214523378" style="zoom: 50%;" /></div>
+<p><strong>参数</strong></p>
+<p>阻值：</p>
+<div align=center><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082137615.png" alt="image-20220808213717251" style="zoom: 50%;" /></div>
+<p>封装：</p>
+<p>inch notation : 0402 、0603、0805、0201</p>
+<p>功率：</p>
+<div align=center><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082139764.png" alt="image-20220808213918238" style="zoom:50%;" /></div>
+<div align=center><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082143472.png" alt="image-20220808214316135" style="zoom:33%;" /></div>
+<p>精度：</p>
+<div align=center><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082147011.png" alt="image-20220808214701147" style="zoom:50%;" /></div>
+<p>温漂：</p>
+<p>$1PPM/°C$是指电阻温度每变化一摄氏度，电阻阻值变化一百万之一。</p>
+<div align=center><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208082158501.png" alt="image-20220808215841036" style="zoom:50%;" /></div>
+<p><strong>应用与选型</strong></p>
+<p>应用：分压、限流、上拉、下拉电阻、匹配电阻、0欧电阻</p>
+<p><strong>上拉（Pull Up）或下拉（Pull Down）电阻的作用：</strong></p>
+<p>将状态不确定的信号线通过一个电阻将其箝位至高电平（上拉）或低电平（下拉）</p>
+<p>高有效的使能控制信号（EN），希望电路系统在上电后应处于无效状态，则会使用下拉电阻。</p>
+<p>低有效的复位控制信号（RST），希望上电复位后处于无效状态，则应使用上拉电阻。</p>
+<p><strong>上下拉电阻之补充：开漏、开集、推挽</strong></p>
+<p><a href="https://www.zhihu.com/question/28512432/answer/41217074">如何正确的理解漏极开路输出跟推挽输出？ - 知乎 (zhihu.com)</a></p>
+<p><strong>0欧电阻</strong></p>
+<p>零欧姆电阻又称为跨接电阻器，是一种特殊用途的电阻（JUMPER）。零欧电阻并非真的阻值为0，<strong>特指阻值&lt;50mΩ的贴片电阻</strong>，其在电路中的作用等同于阻值小于50mΩ的一截导线，代替跨接线英文全称为THICK FILM CHIP JUMPER RESISTOR.</p>
+<p>0欧电阻作用：跳线 （COLAY用法）、预留，视回板后测试情况调整、增加测试点、PCB的跨接、不同GND的区分</p>
+<h3 id="电容">电容</h3>
+<h3 id="电感">电感</h3>
+<h3 id="MOS管">MOS管</h3>
+<h3 id="二极管">二极管</h3>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>硬件设计</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>xxxx的读书笔记</title>
+    <url>//post/8/</url>
+    <content><![CDATA[<h3 id="测试">测试</h3>
+]]></content>
+      <categories>
+        <category>阅读</category>
+      </categories>
+      <tags>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>硬件设计学习笔记（记录平时学习到的知识点）</title>
     <url>//post/6/</url>
     <content><![CDATA[<h2 id="（记录平时学习到的知识点，一直更新-）">（记录平时学习到的知识点，一直更新~）</h2>
@@ -668,42 +697,6 @@ void CC1101_SetDataRate(INT16U value)
       </categories>
       <tags>
         <tag>硬件设计</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>xxxx的读书笔记</title>
-    <url>//post/8/</url>
-    <content><![CDATA[<h3 id="测试">测试</h3>
-]]></content>
-      <categories>
-        <category>阅读</category>
-      </categories>
-      <tags>
-        <tag>读书笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>链表学习笔记----双指针技巧</title>
-    <url>//post/4/</url>
-    <content><![CDATA[<h3 id="双指针技巧">双指针技巧</h3>
-<h4 id="一个经典问题">一个经典问题</h4>
-<blockquote>
-<p>给定一个链表，判断链表中是否有环</p>
-</blockquote>
-<p>我们在链表中使用两个速度不同的指针时会遇到的情况：</p>
-<ol>
-<li>如果没有环，快指针将停在链表末尾。</li>
-<li>如果有环，快指针最终将与慢指针相遇。</li>
-</ol>
-<p>一个安全的选择是每次移动慢指针一步，而移动快指针两步，每一次迭代，快指针将额外移动一步，如果环的长度为M，经过M次迭代后，快指针会多绕环一周，并赶上慢指针。</p>
-<h4 id="环形链表">环形链表</h4>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-        <tag>链表</tag>
       </tags>
   </entry>
   <entry>
@@ -914,20 +907,27 @@ MyLinkedList<span class="token operator">*</span> <span class="token function">m
       </tags>
   </entry>
   <entry>
-    <title>To do List</title>
-    <url>//post/7/</url>
-    <content><![CDATA[<h3 id="To-Do-List（8-15-8-21）">To Do List（8.15~8.21）</h3>
-<ul>
-<li>完善相册功能。</li>
-<li>添加本地搜索功能。</li>
-<li>添加Artalk评论系统。</li>
-</ul>
+    <title>链表学习笔记----双指针技巧</title>
+    <url>//post/4/</url>
+    <content><![CDATA[<h3 id="双指针技巧">双指针技巧</h3>
+<h4 id="一个经典问题">一个经典问题</h4>
+<blockquote>
+<p>给定一个链表，判断链表中是否有环</p>
+</blockquote>
+<p>我们在链表中使用两个速度不同的指针时会遇到的情况：</p>
+<ol>
+<li>如果没有环，快指针将停在链表末尾。</li>
+<li>如果有环，快指针最终将与慢指针相遇。</li>
+</ol>
+<p>一个安全的选择是每次移动慢指针一步，而移动快指针两步，每一次迭代，快指针将额外移动一步，如果环的长度为M，经过M次迭代后，快指针会多绕环一周，并赶上慢指针。</p>
+<h4 id="环形链表">环形链表</h4>
 ]]></content>
       <categories>
-        <category>生活</category>
+        <category>技术</category>
       </categories>
       <tags>
-        <tag>TODO</tag>
+        <tag>LeetCode</tag>
+        <tag>链表</tag>
       </tags>
   </entry>
 </search>
