@@ -30,7 +30,7 @@
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="本页面所列之内容为“归零”网站（以下简称“本站”）所采用之著作权规范、评论规则、免责声明、隐私政策。 一、著作权规范 第1条 （著作权法律适用）本站所发布内容（包括但不限于文字、图表、照片、音视频、数据、代码等）之著作权，均受包括但不限于以下中华人民共和国法律法规的保护：  《中华人民共和国著作权法》 《信息网络传播权保护条例》 《浙江省著作权管理办法》  第2条 （著作权许可协议）本站作品采用了">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-08-15T10:33:09.813Z">
+<meta property="article:published_time" content="2022-08-16T11:34:58.587Z">
 <meta property="article:modified_time" content="2022-08-14T12:30:13.646Z">
 <meta property="article:author" content="hyh">
 <meta name="twitter:card" content="summary">
@@ -379,6 +379,8 @@
   <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"xireCeJtnAsdSwG2TIsirxon-MdYXbMMI","app_key":"3NPe30DldW7AfuxsvvdzPo7E","server_url":"https://hyh1370039199.gitee.io/","security":false}</script>
+  <script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/third-party/statistics/lean-analytics.min.js"></script>
 
 
   
@@ -387,6 +389,21 @@
 <script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/third-party/math/mathjax.min.js"></script>
 
 
+
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"xireCeJtnAsdSwG2TIsirxon-MdYXbMMI","appKey":"3NPe30DldW7AfuxsvvdzPo7E","serverURLs":"https://xirecejt.api.lncldglobal.com","placeholder":"输入评论内容","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":true,"enableQQ":true,"requiredFields":[],"el":"#valine-comments","path":"/policy/"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://fastly.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
 
 
 

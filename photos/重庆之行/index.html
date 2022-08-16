@@ -327,6 +327,8 @@
   <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"xireCeJtnAsdSwG2TIsirxon-MdYXbMMI","app_key":"3NPe30DldW7AfuxsvvdzPo7E","server_url":"https://hyh1370039199.gitee.io/","security":false}</script>
+  <script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/third-party/statistics/lean-analytics.min.js"></script>
 
 
   
@@ -335,6 +337,21 @@
 <script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/third-party/math/mathjax.min.js"></script>
 
 
+
+
+<script class="next-config" data-name="valine" type="application/json">{"enable":true,"appId":"xireCeJtnAsdSwG2TIsirxon-MdYXbMMI","appKey":"3NPe30DldW7AfuxsvvdzPo7E","serverURLs":"https://xirecejt.api.lncldglobal.com","placeholder":"输入评论内容","avatar":"mm","meta":["nick","mail","link"],"pageSize":10,"lang":"zh-cn","visitor":false,"comment_count":true,"recordIP":true,"enableQQ":true,"requiredFields":[],"el":"#valine-comments","path":"/photos/%E9%87%8D%E5%BA%86%E4%B9%8B%E8%A1%8C/"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.valine.el)
+    .then(() => NexT.utils.getScript(
+      'https://fastly.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js',
+      { condition: window.Valine }
+    ))
+    .then(() => {
+      new Valine(CONFIG.valine);
+    });
+});
+</script>
 
 
 
