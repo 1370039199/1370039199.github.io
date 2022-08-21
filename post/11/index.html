@@ -23,25 +23,30 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"hyh1370039199.gitee.io","root":"/","images":"/resources/img/","scheme":"Gemini","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/config.min.js"></script>
 
-    <meta name="description" content="人生如逆旅，我亦是行人">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Blog">
-<meta property="og:url" content="https://hyh1370039199.gitee.io/timeline/2022/06/index.html">
+    <meta name="description" content="迈向全栈的第一步~🐲，也是为了以后与硬件工程师沟通，能理解硬件工程师说的是什么意思🤔">
+<meta property="og:type" content="article">
+<meta property="og:title" content="硬件设计学习笔记 - MOS管">
+<meta property="og:url" content="https://hyh1370039199.gitee.io/post/11/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="人生如逆旅，我亦是行人">
+<meta property="og:description" content="迈向全栈的第一步~🐲，也是为了以后与硬件工程师沟通，能理解硬件工程师说的是什么意思🤔">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208201305529.jpeg">
+<meta property="article:published_time" content="2022-08-20T10:00:00.000Z">
+<meta property="article:modified_time" content="2022-08-20T05:07:27.335Z">
 <meta property="article:author" content="hyh">
+<meta property="article:tag" content="硬件设计">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208201305529.jpeg">
 
 
-<link rel="canonical" href="https://hyh1370039199.gitee.io/timeline/2022/06/">
+<link rel="canonical" href="https://hyh1370039199.gitee.io/post/11/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"timeline/2022/06/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hyh1370039199.gitee.io/post/11/","path":"/post/11/","title":"硬件设计学习笔记 - MOS管"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | Blog</title>
+<title>硬件设计学习笔记 - MOS管 | Blog</title>
   
 
 
@@ -75,7 +80,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Blog</h1>
+      <p class="site-title">Blog</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -134,7 +139,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           目 录
@@ -147,6 +152,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E6%9E%81%E7%AE%A1%E5%92%8CMOS%E7%AE%A1"><span class="nav-text">三极管和MOS管</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -185,50 +191,156 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 11 篇日志。 继续努力。</span>
-      </div>
 
-      
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hyh1370039199.gitee.io/post/11/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/resources/img/avatar.jpg">
+      <meta itemprop="name" content="hyh">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blog">
+      <meta itemprop="description" content="人生如逆旅，我亦是行人">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="硬件设计学习笔记 - MOS管 | Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          硬件设计学习笔记 - MOS管
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-08-20 18:00:00" itemprop="dateCreated datePublished" datetime="2022-08-20T18:00:00+08:00">2022-08-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/tech/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/post/11/" class="post-meta-item leancloud_visitors" data-flag-title="硬件设计学习笔记 - MOS管" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h3 id="三极管和MOS管">三极管和MOS管</h3>
+<img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208201305529.jpeg"  style="zoom:67%;" />
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2022-06-01T18:00:00+08:00"
-              content="2022-06-01">
-          06-01
-        </time>
+    
+    
+    
+
+    <footer class="post-footer">
+
+
+
+
+
+
+
+
+<div class="license">
+  <div class="license-title">硬件设计学习笔记 - MOS管</div>
+  <div class="license-link">
+    <a href="https://hyh1370039199.gitee.io/post/11/">https://hyh1370039199.gitee.io/post/11/</a>
+  </div>
+  <div class="license-meta">
+    <div class="license-meta-item">
+      <div class="license-meta-title">本文作者</div>
+      <div class="license-meta-text">
+          hyh
       </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/post/1/" itemprop="url">
-            <span itemprop="name">CC1101研发笔记</span>
-          </a>
+    </div>
+      <div class="license-meta-item">
+        <div class="license-meta-title">发布于</div>
+        <div class="license-meta-text">
+          2022-08-20
+        </div>
       </div>
-
-      
-    </header>
-  </article>
-
-
+      <div class="license-meta-item">
+        <div class="license-meta-title">更新于</div>
+        <div class="license-meta-text">
+          2022-08-20
+        </div>
+      </div>
+    <div class="license-meta-item">
+      <div class="license-meta-title">许可协议</div>
+      <div class="license-meta-text">
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank">CC BY-NC-SA 4.0</a>
+        
+      </div>
     </div>
   </div>
-  
-  
-  
+  <div class="license-statement">
+      转载或引用本文时，请遵守上述许可协议，注明出处、不得用于商业用途！
+    
+  </div>
+</div>
 
+          <div class="post-tags">
+              <a href="/tags/%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1/" rel="tag"><i class="fa fa-tag"></i> 硬件设计</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/9/" rel="next" title="Hexo-Next主题-搭建二级分类相册">
+                  Hexo-Next主题-搭建二级分类相册 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments utterances-container"></div>
 </div>
   </main>
 
@@ -338,7 +450,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdn.staticfile.org/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"ams","js":{"url":"https://cdn.staticfile.org/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
 <script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/third-party/math/mathjax.min.js"></script>
 
 
