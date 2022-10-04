@@ -23,34 +23,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"hyh.cool","root":"/","images":"/resources/img/","scheme":"Gemini","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/config.min.js"></script>
 
-    <meta name="description" content="学习实时操作系统，记录移植过程🐵">
+    <meta name="description" content="一个不错的idea，希望可以实现。👀">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于Keil MDK移植 RT-Thread Nano（二）">
+<meta property="og:title" content="LoRa OTA 升级固件">
 <meta property="og:url" content="https://hyh.cool/post/15/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="学习实时操作系统，记录移植过程🐵">
+<meta property="og:description" content="一个不错的idea，希望可以实现。👀">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202208311017717.png">
-<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202208311017457.png">
-<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202208311017470.png">
-<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202208311017502.png">
-<meta property="article:published_time" content="2022-08-31T10:00:00.000Z">
-<meta property="article:modified_time" content="2022-08-31T08:07:46.365Z">
+<meta property="article:published_time" content="2022-10-03T10:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-04T01:05:17.743Z">
 <meta property="article:author" content="hyh">
-<meta property="article:tag" content="操作系统">
-<meta property="article:tag" content="RT-Thread">
+<meta property="article:tag" content="射频开发">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202208311017717.png">
 
 
 <link rel="canonical" href="https://hyh.cool/post/15/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hyh.cool/post/15/","path":"/post/15/","title":"基于Keil MDK移植 RT-Thread Nano（二）"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hyh.cool/post/15/","path":"/post/15/","title":"LoRa OTA 升级固件"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>基于Keil MDK移植 RT-Thread Nano（二） | Blog</title>
+<title>LoRa OTA 升级固件 | Blog</title>
   
 
 
@@ -99,7 +93,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-life"><a href="/life/" rel="section"><i class="fas fa-pizza-slice fa-fw"></i>生活</a></li><li class="menu-item menu-item-tech"><a href="/tech/" rel="section"><i class="fas fa-book fa-fw"></i>技术</a></li><li class="menu-item menu-item-reading"><a href="/reading/" rel="section"><i class="fas fa-book fa-fw"></i>阅读</a></li><li class="menu-item menu-item-photos"><a href="/photos/" rel="section"><i class="fas fa-camera-retro fa-fw"></i>相册</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fas fa-splotch fa-fw"></i>留言</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-tech"><a href="/tech/" rel="section"><i class="fas fa-wrench fa-fw"></i>技术</a></li><li class="menu-item menu-item-microchip"><a href="/microchip/" rel="section"><i class="fas fa-microchip fa-fw"></i>芯片</a></li><li class="menu-item menu-item-project"><a href="/project/" rel="section"><i class="fas fa-rocket fa-fw"></i>项目</a></li><li class="menu-item menu-item-reading"><a href="/reading/" rel="section"><i class="fas fa-book fa-fw"></i>阅读</a></li><li class="menu-item menu-item-photos"><a href="/photos/" rel="section"><i class="fas fa-camera-retro fa-fw"></i>相册</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fas fa-splotch fa-fw"></i>留言</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -143,7 +137,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           目 录
@@ -156,7 +150,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%A8RT-Thread-Nano%E4%B8%8A%E6%B7%BB%E5%8A%A0%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%B8%8EFinSH"><span class="nav-text">在RT-Thread Nano上添加控制台与FinSH</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E6%B7%BB%E5%8A%A0UART%E6%8E%A7%E5%88%B6%E5%8F%B0"><span class="nav-text">第一部分：添加UART控制台</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A%E7%A7%BB%E6%A4%8DFinSH%E7%BB%84%E4%BB%B6"><span class="nav-text">第二部分：移植FinSH组件</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -219,12 +212,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="基于Keil MDK移植 RT-Thread Nano（二） | Blog">
+      <meta itemprop="name" content="LoRa OTA 升级固件 | Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          基于Keil MDK移植 RT-Thread Nano（二）
+          LoRa OTA 升级固件
         </h1>
 
         <div class="post-meta-container">
@@ -235,7 +228,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-08-31 18:00:00" itemprop="dateCreated datePublished" datetime="2022-08-31T18:00:00+08:00">2022-08-31</time>
+      <time title="创建时间：2022-10-03 18:00:00" itemprop="dateCreated datePublished" datetime="2022-10-03T18:00:00+08:00">2022-10-03</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -243,7 +236,7 @@
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/tech/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+          <a href="/project/" itemprop="url" rel="index"><span itemprop="name">项目</span></a>
         </span>
     </span>
 
@@ -257,92 +250,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="在RT-Thread-Nano上添加控制台与FinSH">在RT-Thread Nano上添加控制台与FinSH</h3>
-<h4 id="第一部分：添加UART控制台">第一部分：添加UART控制台</h4>
-<p>用来向控制台对接的终端输出打印信息；该部分需要实现两个函数:串口初始化、系统输出，即可实现UART控制台打印功能。</p>
-<p>添加UART控制台打印功能后，可以使用RT-Thread提供的打印函数<code>rt_kprintf()</code>进行信息打印。从而获取自定义的打印信息，方便定位代码bug或者获取系统当前运行状态等。<strong>需要确认rtconfig.h中已使能RT_USING_CONSOLE宏定义</strong>。</p>
-<p><strong>向board.c添加串口初始化：</strong></p>
-<p>初始化的串口函数<code>uart_init()</code>有以下两种调用方式:</p>
-<ul>
-<li>
-<p>默认使用宏<code>INIT_BOARD_EXPORT()</code>进行自动初始化，不需要显式调用。</p>
-<pre class="language-c" data-language="c"><code class="language-c"><span class="token comment">/* board.c*/</span>
-<span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">uart_init</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    UART_HandleStruct<span class="token punctuation">.</span>Instance <span class="token operator">=</span> USART1<span class="token punctuation">;</span>
-    UART_HandleStruct<span class="token punctuation">.</span>Init<span class="token punctuation">.</span>BaudRate <span class="token operator">=</span> <span class="token number">115200</span><span class="token punctuation">;</span>
-    UART_HandleStruct<span class="token punctuation">.</span>Init<span class="token punctuation">.</span>WordLength <span class="token operator">=</span> UART_WORDLENGTH_8B<span class="token punctuation">;</span>
-    UART_HandleStruct<span class="token punctuation">.</span>Init<span class="token punctuation">.</span>StopBits <span class="token operator">=</span> UART_PARITY_NONE<span class="token punctuation">;</span>
-    UART_HandleStruct<span class="token punctuation">.</span>Init<span class="token punctuation">.</span>Parity <span class="token operator">=</span> UART_PARITY_NONE<span class="token punctuation">;</span>
-    UART_HandleStruct<span class="token punctuation">.</span>Init<span class="token punctuation">.</span>HwFlowCtl <span class="token operator">=</span> UART_HWCONTROL_NONE<span class="token punctuation">;</span>
-    UART_HandleStruct<span class="token punctuation">.</span>Init<span class="token punctuation">.</span>Mode <span class="token operator">=</span> UART_MODE_TX_RX<span class="token punctuation">;</span>
-    <span class="token function">HAL_UART_Init</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>UART_HandleStruct<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token function">INIT_BOARD_EXPORT</span><span class="token punctuation">(</span>uart_init<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-</li>
-<li>
-<p>可以使用显式调用：<code>uart_init()</code>需要在board.c中的<code>rt_hw_board_init()</code>函数中调用。</p>
-<pre class="language-c" data-language="c"><code class="language-c"><span class="token comment">/* board.c */</span>
-<span class="token keyword">void</span> <span class="token function">rt_hw_board_init</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-    <span class="token function">uart_init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">/* 可以选择在 rt_hw_board_init 函数中直接调用串口初始化函数 */</span>
-    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
-<span class="token punctuation">&#125;</span></code></pre>
-</li>
-</ul>
-<p><strong>实现<code>rt_hw_console_output()</code>:</strong></p>
-<p>实现Finsh组件输出一个字符，即在该函数中实现uart输出字符：</p>
-<pre class="language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">rt_hw_console_output</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>str<span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token class-name">rt_size_t</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span>size <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-    <span class="token keyword">char</span> a <span class="token operator">=</span> <span class="token char">'\r'</span><span class="token punctuation">;</span>
-    <span class="token function">__HAL_UNLOCK</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>UART_HandleStruct<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    size <span class="token operator">=</span> <span class="token function">rt_strlen</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>size<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">(</span>str <span class="token operator">+</span> i<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token char">'\n'</span><span class="token punctuation">)</span>
-        <span class="token punctuation">&#123;</span>
-            <span class="token function">HAL_UART_Transmit</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>UART_HandleStruct<span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>a<span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token function">HAL_UART_Transmit</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>UART_HandleStruct<span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token class-name">uint8_t</span> <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span>str <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span></code></pre>
-<blockquote>
-<p>注意：RT_Thread系统中已有的打印均以\n结尾，而不是\r\n,所以在字符输出时，需要在输出\n之前输出\r，完成回车与换行，否则系统打印出来的信息将只有换行。</p>
-</blockquote>
-<p>将main函数中的实现LED点亮、熄灭的函数随后添加<code>rt_kprintf()</code>函数，表示当前LED的状态，利用串口调试助手，观察现象如图所示。</p>
-<p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202208311017717.png" alt=""></p>
-<h4 id="第二部分：移植FinSH组件">第二部分：移植FinSH组件</h4>
-<p>用以在控制台输入命令调试系统；该部分实现基于第一部分，需要添加FinSH组件源码并对接一个系统输入函数即可实现。</p>
-<p><a target="_blank" rel="noopener" href="https://www.rt-thread.org/document/site/#/rt-thread-version/rt-thread-standard/programming-manual/finsh/finsh.md">RT-THread FinsH</a>是RT-Thread的命令行组件(shell),提供一套用户在命令行调用的操作接口，主要用于调试或查看系统信息。它可以使用串口、以太网、USB等与PC机进行通信。</p>
-<p><strong>添加FinSH源码到工程:</strong></p>
-<p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202208311017457.png" alt=""></p>
-<p>勾选shell选项，然后在<code>rtconfig.h</code>中打开finish相关选项</p>
-<p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202208311017470.png" alt=""></p>
-<p><strong>实现<code>rt_hw_console_getchar()</code>:</strong></p>
-<p>在<code>finsh_port.c</code>的<code>rt_hw_console_getchar()</code>函数实现控制台命令输入功能：控制台获取一个字符，即在该函数内实现串口获取字符，<strong>可以使用查询方式获取(注意不要死等，在未获取到字符时，需要让出CPU)，推荐使用中断方式获取。</strong></p>
-<pre class="language-c" data-language="c"><code class="language-c">RT_WEAK <span class="token keyword">char</span> <span class="token function">rt_hw_console_getchar</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token comment">/* Note: the initial value of ch must &lt; 0 */</span>
-    <span class="token keyword">int</span> ch <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">__HAL_UART_GET_FLAG</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>UART_HandleStruct<span class="token punctuation">,</span>UART_FLAG_RXNE<span class="token punctuation">)</span> <span class="token operator">!=</span> RESET<span class="token punctuation">)</span>
-    <span class="token punctuation">&#123;</span>
-        ch <span class="token operator">=</span> UART_HandleStruct<span class="token punctuation">.</span>Instance<span class="token operator">-></span>RDR <span class="token operator">&amp;</span> <span class="token number">0xFF</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token keyword">else</span>
-    <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">__HAL_UART_GET_FLAG</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>UART_HandleStruct<span class="token punctuation">,</span>UART_FLAG_ORE<span class="token punctuation">)</span> <span class="token operator">!=</span> RESET<span class="token punctuation">)</span>
-        <span class="token punctuation">&#123;</span>
-            <span class="token function">__HAL_UART_CLEAR_OREFLAG</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>UART_HandleStruct<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token function">rt_thread_mdelay</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token keyword">return</span> ch<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span></code></pre>
-<p>打开Xshell软件，输入 help 命令，回车查看系统支持的命令：</p>
-<p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202208311017502.png" alt=""></p>
+        <p>该项目正在紧急筹备中，敬请期待…</p>
 
     </div>
 
@@ -360,7 +268,7 @@
 
 
 <div class="license">
-  <div class="license-title">基于Keil MDK移植 RT-Thread Nano（二）</div>
+  <div class="license-title">LoRa OTA 升级固件</div>
   <div class="license-link">
     <a href="https://hyh.cool/post/15/">https://hyh.cool/post/15/</a>
   </div>
@@ -374,13 +282,13 @@
       <div class="license-meta-item">
         <div class="license-meta-title">发布于</div>
         <div class="license-meta-text">
-          2022-08-31
+          2022-10-03
         </div>
       </div>
       <div class="license-meta-item">
         <div class="license-meta-title">更新于</div>
         <div class="license-meta-text">
-          2022-08-31
+          2022-10-04
         </div>
       </div>
     <div class="license-meta-item">
@@ -398,21 +306,17 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag"><i class="fa fa-tag"></i> 操作系统</a>
-              <a href="/tags/RT-Thread/" rel="tag"><i class="fa fa-tag"></i> RT-Thread</a>
+              <a href="/tags/%E5%B0%84%E9%A2%91%E5%BC%80%E5%8F%91/" rel="tag"><i class="fa fa-tag"></i> 射频开发</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/post/16/" rel="prev" title="C语言中的位域、字节序、比特序、大小端">
-                  <i class="fa fa-chevron-left"></i> C语言中的位域、字节序、比特序、大小端
-                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/post/14/" rel="next" title="基于Keil MDK移植 RT-Thread Nano（一）">
-                  基于Keil MDK移植 RT-Thread Nano（一） <i class="fa fa-chevron-right"></i>
+                <a href="/post/14/" rel="next" title="C语言中的位域、字节序、比特序、大小端">
+                  C语言中的位域、字节序、比特序、大小端 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
