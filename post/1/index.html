@@ -62,7 +62,7 @@
 <meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/20220221141806.png">
 <meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/20220221143645.png">
 <meta property="article:published_time" content="2022-06-01T10:00:00.000Z">
-<meta property="article:modified_time" content="2022-10-09T03:26:40.488Z">
+<meta property="article:modified_time" content="2022-10-09T05:39:55.516Z">
 <meta property="article:author" content="hyh">
 <meta property="article:tag" content="射频开发">
 <meta name="twitter:card" content="summary">
@@ -408,9 +408,9 @@ $$<br>
 <p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602162005996.png" alt=""></p>
 <p>Data ：发送端的原始数据      Whitening Key：白化序列    Whiten Data：Whitening Key与Data 做XOR运算 异或：值相同输出为0，值不同输出为1.下图是数据白化和反白化的例子：</p>
 <p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602162715892.png" alt=""></p>
-<p>**Whitening的更新：**9位白化序列，最高位MSB不参与XOR运算。如上图生成多项式为：<br>
+<p><strong>Whitening的更新：</strong> 9位白化序列，最高位MSB不参与XOR运算。如上图生成多项式为：<br>
 $$<br>
-g(x) = x<sup>9+x</sup>5+1<br>
+g(x) = x^9 + x^5 + 1<br>
 $$<br>
 更新算法如下：</p>
 <p>1.新的第9位由第0位和第五位XOR产生</p>
@@ -821,8 +821,8 @@ void CC1101_SetDataRate(INT16U value)
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/post/3/" rel="prev" title="链表学习笔记----单链表">
-                  <i class="fa fa-chevron-left"></i> 链表学习笔记----单链表
+                <a href="/post/2/" rel="prev" title="Hexo-Fluid主题美化-添加网站运行时长">
+                  <i class="fa fa-chevron-left"></i> Hexo-Fluid主题美化-添加网站运行时长
                 </a>
             </div>
             <div class="post-nav-item">
