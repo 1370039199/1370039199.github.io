@@ -62,7 +62,7 @@
 <meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/20220221141806.png">
 <meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/20220221143645.png">
 <meta property="article:published_time" content="2022-06-01T10:00:00.000Z">
-<meta property="article:modified_time" content="2022-10-09T05:39:55.516Z">
+<meta property="article:modified_time" content="2022-10-09T05:51:04.824Z">
 <meta property="article:author" content="hyh">
 <meta property="article:tag" content="射频开发">
 <meta name="twitter:card" content="summary">
@@ -399,7 +399,7 @@ $$<br>
 <p>00代表固定包长模式，数据包长度由PKTLEN寄存器来配置。（支持数据包长度到255字节）</p>
 <p>01代表可变包长模式，数据包长度配置在数据包中同步字之后的第一个字节。（支持数据包长度到255字节）。</p>
 <p>10代表无限包长模式，更长的数据包必须采用该模式。</p>
-<p>**对于大于255个字节数的数据发送：**因为在发送和接收时，PKTCTRL寄存器都是可编程的。所以允许芯片接收大于255个字节的数据。实现方式为，先将数据包发送接收模式设置为无限数据包格式，当剩余数据包个数小于256个字节时，将数据包格式切换为固定数据包长度格式.把剩余的字节数写入PKTLEN寄存器。</p>
+<p><strong>对于大于255个字节数的数据发送：</strong> 因为在发送和接收时，PKTCTRL寄存器都是可编程的。所以允许芯片接收大于255个字节的数据。实现方式为，先将数据包发送接收模式设置为无限数据包格式，当剩余数据包个数小于256个字节时，将数据包格式切换为固定数据包长度格式.把剩余的字节数写入PKTLEN寄存器。</p>
 <p><img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/img/image-20210602155207963.png" alt=""></p>
 <h5 id="⑥白化">⑥白化</h5>
 <p>通过加白噪声来提高数据的抗干扰能力。通过<strong>PKTCTRL0寄存器的WHITE_DATA[6] 设置为1</strong>来使能<strong>数据白化</strong>功能，将数据包中从数据包长度部分到CRC校验部分的所有数据通过和一个9位的虚拟随机数相异或。在接收方通过相同的序列将数据异或恢复成原来数据。数据白化要在FEC或者交织编码前完成。</p>
