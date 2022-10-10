@@ -23,32 +23,32 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"hyh.cool","root":"/","images":"/resources/img/","scheme":"Gemini","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/config.min.js"></script>
 
-    <meta name="description" content="非能知己,莫能知人">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Blog">
-<meta property="og:url" content="https://hyh.cool/index.html">
+    <meta name="description" content="迈向全栈的第一步~🐲，也是为了以后与硬件工程师沟通，能理解硬件工程师说的是什么意思🤔">
+<meta property="og:type" content="article">
+<meta property="og:title" content="硬件设计学习笔记-阻抗匹配">
+<meta property="og:url" content="https://hyh.cool/post/20/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="非能知己,莫能知人">
+<meta property="og:description" content="迈向全栈的第一步~🐲，也是为了以后与硬件工程师沟通，能理解硬件工程师说的是什么意思🤔">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210101104421.png">
+<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210101412970.png">
+<meta property="article:published_time" content="2022-10-10T10:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-10T06:50:15.369Z">
 <meta property="article:author" content="hyh">
-<meta property="article:tag" content="hyh">
-<meta property="article:tag" content="Hexo美化">
-<meta property="article:tag" content="blog">
-<meta property="article:tag" content="博客">
 <meta property="article:tag" content="射频开发">
 <meta property="article:tag" content="硬件设计">
-<meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210101104421.png">
 
 
-<link rel="canonical" href="https://hyh.cool/">
+<link rel="canonical" href="https://hyh.cool/post/20/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hyh.cool/post/20/","path":"/post/20/","title":"硬件设计学习笔记-阻抗匹配"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Blog</title>
+<title>硬件设计学习笔记-阻抗匹配 | Blog</title>
   
 
 
@@ -82,7 +82,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Blog</h1>
+      <p class="site-title">Blog</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -141,7 +141,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           目 录
@@ -154,6 +154,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E9%98%BB%E6%8A%97"><span class="nav-text">一、阻抗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%98%BB%E6%8A%97%E5%8C%B9%E9%85%8D"><span class="nav-text">二、阻抗匹配</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%B2%E5%AF%86%E6%96%AF%E5%9C%86%E5%9B%BE"><span class="nav-text">三、史密斯圆图</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -192,179 +193,17 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyh.cool/post/7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/resources/img/avatar.jpg">
-      <meta itemprop="name" content="hyh">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-      <meta itemprop="description" content="非能知己,莫能知人">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-              <span class="post-sticky-flag" title="置顶">
-                <i class="fa fa-thumbtack"></i>
-              </span><a href="/post/7/" class="post-title-link" itemprop="url">To do List</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-08-14 22:00:00" itemprop="dateCreated datePublished" datetime="2022-08-14T22:00:00+08:00">2022-08-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/tech/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          记录一周计划🐯
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyh.cool/post/19/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/resources/img/avatar.jpg">
-      <meta itemprop="name" content="hyh">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-      <meta itemprop="description" content="非能知己,莫能知人">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/19/" class="post-title-link" itemprop="url">关于nRF24L01芯片灵敏度的测试要点</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-10-10 18:00:00" itemprop="dateCreated datePublished" datetime="2022-10-10T18:00:00+08:00">2022-10-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/tech/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          由于nRF24L01芯片数据包帧格式含有 控制字段（9bit），所以导致矢量信号源的数据文件与其他芯片（例如SX1262、CC1101等）编写方式有所不同，特此记录。
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://hyh.cool/post/20/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -378,13 +217,13 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
+      <meta itemprop="name" content="硬件设计学习笔记-阻抗匹配 | Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/20/" class="post-title-link" itemprop="url">硬件设计学习笔记-阻抗匹配</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          硬件设计学习笔记-阻抗匹配
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -416,11 +255,84 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          迈向全栈的第一步~🐲，也是为了以后与硬件工程师沟通，能理解硬件工程师说的是什么意思🤔
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
+        <h3 id="一、阻抗">一、阻抗</h3>
+<p>在具有电阻、电感和电容的电路里，对电路中的电流所起的阻碍作用叫做阻抗。</p>
+<p>电容的容抗为$\frac{1}{jwC}$,电感的感抗为$jwL$。阻抗就是电阻和这些容抗、感抗构成的实部和虚部的值。</p>
+<p>阻抗通常用字母$Z$表示，$Z=R+jX$，其中实部$R$代表纯电阻部分，虚部$X$表示电抗。</p>
+<p>从经典理论的角度考虑，射频是高频交流信号，对于高频信号除了电阻以外更多的时候要考虑由于频率引起的感抗和容抗，实际上射频电路用到纯电阻的时候是有限的，绝大多数情况下用的是电容和电感。</p>
+<p><font color=#FF0000>要想高效、优质地传输功率就必须重视阻抗，进行阻抗匹配，从而避免功率的损失和信号畸变</font>。</p>
+<h3 id="二、阻抗匹配">二、阻抗匹配</h3>
+<p>无线通信的目的就是把信号从一个地方传到另一个地方，也就是射频信号的源端和目的端(负载端)。在射频电路中，射频电路需要经过许多器件或电路去传输。对于输入的电路就可以理解为”源端“，输出的电路为”负载端“，信号从源端到负载端的传输中会有<strong>功率的损耗，以及噪声的引入</strong>，为了减少功率的损失和降低干扰的引入，就需要对源端和负载端做阻抗匹配。</p>
+<p>源端阻抗为$Zs = Rs + jXs$；负载端阻抗为$Z_L=R_L+jX_L$.</p>
+<p>功率传输示意图如下：</p>
+<p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210101104421.png" alt=""></p>
+<p>从信号源到负载端传输的功率不仅与$R_L$有关，还和$R_S,X_S,X_L$有关。如果源阻抗和负载阻抗匹配得当，那么这个信号从信号源到负载端的传递过程中就没有功率损失，也没有噪声引入。</p>
+<p>若阻抗不匹配，会造成：</p>
+<p>1.<font color=#FF0000><strong>额外功率损失</strong></font>。阻抗不匹配就意味着在信号源和负载端之间存在电压或功率反射，就造成额外的功率损失。因为电路设计的不匹配导致的额外功率损失会严重影响通信系统的性能。</p>
+<p>2.<font color=#FF0000><strong>额外失真和准噪声</strong></font>。在不匹配条件下，信号在信号源和负载端之间来回反射，在信号源和负载上与原始信号叠加，导致信号源或负载信号失真。当反射信号的频率不变或反射信号的频率与输入信号的频率相等时，便会出现额外失真。当信号的频率随时间改变，即反射信号与输入信号频率不相等时，就叫准噪声（准噪声不是真正的噪声，噪声一般是指白噪声）。额外失真将带来信号相位的恶化，准噪声将带来信噪比的下降。</p>
+<p><strong>信噪比计算</strong></p>
+<p>信噪比的计量单位是dB.公式为：<br>
+$$<br>
+SNR = 10log_{ 10 }{\frac{P_s}{P_n} }<br>
+$$<br>
+其中$P_s$和$P_n$分别代表信号和噪声的有效功率。<br>
+$$<br>
+SNR = 20log_{10}\frac{V_s}{V_n}<br>
+$$<br>
+也可以换算成电压幅值的比率关系，其中V_s和V_n分别代表信号和噪声电压的“有效值”。</p>
+<p><strong>阻抗匹配的类型</strong></p>
+<p>阻抗匹配包括<strong>最大功率匹配</strong>和<strong>无相移的最大功率匹配</strong>。</p>
+<p><strong>实现无相移的最大功率匹配的前提是需要源阻抗和负载阻抗为共轭关系。</strong>（电阻相等，电抗的数值相等但性质相反）<br>
+$$<br>
+Z_S = {Z_L}^*<br>
+$$<br>
+无相移的最大功率匹配是指从源阻抗到负载的功率传输的最大化，从源阻抗到负载的传输电压无相位偏移。这是功率匹配的一种特殊情况。如果相位存在偏移将导致信号在传输中发生畸变，造成接收电路不能正确解调。</p>
+<p><strong>实现最大功率匹配的前提是需要源阻抗和负载阻抗相等。</strong><br>
+$$<br>
+Z_S = Z_L<br>
+$$<br>
+<font color=#FF0000><strong>阻抗匹配的方法或过程就是在信号源和负载之间加入匹配电路，一般由电感和电容构成，实现阻抗变换</strong></font>。</p>
+<p>典型的阻抗匹配电路形式有两种：<strong>T型阻抗匹配电路和$\pi$型阻抗匹配电路</strong>。<font color=#FF0000>但在实际工程开发，经常会采用两个元器件的匹配，也就是L型匹配电路</font>。</p>
+<p><font color=#FF0000><strong>一般来说，在实际工程事件中，大多数情况下都是在“盲调”，所谓“盲调”就是拿不同类型的元器件（电容和电感）去尝试，看到底是电容还是电感，确定好类型后再不断变换它们的值，直到测试结果表明达到良好的匹配状态。</strong></font></p>
+<p><font color=#FF0000><strong>另外可以借助仪器和理论进行精确的调试。需要的仪器是网络分析仪（Network Analyzer，NA） 。网络分析仪调试的理论原理是史密斯圆图。工程师通常都是先“盲调”，当盲调短时间内无法匹配好时，就借助网络分析仪进行调试。</strong></font></p>
+<h3 id="三、史密斯圆图">三、史密斯圆图</h3>
+<p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210101412970.png" alt=" "></p>
+<p>史密斯圆图如上图所示，其中蓝线图为史密斯圆图的阻抗圆图，红线图为史密斯圆图的导纳圆图。</p>
+<p><strong>理论定义：</strong></p>
+<p>史密斯圆图（Smith Chart）：是在反射系散平面上标绘有归一化输入阻抗(或导纳)等值圆族的计算图。史密斯圆图是表达电压反射系数Г的复平面，即：<br>
+$$<br>
+Г = U+jV<br>
+$$<br>
+$z = \frac{Z}{Z_0}$,$Z_0$为特征阻抗，$Z$为端口实际阻抗。归一化阻抗：$z = r+jx$   公式中$r$为归一化电阻，$x$为归一化电抗<br>
+$$<br>
+(U- \frac { r }{ r+1 }) ^2 + V ^2 = ( \frac { 1 }{ r+1 } ) ^2<br>
+$$</p>
+<p>$$<br>
+( U - 1 ) ^2 + ( V-\frac{ 1 }{ x })^2=( \frac { 1 } { x }) ^2<br>
+$$</p>
+<p>上述两个公式表示圆心在（$U=\frac{1}{r+1}，V=0$），半径为$\frac{1}{r+1}$的一系列圆和圆心在（$U=1,V=\frac{1}{x}$），半径为$\frac{1}{x}$的一系列圆。它们所表示的一系列圆就是史密斯阻抗圆图的理论定义。</p>
+<p>史密斯圆图可以指导阻抗测量和阻抗匹配，下面提供几个结论：</p>
+<ul>
+<li>
+<p>中心点表示特征阻抗点（例如50Ω），最左侧W点表示阻抗处于“短路”，最右边E点表示阻抗处于“开路”，即无穷大。</p>
+</li>
+<li>
+<p>当器件串联时沿着阻抗圆图分析</p>
+</li>
+<li>
+<p>当器件并联时沿着导纳圆图分析</p>
+</li>
+<li>
+<p>当用电感时沿着圆的轨迹往上走</p>
+</li>
+<li>
+<p>当用电容时沿着元的轨迹往下走</p>
+</li>
+<li>
+<p>匹配的技巧是想法牵引到$r=1$的圆周上（端点在中心点特征阻抗上的圆）或者$g=1$的圆周上</p>
+</li>
+</ul>
+
     </div>
 
     
@@ -428,168 +340,71 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 
 
-    
 
 
-<div class="post-block">
-  
-  
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyh.cool/post/18/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/resources/img/avatar.jpg">
-      <meta itemprop="name" content="hyh">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-      <meta itemprop="description" content="非能知己,莫能知人">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/18/" class="post-title-link" itemprop="url">SX1261/2芯片学习笔记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-10-09 18:00:00" itemprop="dateCreated datePublished" datetime="2022-10-09T18:00:00+08:00">2022-10-09</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/tech/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
+<div class="license">
+  <div class="license-title">硬件设计学习笔记-阻抗匹配</div>
+  <div class="license-link">
+    <a href="https://hyh.cool/post/20/">https://hyh.cool/post/20/</a>
+  </div>
+  <div class="license-meta">
+    <div class="license-meta-item">
+      <div class="license-meta-title">本文作者</div>
+      <div class="license-meta-text">
+          hyh
+      </div>
+    </div>
+      <div class="license-meta-item">
+        <div class="license-meta-title">发布于</div>
+        <div class="license-meta-text">
+          2022-10-10
         </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          记录本人在使用Semtech公司的SX1262芯片所遇到的问题以及调试的一些经验😊
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyh.cool/post/17/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/resources/img/avatar.jpg">
-      <meta itemprop="name" content="hyh">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-      <meta itemprop="description" content="非能知己,莫能知人">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/17/" class="post-title-link" itemprop="url">《拖延心理学》读书笔记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-10-06 10:00:00" itemprop="dateCreated datePublished" datetime="2022-10-06T10:00:00+08:00">2022-10-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/reading/" itemprop="url" rel="index"><span itemprop="name">阅读</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
+      </div>
+      <div class="license-meta-item">
+        <div class="license-meta-title">更新于</div>
+        <div class="license-meta-text">
+          2022-10-10
         </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          动物的行为主要取决于本能，不以个体的意志为转移；相反人类能够做出选择，也必须做出选择。这既是人的特权，也是人的重负。----Karen Horney
-          <!--noindex-->
-          <!--/noindex-->
+      </div>
+    <div class="license-meta-item">
+      <div class="license-meta-title">许可协议</div>
+      <div class="license-meta-text">
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank">CC BY-NC-SA 4.0</a>
         
-      
+      </div>
     </div>
+  </div>
+  <div class="license-statement">
+      转载或引用本文时，请遵守上述许可协议，注明出处、不得用于商业用途！
+    
+  </div>
+</div>
 
-    
-    
-    
+          <div class="post-tags">
+              <a href="/tags/%E5%B0%84%E9%A2%91%E5%BC%80%E5%8F%91/" rel="tag"><i class="fa fa-tag"></i> 射频开发</a>
+              <a href="/tags/%E7%A1%AC%E4%BB%B6%E8%AE%BE%E8%AE%A1/" rel="tag"><i class="fa fa-tag"></i> 硬件设计</a>
+          </div>
 
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/post/19/" rel="prev" title="关于nRF24L01芯片灵敏度的测试要点">
+                  <i class="fa fa-chevron-left"></i> 关于nRF24L01芯片灵敏度的测试要点
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/18/" rel="next" title="SX1261/2芯片学习笔记">
+                  SX1261/2芯片学习笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
   </article>
 </div>
@@ -597,10 +412,9 @@
 
 
 
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
+
+    <div class="comments utterances-container"></div>
 </div>
   </main>
 

@@ -90,7 +90,7 @@
 <meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210092132496.png">
 <meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210092134284.png">
 <meta property="article:published_time" content="2022-10-09T10:00:00.000Z">
-<meta property="article:modified_time" content="2022-10-09T14:02:12.210Z">
+<meta property="article:modified_time" content="2022-10-10T02:24:40.944Z">
 <meta property="article:author" content="hyh">
 <meta property="article:tag" content="射频开发">
 <meta name="twitter:card" content="summary">
@@ -343,7 +343,7 @@
 $$<br>
 Freqdriftmax = \frac{BW}{3\times{2^{SF}}}<br>
 $$<br>
-<strong>在低空速模式下LowDataRateOptimize配置为0x01，可以将包传输时间内的频率偏移要求放松至$16\times{Freq_drift_max}$</strong>：<br>
+<strong>在低空速模式下LowDataRateOptimize配置为0x01，可以将包传输时间内的频率偏移要求放松至$16\times{Freqdriftmax}$</strong>：<br>
 $$<br>
 Freqdriftmax = \frac{BW}{3\times{2^{SF } } }	\times{16}<br>
 $$</p>
@@ -421,7 +421,7 @@ $$</p>
 <h6 id="前导">前导</h6>
 <p>LoRa PHY数据包的Preamble（前导）包含三部分：</p>
 <p><strong>（variable preamble）可变前导码</strong>：用于使接收端与传入信号同步，默认情况下，数据包配置为12个符号的前导码。前导码范围为10~65535.<font color=#FF0000><strong>前导码为up-chirp符号。</strong></font></p>
-<img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210082222500.png" alt="image-20221008222250496" style="zoom:33%;" />
+<img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210082222500.png"  style="zoom:33%;" />
 <p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210082158878.png" alt=""></p>
 <p><strong>（Sync Word）帧同步字</strong>：可变长度前导码后，是两个符号宽度的帧同步字，可以用来快速识别不同的LoRa网络，LoRa芯片会直接丢弃真同步字内容与预设值不一致的数据包。</p>
 <p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210082159872.png" alt=""></p>
@@ -972,7 +972,7 @@ $$</p>
       <div class="license-meta-item">
         <div class="license-meta-title">更新于</div>
         <div class="license-meta-text">
-          2022-10-09
+          2022-10-10
         </div>
       </div>
     <div class="license-meta-item">
@@ -997,6 +997,9 @@ $$</p>
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/post/20/" rel="prev" title="硬件设计学习笔记-阻抗匹配">
+                  <i class="fa fa-chevron-left"></i> 硬件设计学习笔记-阻抗匹配
+                </a>
             </div>
             <div class="post-nav-item">
                 <a href="/post/17/" rel="next" title="《拖延心理学》读书笔记">
