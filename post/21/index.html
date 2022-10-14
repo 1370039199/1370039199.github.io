@@ -23,32 +23,34 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"hyh.cool","root":"/","images":"/resources/img/","scheme":"Gemini","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/config.min.js"></script>
 
-    <meta name="description" content="非能知己,莫能知人">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Blog">
-<meta property="og:url" content="https://hyh.cool/page/2/index.html">
+    <meta name="description" content="记录本人开发射频芯片关于WOR功能实现的一些心得和想法👀">
+<meta property="og:type" content="article">
+<meta property="og:title" content="射频开发的软件WOR实现机制">
+<meta property="og:url" content="https://hyh.cool/post/21/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="非能知己,莫能知人">
+<meta property="og:description" content="记录本人开发射频芯片关于WOR功能实现的一些心得和想法👀">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210141623585.png">
+<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210141624932.png">
+<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210141646338.png">
+<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210141651360.png">
+<meta property="article:published_time" content="2022-10-14T10:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-14T08:59:50.322Z">
 <meta property="article:author" content="hyh">
-<meta property="article:tag" content="hyh">
-<meta property="article:tag" content="Hexo美化">
-<meta property="article:tag" content="blog">
-<meta property="article:tag" content="博客">
 <meta property="article:tag" content="射频开发">
-<meta property="article:tag" content="硬件设计">
-<meta property="article:tag" content="数据结构">
+<meta property="article:tag" content="WOR实现">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210141623585.png">
 
 
-<link rel="canonical" href="https://hyh.cool/page/2/">
+<link rel="canonical" href="https://hyh.cool/post/21/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"page/2/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hyh.cool/post/21/","path":"/post/21/","title":"射频开发的软件WOR实现机制"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Blog</title>
+<title>射频开发的软件WOR实现机制 | Blog</title>
   
 
 
@@ -82,7 +84,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">Blog</h1>
+      <p class="site-title">Blog</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -141,7 +143,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           目 录
@@ -154,6 +156,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81WOR%E5%8E%9F%E7%90%86%E4%BB%8B%E7%BB%8D"><span class="nav-text">一、WOR原理介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81WOR%E5%8F%91%E9%80%81%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0"><span class="nav-text">二、WOR发送模式实现</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81WOR%E6%8E%A5%E6%94%B6%E6%A8%A1%E5%BC%8F%E5%AE%9E%E7%8E%B0"><span class="nav-text">三、WOR接收模式实现</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -192,17 +195,18 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
 
-    
+
+  
 
 
 <div class="post-block">
   
   
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyh.cool/post/17/">
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://hyh.cool/post/21/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/resources/img/avatar.jpg">
@@ -215,13 +219,13 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
+      <meta itemprop="name" content="射频开发的软件WOR实现机制 | Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/17/" class="post-title-link" itemprop="url">《拖延心理学》读书笔记</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          射频开发的软件WOR实现机制
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -231,247 +235,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-10-06 10:00:00" itemprop="dateCreated datePublished" datetime="2022-10-06T10:00:00+08:00">2022-10-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/reading/" itemprop="url" rel="index"><span itemprop="name">阅读</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          动物的行为主要取决于本能，不以个体的意志为转移；相反人类能够做出选择，也必须做出选择。这既是人的特权，也是人的重负。----Karen Horney
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyh.cool/post/16/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/resources/img/avatar.jpg">
-      <meta itemprop="name" content="hyh">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-      <meta itemprop="description" content="非能知己,莫能知人">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/16/" class="post-title-link" itemprop="url">《能力陷阱》读书笔记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-10-05 10:00:00" itemprop="dateCreated datePublished" datetime="2022-10-05T10:00:00+08:00">2022-10-05</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/reading/" itemprop="url" rel="index"><span itemprop="name">阅读</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          花很多时间去做自己擅长的事；把工作定义在一个较窄的范围内，限制在过去能给他们带来价值的领域；随着时间的推移，他们在其他方面的能力就会停滞不前；更别说环境改变了；
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyh.cool/post/15/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/resources/img/avatar.jpg">
-      <meta itemprop="name" content="hyh">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-      <meta itemprop="description" content="非能知己,莫能知人">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/15/" class="post-title-link" itemprop="url">LoRa OTA 升级固件---制作BootLoader</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-10-03 18:00:00" itemprop="dateCreated datePublished" datetime="2022-10-03T18:00:00+08:00">2022-10-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/project/" itemprop="url" rel="index"><span itemprop="name">项目</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          一个不错的idea，希望可以实现。👀
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyh.cool/post/14/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/resources/img/avatar.jpg">
-      <meta itemprop="name" content="hyh">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-      <meta itemprop="description" content="非能知己,莫能知人">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/14/" class="post-title-link" itemprop="url">C语言中的位域、字节序、比特序、大小端</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-09-21 18:00:00" itemprop="dateCreated datePublished" datetime="2022-09-21T18:00:00+08:00">2022-09-21</time>
+      <time title="创建时间：2022-10-14 18:00:00" itemprop="dateCreated datePublished" datetime="2022-10-14T18:00:00+08:00">2022-10-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -493,11 +257,46 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          记录C语言知识点，巩固记忆，方便查阅🤔
-          <!--noindex-->
-          <!--/noindex-->
-        
-      
+        <h3 id="一、WOR原理介绍">一、WOR原理介绍</h3>
+<p>**WOR（Wake On Radio）**原理简单来讲，就是在发送端的有效数据前加一段较长的前导码，接收端周期性的唤醒，监听有无数据，一旦捕捉到前导码就进入正常接收状态；若没有则立即休眠，等待下一次唤醒。其目的就是<font color=#FF0000><strong>降低WOR接收端的功耗</strong></font>。</p>
+<p>下图为正常接收方功耗/电流的示意图：</p>
+<p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210141623585.png" alt=""></p>
+<p>而WOR接收方功耗/电流示意图如下图，可以看出接收端的功耗会明显减少。</p>
+<p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210141624932.png" alt=""></p>
+<h3 id="二、WOR发送模式实现">二、WOR发送模式实现</h3>
+<p>分析上图，其中$T1$代表一个WOR周期，$T2$代表休眠周期，$T3$代表接收周期。为<font color=#FF0000><strong>保证WOR接收方一定能够在接收周期内检测到前导码</strong></font>，理论上WOR发送端发送前导码的时间$T_{preamble}$应大于$T1+T3$,实际设计中，需要考虑冗余量，上文中$T_{preamble}$应该在理论值额外增加10ms。</p>
+<p>在软件设计中，我们已知WOR周期和接收周期，可利用前导码计算公式计算出<strong>发送端单包发送的前导码长度</strong>。<br>
+$$<br>
+T_{ preamble } = ( n_{ preamble }+4.25)\times {  T_ {  symbol  } }<br>
+$$<br>
+其中$T_{preamble}$代表前导码时间，$n_{preamble}$代表设定的前导码长度，$T_ {  symbol  }$代表符号时间，可由下列公式推出，亦可通过Semtech官方计算工具来算出。<br>
+$$<br>
+T_ {  symbol  } = \frac{1}{R_s}<br>
+$$</p>
+<p>$$<br>
+R_s = \frac{BW}{ 2 ^ {SF } }<br>
+$$</p>
+<p>其中$R_s$代表符号速率，$BW$代表带宽，$SF$代表扩频因子。</p>
+<p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210141646338.png" alt=""></p>
+<p>利用Semtech官方计算工具根据模块当前设置的lora调试参数SF，BW，可得出符号时间，如上图红框所示。</p>
+<p>所以发送方需设定的前导码长度由以上公式可得：<br>
+$$<br>
+n_{preamble} = \frac{ T_{ preamble} }{T_{ symbol }} - 4.25 = T_{ preamble} \times { \frac {2 ^ { SF }}{ BW }}-4.25<br>
+$$</p>
+<h3 id="三、WOR接收模式实现">三、WOR接收模式实现</h3>
+<p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210141651360.png" alt=""></p>
+<p><font color=#FF0000><strong>功耗</strong></font>对于WOR模式来讲是一个核心指标，在WOR周期$T1$设定相同的情况下，$T3$越小，整个模块的平均功耗越低。</p>
+<p><font color=#FF0000><strong>T3的作用是让接收机在一段窗口期内保持接收模式以便可以检测到有效的前导码，当接收机检测到有效前导码后，需要延长接收窗口时间以保证能够接收到完整的数据，当一包完整的数据包被接收完后，可以强制将模块进入休眠。</strong></font></p>
+<p>对于T3如何取值，视具体情况具体调试，<strong>T3如果太小，会导致接收机无法准确的检测到有效的前导码进而导致无线唤醒失败，丢包率高。T3如果取值太大，整个系统的功耗会提高</strong>，所以要通过实际调试在丢包率与功耗之间做好平衡。</p>
+<p>WOR接收模式软件实现步骤及注意事项如下：</p>
+<ol>
+<li>单片机内部带有低功耗定时器，可以通过低功耗定时器主动周期性唤醒MCU，唤醒周期为$T1$,然后让射频芯片进入接收模式，持续一段窗口期$T3$。</li>
+<li>当有射频中断（前导码检测中断）产生后，延长接收模式的窗口期直到一包数据包发送完成（可检测环形缓冲区有效数据长度来判断数据是否发送完成）。</li>
+<li><font color=#FF0000>接收端开启接收窗口时必须设定超时时间以防止误唤醒或者发送出错，接收方永远无法进入休眠问题，超过超时时间，接收机应该强制进入休眠。</font></li>
+<li>接收机MCU进入低功耗后，运行依靠低速时钟，该时钟稳定性及一致性较差，在条件允许的情况下必须校准,方式是<font color=#FF0000><strong>利用高速晶振对内部低速晶振校准</strong></font>。</li>
+<li>SX1262数据手册P40中说明接收机会进行<font color=#FF0000><strong>周期性的重新启动前导码检测过程</strong></font>，因此接收机的前导码应配置与发射机的前导码长度相同，在WOR软件设计中应在每次设置接收模式前将前导码长度配置与发射机一致。</li>
+</ol>
+
     </div>
 
     
@@ -505,88 +304,68 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
 
 
 
 
-    
 
 
-<div class="post-block">
-  
-  
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://hyh.cool/post/13/">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/resources/img/avatar.jpg">
-      <meta itemprop="name" content="hyh">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Blog">
-      <meta itemprop="description" content="非能知己,莫能知人">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Blog">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/post/13/" class="post-title-link" itemprop="url">基于Keil MDK移植 RT-Thread Nano（二）</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-08-31 18:00:00" itemprop="dateCreated datePublished" datetime="2022-08-31T18:00:00+08:00">2022-08-31</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/tech/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
+<div class="license">
+  <div class="license-title">射频开发的软件WOR实现机制</div>
+  <div class="license-link">
+    <a href="https://hyh.cool/post/21/">https://hyh.cool/post/21/</a>
+  </div>
+  <div class="license-meta">
+    <div class="license-meta-item">
+      <div class="license-meta-title">本文作者</div>
+      <div class="license-meta-text">
+          hyh
+      </div>
+    </div>
+      <div class="license-meta-item">
+        <div class="license-meta-title">发布于</div>
+        <div class="license-meta-text">
+          2022-10-14
         </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          学习实时操作系统，记录移植过程🐵
-          <!--noindex-->
-          <!--/noindex-->
+      </div>
+      <div class="license-meta-item">
+        <div class="license-meta-title">更新于</div>
+        <div class="license-meta-text">
+          2022-10-14
+        </div>
+      </div>
+    <div class="license-meta-item">
+      <div class="license-meta-title">许可协议</div>
+      <div class="license-meta-text">
+          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank">CC BY-NC-SA 4.0</a>
         
-      
+      </div>
     </div>
+  </div>
+  <div class="license-statement">
+      转载或引用本文时，请遵守上述许可协议，注明出处、不得用于商业用途！
+    
+  </div>
+</div>
 
-    
-    
-    
+          <div class="post-tags">
+              <a href="/tags/%E5%B0%84%E9%A2%91%E5%BC%80%E5%8F%91/" rel="tag"><i class="fa fa-tag"></i> 射频开发</a>
+              <a href="/tags/WOR%E5%AE%9E%E7%8E%B0/" rel="tag"><i class="fa fa-tag"></i> WOR实现</a>
+          </div>
 
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+            </div>
+            <div class="post-nav-item">
+                <a href="/post/19/" rel="next" title="关于nRF24L01芯片灵敏度的测试要点">
+                  关于nRF24L01芯片灵敏度的测试要点 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
     </footer>
   </article>
 </div>
@@ -594,10 +373,9 @@
 
 
 
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
-  </nav>
 
+
+    <div class="comments utterances-container"></div>
 </div>
   </main>
 
