@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210141646338.png">
 <meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210141651360.png">
 <meta property="article:published_time" content="2022-10-14T10:00:00.000Z">
-<meta property="article:modified_time" content="2022-10-14T08:59:50.322Z">
+<meta property="article:modified_time" content="2022-10-14T09:16:56.404Z">
 <meta property="article:author" content="hyh">
 <meta property="article:tag" content="射频开发">
 <meta property="article:tag" content="WOR实现">
@@ -258,7 +258,7 @@
     
     <div class="post-body" itemprop="articleBody">
         <h3 id="一、WOR原理介绍">一、WOR原理介绍</h3>
-<p>**WOR（Wake On Radio）**原理简单来讲，就是在发送端的有效数据前加一段较长的前导码，接收端周期性的唤醒，监听有无数据，一旦捕捉到前导码就进入正常接收状态；若没有则立即休眠，等待下一次唤醒。其目的就是<font color=#FF0000><strong>降低WOR接收端的功耗</strong></font>。</p>
+<p><strong>WOR（Wake On Radio）</strong> 原理简单来讲，就是在发送端的有效数据前加一段较长的前导码，接收端周期性的唤醒，监听有无数据，一旦捕捉到前导码就进入正常接收状态；若没有则立即休眠，等待下一次唤醒。其目的就是<font color=#FF0000><strong>降低WOR接收端的功耗</strong></font>。</p>
 <p>下图为正常接收方功耗/电流的示意图：</p>
 <p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210141623585.png" alt=""></p>
 <p>而WOR接收方功耗/电流示意图如下图，可以看出接收端的功耗会明显减少。</p>
