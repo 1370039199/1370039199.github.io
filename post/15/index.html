@@ -25,26 +25,31 @@
 
     <meta name="description" content="一个不错的idea，希望可以实现。👀">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LoRa OTA 升级固件">
+<meta property="og:title" content="LoRa OTA 升级固件---制作BootLoader">
 <meta property="og:url" content="https://hyh.cool/post/15/index.html">
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="一个不错的idea，希望可以实现。👀">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210141432836.png">
+<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210141526119.png">
+<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210141530838.png">
+<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210141537702.png">
 <meta property="article:published_time" content="2022-10-03T10:00:00.000Z">
-<meta property="article:modified_time" content="2022-10-05T02:46:41.847Z">
+<meta property="article:modified_time" content="2022-10-14T07:55:54.754Z">
 <meta property="article:author" content="hyh">
 <meta property="article:tag" content="射频开发">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210141432836.png">
 
 
 <link rel="canonical" href="https://hyh.cool/post/15/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hyh.cool/post/15/","path":"/post/15/","title":"LoRa OTA 升级固件"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hyh.cool/post/15/","path":"/post/15/","title":"LoRa OTA 升级固件---制作BootLoader"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>LoRa OTA 升级固件 | Blog</title>
+<title>LoRa OTA 升级固件---制作BootLoader | Blog</title>
   
 
 
@@ -93,7 +98,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-tech"><a href="/tech/" rel="section"><i class="fas fa-wrench fa-fw"></i>技术</a></li><li class="menu-item menu-item-microchip"><a href="/microchip/" rel="section"><i class="fas fa-microchip fa-fw"></i>芯片</a></li><li class="menu-item menu-item-project"><a href="/project/" rel="section"><i class="fas fa-rocket fa-fw"></i>项目</a></li><li class="menu-item menu-item-reading"><a href="/reading/" rel="section"><i class="fas fa-book fa-fw"></i>阅读</a></li><li class="menu-item menu-item-photos"><a href="/photos/" rel="section"><i class="fas fa-camera-retro fa-fw"></i>相册</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fas fa-splotch fa-fw"></i>留言</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-tech"><a href="/tech/" rel="section"><i class="fas fa-wrench fa-fw"></i>技术</a></li><li class="menu-item menu-item-microchip"><a href="/microchip/" rel="section"><i class="fas fa-microchip fa-fw"></i>芯片</a></li><li class="menu-item menu-item-project"><a href="/project/" rel="section"><i class="fas fa-rocket fa-fw"></i>项目</a></li><li class="menu-item menu-item-source"><a href="/source/" rel="section"><i class="fas fa-file fa-fw"></i>资料</a></li><li class="menu-item menu-item-reading"><a href="/reading/" rel="section"><i class="fas fa-book fa-fw"></i>阅读</a></li><li class="menu-item menu-item-photos"><a href="/photos/" rel="section"><i class="fas fa-camera-retro fa-fw"></i>相册</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fas fa-splotch fa-fw"></i>留言</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -137,7 +142,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           目 录
@@ -150,6 +155,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="nav-text">一、开发环境</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%96%B9%E6%A1%88%E8%AE%BE%E8%AE%A1"><span class="nav-text">二、方案设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E9%80%BB%E8%BE%91%E5%AE%9E%E7%8E%B0"><span class="nav-text">三、逻辑实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-BootLoader"><span class="nav-text">1.BootLoader</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E5%88%B6%E4%BD%9CAPP%E5%9B%BA%E4%BB%B6%E5%92%8CUpdate%E5%9B%BA%E4%BB%B6"><span class="nav-text">2.制作APP固件和Update固件</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -212,12 +218,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="LoRa OTA 升级固件 | Blog">
+      <meta itemprop="name" content="LoRa OTA 升级固件---制作BootLoader | Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          LoRa OTA 升级固件
+          LoRa OTA 升级固件---制作BootLoader
         </h1>
 
         <div class="post-meta-container">
@@ -250,7 +256,83 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>该项目正在紧急筹备中，敬请期待…</p>
+        <h3 id="一、开发环境">一、开发环境</h3>
+<p>开发使用的是<strong>恒烁</strong>的<strong>CX32L003F8UA</strong>，该款芯片Flash容量为64KB，我认为做一个简易的LoRa OTA程序完全够用。</p>
+<p>使用编程平台为<strong>IAR for ARM 9.30</strong>。源码提供在<a href="https://hyh.cool/download">网站菜单的资料项</a>里</p>
+<h3 id="二、方案设计">二、方案设计</h3>
+<p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210141432836.png" alt=""></p>
+<p>首先将芯片分为三个区域：<strong>BootLoader、APP、Update</strong>。</p>
+<ul>
+<li><strong>BootLoader</strong>：判断固件是否更新，若有更新，将Update区域的程序搬移至APP区域；否则直接跳转至APP区域。（分配8K空间，从0x0000至0x2000）</li>
+<li><strong>APP</strong>：实际运行程序的区域。（分配16K空间，从0x2000至0x6000）</li>
+<li><strong>Update</strong>：存放更新固件的区域。（分配16K空间，从0x6000至0xA000）</li>
+</ul>
+<p>Bootloader本质与APP程序一样，不过是具有更新Flash，跳转至APP功能的程序罢了。</p>
+<p><font color=#FF0000><strong>注意：BootLoader、APP、Update区域的程序不得超过其分配的大小</strong></font>。</p>
+<h3 id="三、逻辑实现">三、逻辑实现</h3>
+<h4 id="1-BootLoader">1.BootLoader</h4>
+<p>单片机上电后的启动流程，其实主要就干了两件事：</p>
+<ul>
+<li>将栈顶位置加载到MSP寄存器中。</li>
+<li>将复位中断服务函数的入口地址给PC寄存器。</li>
+</ul>
+<p>然后单片机执行复位中断服务函数，在复位中断服务函数中设置中断向量表的偏移地址，最终跳转至main()函数。</p>
+<p>同理，BootLoader程序跳转至APP程序，也需要干这两件事情，只不过单片机上电是自动加载的MSP和PC，而从BootLoader程序需要用户自行编写函数进行跳转。</p>
+<p>BootLoader跳转至APP程序源码实现如下：</p>
+<pre class="language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span>jump2app<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//声明函数指针</span>
+
+<span class="token keyword">void</span> <span class="token function">ota_jump_app</span><span class="token punctuation">(</span>INT32U appAddr<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+  jump2app <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">void</span> <span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>__IO <span class="token class-name">uint32_t</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token punctuation">(</span>appAddr <span class="token operator">+</span> <span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//appAddr为中断服务函数入口地址，首地址是MSP，地址+4是复位中断服务程序地址</span>
+
+  <span class="token function">__set_MSP</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">(</span>__IO <span class="token class-name">uint32_t</span><span class="token operator">*</span><span class="token punctuation">)</span> appAddr<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//设置主堆栈指针</span>
+
+  <span class="token function">jump2app</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//进行跳转，将jump2app赋值给PC</span>
+<span class="token punctuation">&#125;</span></code></pre>
+<p>在实现BootLoader判断是否需要更新固件的功能，我引入了一个版本号的定义：<strong>用户在固件编写完成，会将此版本的固件编号存储至16Kflash空间区域的最后一页</strong>。BootLoader会判断App区域与Update区域的对应位置的固件编号的版本大小，来决定是否更新固件。若需要更新，则将Update区域的程序搬移至App区域，再跳转至App区域；否则，则直接跳转至App区域。</p>
+<p>源码实现如下：</p>
+<pre class="language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">ota_app_update</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+  INT8U flash_Byte<span class="token punctuation">;</span>
+  INT32U addr<span class="token punctuation">;</span>
+  <span class="token comment">//检测UPDATE_VERSION > APP_VERSION</span>
+  <span class="token function">Get_FirmWareVersion</span><span class="token punctuation">(</span>old_ver_Tbl<span class="token punctuation">,</span>APPLICATION_FW_VER_ADDR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">Get_FirmWareVersion</span><span class="token punctuation">(</span>new_ver_Tbl<span class="token punctuation">,</span>UPDATE_FW_VER_ADDR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">check_version_updated</span><span class="token punctuation">(</span>old_ver_Tbl<span class="token punctuation">,</span>new_ver_Tbl<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Update firmware！\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    FLASH_EraseInitTypeDef EraseInit<span class="token punctuation">;</span>
+    INT32U PageError<span class="token punctuation">;</span>
+    EraseInit<span class="token punctuation">.</span>TypeErase <span class="token operator">=</span> <span class="token number">0x00U</span><span class="token punctuation">;</span>
+    EraseInit<span class="token punctuation">.</span>PageAddress <span class="token operator">=</span> flashdestination<span class="token punctuation">;</span>
+    EraseInit<span class="token punctuation">.</span>NbPages <span class="token operator">=</span> <span class="token number">32</span><span class="token punctuation">;</span><span class="token comment">//88;//96;//NbrOfPage;</span>
+    <span class="token function">HAL_FLASH_Erase</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>EraseInit<span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token class-name">uint32_t</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>PageError<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>INT16U i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span><span class="token number">16384</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        addr <span class="token operator">=</span> UPDATE_ADDR <span class="token operator">+</span> i<span class="token punctuation">;</span>
+        flash_Byte <span class="token operator">=</span> <span class="token function">FLASH_Byte_Read</span><span class="token punctuation">(</span>addr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      	<span class="token function">HAL_FLASH_Program</span><span class="token punctuation">(</span>FLASH_TYPEPROGRAM_BYTE<span class="token punctuation">,</span> flashdestination<span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token class-name">uint64_t</span><span class="token punctuation">)</span>flash_Byte<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	flashdestination<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Update firmware Success！\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token keyword">else</span>
+  <span class="token punctuation">&#123;</span>
+    <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Directly jump to APP.\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token function">ota_jump_app</span><span class="token punctuation">(</span>APPLICATION_ADDR<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
+<h4 id="2-制作APP固件和Update固件">2.制作APP固件和Update固件</h4>
+<p>制作两个简易固件验证BootLoader是否可以正常使用。由于App固件和Update固件的起始位置，均不是0x0000了，所以需要设置中断向量的位置偏移，以及IAR环境编译设置。</p>
+<p>①将程序<code>system_cx32l003.c</code>中的<code>VECT_TAB_OFFSET</code>常量(中断向量的位置偏移)更改为两个区域的起始位置：0x2000和0x6000.</p>
+<p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210141526119.png" alt=""></p>
+<p>② App固件与Update固件的IAR编译设置的Link选项 -&gt; Edit -&gt;  .intvec start 的值分别设置为0x2000和0x6000。</p>
+<p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210141530838.png" alt=""></p>
+<p>③将程序烧录至对应区域的位置，需将IAR编译设置的Link选项 -&gt; Edit -&gt;Memory Regions中ROM起始地址改为对应区域的起始地址。</p>
+<p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210141537702.png" alt=""></p>
+<p>App固件实现的简易功能就是在循环中打印<code>FirmWare1 is running!</code>字样。其功能中还包括将版本号7000-0-10保存至APP区域的flash最后一页。</p>
+<p>Update固件实现的简易功能就是在循环中打印<code>FirmWare2 is running!</code>字样。其功能中还包括将版本号7000-0-11保存至Update区域的flash最后一页。</p>
+<p>将三个固件烧录至对应区域，重新上电，如果执行的是Update固件功能，说明功能正确！</p>
 
     </div>
 
@@ -268,7 +350,7 @@
 
 
 <div class="license">
-  <div class="license-title">LoRa OTA 升级固件</div>
+  <div class="license-title">LoRa OTA 升级固件---制作BootLoader</div>
   <div class="license-link">
     <a href="https://hyh.cool/post/15/">https://hyh.cool/post/15/</a>
   </div>
@@ -288,7 +370,7 @@
       <div class="license-meta-item">
         <div class="license-meta-title">更新于</div>
         <div class="license-meta-text">
-          2022-10-05
+          2022-10-14
         </div>
       </div>
     <div class="license-meta-item">

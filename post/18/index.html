@@ -90,7 +90,7 @@
 <meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210092132496.png">
 <meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210092134284.png">
 <meta property="article:published_time" content="2022-10-09T10:00:00.000Z">
-<meta property="article:modified_time" content="2022-10-11T05:38:52.714Z">
+<meta property="article:modified_time" content="2022-10-14T07:57:21.744Z">
 <meta property="article:author" content="hyh">
 <meta property="article:tag" content="射频开发">
 <meta name="twitter:card" content="summary">
@@ -153,7 +153,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-tech"><a href="/tech/" rel="section"><i class="fas fa-wrench fa-fw"></i>技术</a></li><li class="menu-item menu-item-microchip"><a href="/microchip/" rel="section"><i class="fas fa-microchip fa-fw"></i>芯片</a></li><li class="menu-item menu-item-project"><a href="/project/" rel="section"><i class="fas fa-rocket fa-fw"></i>项目</a></li><li class="menu-item menu-item-reading"><a href="/reading/" rel="section"><i class="fas fa-book fa-fw"></i>阅读</a></li><li class="menu-item menu-item-photos"><a href="/photos/" rel="section"><i class="fas fa-camera-retro fa-fw"></i>相册</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fas fa-splotch fa-fw"></i>留言</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-tech"><a href="/tech/" rel="section"><i class="fas fa-wrench fa-fw"></i>技术</a></li><li class="menu-item menu-item-microchip"><a href="/microchip/" rel="section"><i class="fas fa-microchip fa-fw"></i>芯片</a></li><li class="menu-item menu-item-project"><a href="/project/" rel="section"><i class="fas fa-rocket fa-fw"></i>项目</a></li><li class="menu-item menu-item-source"><a href="/source/" rel="section"><i class="fas fa-file fa-fw"></i>资料</a></li><li class="menu-item menu-item-reading"><a href="/reading/" rel="section"><i class="fas fa-book fa-fw"></i>阅读</a></li><li class="menu-item menu-item-photos"><a href="/photos/" rel="section"><i class="fas fa-camera-retro fa-fw"></i>相册</a></li><li class="menu-item menu-item-guestbook"><a href="/guestbook/" rel="section"><i class="fas fa-splotch fa-fw"></i>留言</a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -536,16 +536,16 @@ INT8U <span class="token function">SX126X_GetIsExist</span><span class="token pu
 <h3 id="六、数字接口及控制">六、数字接口及控制</h3>
 <h4 id="1-复位引脚">1.复位引脚</h4>
 <p>数据手册中标称，将Reset引脚拉低100us即可复位。<strong>开发时建议软件复位加一点冗余量</strong>，源码如下：</p>
-<pre class="language-C" data-language="C"><code class="language-C">void SX126X_Reset(void)
-&#123;
-    Gpio_SetIO(SX126X_NRST_PORT,SX126X_NRST_PIN);
-    DelayMs(1);
-    Gpio_ClrIO(SX126X_NRST_PORT,SX126X_NRST_PIN);
-    DelayMs(1);
-    Gpio_SetIO(SX126X_NRST_PORT,SX126X_NRST_PIN);
-    DelayMs(1);
-    SX126X_WaitOnBusy();
-&#125;</code></pre>
+<pre class="language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">SX126X_Reset</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token function">Gpio_SetIO</span><span class="token punctuation">(</span>SX126X_NRST_PORT<span class="token punctuation">,</span>SX126X_NRST_PIN<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">DelayMs</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">Gpio_ClrIO</span><span class="token punctuation">(</span>SX126X_NRST_PORT<span class="token punctuation">,</span>SX126X_NRST_PIN<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">DelayMs</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">Gpio_SetIO</span><span class="token punctuation">(</span>SX126X_NRST_PORT<span class="token punctuation">,</span>SX126X_NRST_PIN<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">DelayMs</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">SX126X_WaitOnBusy</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <h4 id="2-SPI相关引脚">2.SPI相关引脚</h4>
 <p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210091512061.png" alt=""></p>
 <p>对于单片机如何配置 SPI，有两个重要参数：SPI 的<strong>时钟极性 CPOL</strong> 表示时钟信号在空闲时是高电平还是低电平；<strong>时钟相位 CPHA</strong> 表示何时进行信号采样，在第一个跳变沿，还是第二个跳变沿。</p>
@@ -599,34 +599,34 @@ INT8U <span class="token function">SX126X_GetIsExist</span><span class="token pu
 <h5 id="SetStandby">SetStandby</h5>
 <p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210091648276.png" alt=""></p>
 <p>对于射频芯片使用32MHz有源晶振和无源晶振在初始化时的区别，源码实现如下：</p>
-<pre class="language-C" data-language="C"><code class="language-C">void SX126X_Init(void)
-&#123;
-    memset(&amp;g_sx126x_param,NULL,sizeof(g_sx126x_param));
-    SX126X_IOInit(); &#x2F;&#x2F;SX1262 IO初始化
-    SX126X_Reset(); &#x2F;&#x2F;复位
-    SX126X_WakeUp(); &#x2F;&#x2F;唤醒
-    if(!SX126X_GetIsExist()) &#x2F;&#x2F;验证MCU SPI功能是否正常
-    &#123;
-      debug_printf(&quot;sx126x is not existed!\r\n&quot;);
-      while(1);
-    &#125;
-#ifdef USE_TCXO
-    &#x2F;&#x2F;有源晶振
-    SX126X_SetStandby(STDBY_RC);
-    SX126X_SetDio3AsTcxoCtrl(TCXO_CTRL_2_2V,DEF_TCXO_CTRL_TIME);
-    SX126X_SetStandby(STDBY_XOSC);
-#else
-    &#x2F;&#x2F;无源晶振
-    SX126X_SetStandby(STDBY_XOSC);
-#endif
-    SX126X_WriteRegister(REG_XTA_TRIM,DEF_XTA_TRIM_VALUE); &#x2F;&#x2F;负载电容
-    SX126X_WriteRegister(REG_XTB_TRIM,DEF_XTA_TRIM_VALUE);
+<pre class="language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">SX126X_Init</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token function">memset</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>g_sx126x_param<span class="token punctuation">,</span><span class="token constant">NULL</span><span class="token punctuation">,</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>g_sx126x_param<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">SX126X_IOInit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//SX1262 IO初始化</span>
+    <span class="token function">SX126X_Reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//复位</span>
+    <span class="token function">SX126X_WakeUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//唤醒</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">SX126X_GetIsExist</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">//验证MCU SPI功能是否正常</span>
+    <span class="token punctuation">&#123;</span>
+      <span class="token function">debug_printf</span><span class="token punctuation">(</span><span class="token string">"sx126x is not existed!\r\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifdef</span> <span class="token expression">USE_TCXO</span></span>
+    <span class="token comment">//有源晶振</span>
+    <span class="token function">SX126X_SetStandby</span><span class="token punctuation">(</span>STDBY_RC<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">SX126X_SetDio3AsTcxoCtrl</span><span class="token punctuation">(</span>TCXO_CTRL_2_2V<span class="token punctuation">,</span>DEF_TCXO_CTRL_TIME<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">SX126X_SetStandby</span><span class="token punctuation">(</span>STDBY_XOSC<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">else</span></span>
+    <span class="token comment">//无源晶振</span>
+    <span class="token function">SX126X_SetStandby</span><span class="token punctuation">(</span>STDBY_XOSC<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span>
+    <span class="token function">SX126X_WriteRegister</span><span class="token punctuation">(</span>REG_XTA_TRIM<span class="token punctuation">,</span>DEF_XTA_TRIM_VALUE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//负载电容</span>
+    <span class="token function">SX126X_WriteRegister</span><span class="token punctuation">(</span>REG_XTB_TRIM<span class="token punctuation">,</span>DEF_XTA_TRIM_VALUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
     
-    SX126X_SetRegulatorMode(USE_DCDC);
-    SX126X_SetBufferBaseAddress(0x00, 0x00);
-    SX126X_SetDio2AsRfSwitchCtrl(TRUE);
+    <span class="token function">SX126X_SetRegulatorMode</span><span class="token punctuation">(</span>USE_DCDC<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">SX126X_SetBufferBaseAddress</span><span class="token punctuation">(</span><span class="token number">0x00</span><span class="token punctuation">,</span> <span class="token number">0x00</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">SX126X_SetDio2AsRfSwitchCtrl</span><span class="token punctuation">(</span>TRUE<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-&#125;</code></pre>
+<span class="token punctuation">&#125;</span></code></pre>
 <p><font color=#FF0000><strong>请注意：内部负载电容的设置必须在调用<code>SX126X_SetStandby(STDBY_XOSC);</code>函数后执行，否则写入负载电容寄存器的值会被覆盖</strong></font>。</p>
 <h5 id="SetTx">SetTx</h5>
 <p><strong>切换至Tx模式的具体步骤：</strong></p>
@@ -769,50 +769,50 @@ $$</p>
 <p>LoRa调制参数设置：①扩频因子SF；②调制带宽BW；③编码率CR；④低空速优化ldro。</p>
 <p>GFSK调制参数设置：①比特率br；②脉冲整形PulseShape；③接受带宽Bandwidth；④Fdev频偏。</p>
 <p>源码实现如下：</p>
-<pre class="language-C" data-language="C"><code class="language-C">void SX126X_SetModulationParams( ModulationParams_t *modulationParams )
-&#123;
-    uint8_t n;
-    uint32_t tempVal &#x3D; 0;
-    uint8_t buf[8] &#x3D; &#123; 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 &#125;;
+<pre class="language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">SX126X_SetModulationParams</span><span class="token punctuation">(</span> ModulationParams_t <span class="token operator">*</span>modulationParams <span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token class-name">uint8_t</span> n<span class="token punctuation">;</span>
+    <span class="token class-name">uint32_t</span> tempVal <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token class-name">uint8_t</span> buf<span class="token punctuation">[</span><span class="token number">8</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token number">0x00</span><span class="token punctuation">,</span> <span class="token number">0x00</span><span class="token punctuation">,</span> <span class="token number">0x00</span><span class="token punctuation">,</span> <span class="token number">0x00</span><span class="token punctuation">,</span> <span class="token number">0x00</span><span class="token punctuation">,</span> <span class="token number">0x00</span><span class="token punctuation">,</span> <span class="token number">0x00</span><span class="token punctuation">,</span> <span class="token number">0x00</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 
-    &#x2F;&#x2F; Check if required configuration corresponds to the stored packet type
-    &#x2F;&#x2F; If not, silently update radio packet type
-    if( PacketType !&#x3D; modulationParams-&gt;PacketType )
-    &#123;
-        SX126xSetPacketType( modulationParams-&gt;PacketType );
-    &#125;
+    <span class="token comment">// Check if required configuration corresponds to the stored packet type</span>
+    <span class="token comment">// If not, silently update radio packet type</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span> PacketType <span class="token operator">!=</span> modulationParams<span class="token operator">-></span>PacketType <span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token function">SX126xSetPacketType</span><span class="token punctuation">(</span> modulationParams<span class="token operator">-></span>PacketType <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-    switch( modulationParams-&gt;PacketType )
-    &#123;
-    case PACKET_TYPE_GFSK:
-        n &#x3D; 8;
-        tempVal &#x3D; ( uint32_t )( 32 * ( ( double )XTAL_FREQ &#x2F; ( double )modulationParams-&gt;Params.Gfsk.BitRate ) );
-        buf[0] &#x3D; ( tempVal &gt;&gt; 16 ) &amp; 0xFF;
-        buf[1] &#x3D; ( tempVal &gt;&gt; 8 ) &amp; 0xFF;
-        buf[2] &#x3D; tempVal &amp; 0xFF;
-        buf[3] &#x3D; modulationParams-&gt;Params.Gfsk.ModulationShaping;
-        buf[4] &#x3D; modulationParams-&gt;Params.Gfsk.Bandwidth;
-        tempVal &#x3D; ( uint32_t )( ( double )modulationParams-&gt;Params.Gfsk.Fdev &#x2F; ( double )FREQ_STEP );
-        buf[5] &#x3D; ( tempVal &gt;&gt; 16 ) &amp; 0xFF;
-        buf[6] &#x3D; ( tempVal &gt;&gt; 8 ) &amp; 0xFF;
-        buf[7] &#x3D; ( tempVal&amp; 0xFF );
-        SX126xWriteCommand( RADIO_SET_MODULATIONPARAMS, buf, n );
-        break;
-    case PACKET_TYPE_LORA:
-        n &#x3D; 4;
-        buf[0] &#x3D; modulationParams-&gt;Params.LoRa.SpreadingFactor;
-        buf[1] &#x3D; modulationParams-&gt;Params.LoRa.Bandwidth;
-        buf[2] &#x3D; modulationParams-&gt;Params.LoRa.CodingRate;
-        buf[3] &#x3D; modulationParams-&gt;Params.LoRa.LowDatarateOptimize;
+    <span class="token keyword">switch</span><span class="token punctuation">(</span> modulationParams<span class="token operator">-></span>PacketType <span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+    <span class="token keyword">case</span> PACKET_TYPE_GFSK<span class="token operator">:</span>
+        n <span class="token operator">=</span> <span class="token number">8</span><span class="token punctuation">;</span>
+        tempVal <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token class-name">uint32_t</span> <span class="token punctuation">)</span><span class="token punctuation">(</span> <span class="token number">32</span> <span class="token operator">*</span> <span class="token punctuation">(</span> <span class="token punctuation">(</span> <span class="token keyword">double</span> <span class="token punctuation">)</span>XTAL_FREQ <span class="token operator">/</span> <span class="token punctuation">(</span> <span class="token keyword">double</span> <span class="token punctuation">)</span>modulationParams<span class="token operator">-></span>Params<span class="token punctuation">.</span>Gfsk<span class="token punctuation">.</span>BitRate <span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        buf<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span> tempVal <span class="token operator">>></span> <span class="token number">16</span> <span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0xFF</span><span class="token punctuation">;</span>
+        buf<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span> tempVal <span class="token operator">>></span> <span class="token number">8</span> <span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0xFF</span><span class="token punctuation">;</span>
+        buf<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> tempVal <span class="token operator">&amp;</span> <span class="token number">0xFF</span><span class="token punctuation">;</span>
+        buf<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> modulationParams<span class="token operator">-></span>Params<span class="token punctuation">.</span>Gfsk<span class="token punctuation">.</span>ModulationShaping<span class="token punctuation">;</span>
+        buf<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">=</span> modulationParams<span class="token operator">-></span>Params<span class="token punctuation">.</span>Gfsk<span class="token punctuation">.</span>Bandwidth<span class="token punctuation">;</span>
+        tempVal <span class="token operator">=</span> <span class="token punctuation">(</span> <span class="token class-name">uint32_t</span> <span class="token punctuation">)</span><span class="token punctuation">(</span> <span class="token punctuation">(</span> <span class="token keyword">double</span> <span class="token punctuation">)</span>modulationParams<span class="token operator">-></span>Params<span class="token punctuation">.</span>Gfsk<span class="token punctuation">.</span>Fdev <span class="token operator">/</span> <span class="token punctuation">(</span> <span class="token keyword">double</span> <span class="token punctuation">)</span>FREQ_STEP <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        buf<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span> tempVal <span class="token operator">>></span> <span class="token number">16</span> <span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0xFF</span><span class="token punctuation">;</span>
+        buf<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span> tempVal <span class="token operator">>></span> <span class="token number">8</span> <span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0xFF</span><span class="token punctuation">;</span>
+        buf<span class="token punctuation">[</span><span class="token number">7</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span> tempVal<span class="token operator">&amp;</span> <span class="token number">0xFF</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">SX126xWriteCommand</span><span class="token punctuation">(</span> RADIO_SET_MODULATIONPARAMS<span class="token punctuation">,</span> buf<span class="token punctuation">,</span> n <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">case</span> PACKET_TYPE_LORA<span class="token operator">:</span>
+        n <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+        buf<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> modulationParams<span class="token operator">-></span>Params<span class="token punctuation">.</span>LoRa<span class="token punctuation">.</span>SpreadingFactor<span class="token punctuation">;</span>
+        buf<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> modulationParams<span class="token operator">-></span>Params<span class="token punctuation">.</span>LoRa<span class="token punctuation">.</span>Bandwidth<span class="token punctuation">;</span>
+        buf<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> modulationParams<span class="token operator">-></span>Params<span class="token punctuation">.</span>LoRa<span class="token punctuation">.</span>CodingRate<span class="token punctuation">;</span>
+        buf<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> modulationParams<span class="token operator">-></span>Params<span class="token punctuation">.</span>LoRa<span class="token punctuation">.</span>LowDatarateOptimize<span class="token punctuation">;</span>
 
-        SX126xWriteCommand( RADIO_SET_MODULATIONPARAMS, buf, n );
+        <span class="token function">SX126xWriteCommand</span><span class="token punctuation">(</span> RADIO_SET_MODULATIONPARAMS<span class="token punctuation">,</span> buf<span class="token punctuation">,</span> n <span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-        break;
-    default:
-    case PACKET_TYPE_NONE:
-        return;
-    &#125;
-&#125;</code></pre>
+        <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token keyword">default</span><span class="token operator">:</span>
+    <span class="token keyword">case</span> PACKET_TYPE_NONE<span class="token operator">:</span>
+        <span class="token keyword">return</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 <h4 id="5-获取芯片状态以及设备错误状态">5.获取芯片状态以及设备错误状态</h4>
 <p><font color=#FF0000><strong>在开发调试时遇到芯片异常不工作时，可以采用以下这两个函数进行排查问题原因</strong></font>。</p>
 <h5 id="GetStatus">GetStatus</h5>
@@ -985,7 +985,7 @@ $$</p>
       <div class="license-meta-item">
         <div class="license-meta-title">更新于</div>
         <div class="license-meta-text">
-          2022-10-11
+          2022-10-14
         </div>
       </div>
     <div class="license-meta-item">
