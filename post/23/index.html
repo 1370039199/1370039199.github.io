@@ -23,31 +23,31 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"hyh.cool","root":"/","images":"/resources/img/","scheme":"Gemini","darkmode":true,"version":"8.12.3","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"flat"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"utterances","storage":true,"lazyload":false,"nav":null,"activeClass":"utterances"},"stickytabs":true,"motion":{"enable":false,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="https://cdn.staticfile.org/hexo-theme-next/8.12.3/config.min.js"></script>
 
-    <meta name="description" content="一些常用算法运用太差，来这补习~~😢">
+    <meta name="description" content="一些常用数据结构基础太差，来这补习~~😢">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LeetCode ----双指针技巧">
-<meta property="og:url" content="https://hyh.cool/post/4/index.html">
+<meta property="og:title" content="LeetCode ----循环队列">
+<meta property="og:url" content="https://hyh.cool/post/23/index.html">
 <meta property="og:site_name" content="Blog">
-<meta property="og:description" content="一些常用算法运用太差，来这补习~~😢">
+<meta property="og:description" content="一些常用数据结构基础太差，来这补习~~😢">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202208291822183.png">
-<meta property="article:published_time" content="2022-08-12T10:00:00.000Z">
-<meta property="article:modified_time" content="2022-10-25T13:29:46.926Z">
+<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210241642328.png">
+<meta property="article:published_time" content="2022-10-24T10:00:00.000Z">
+<meta property="article:modified_time" content="2022-10-25T13:53:53.763Z">
 <meta property="article:author" content="hyh">
 <meta property="article:tag" content="LeetCode">
-<meta property="article:tag" content="算法">
+<meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202208291822183.png">
+<meta name="twitter:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210241642328.png">
 
 
-<link rel="canonical" href="https://hyh.cool/post/4/">
+<link rel="canonical" href="https://hyh.cool/post/23/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hyh.cool/post/4/","path":"/post/4/","title":"LeetCode ----双指针技巧"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://hyh.cool/post/23/","path":"/post/23/","title":"LeetCode ----循环队列"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>LeetCode ----双指针技巧 | Blog</title>
+<title>LeetCode ----循环队列 | Blog</title>
   
 
 
@@ -154,7 +154,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7"><span class="nav-text">双指针技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98"><span class="nav-text">一个经典问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8"><span class="nav-text">环形链表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-text">方法一：哈希表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88"><span class="nav-text">方法二：快慢指针</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E9%98%9F%E5%88%97%E8%AE%BE%E8%AE%A1"><span class="nav-text">循环队列设计</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -204,7 +204,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://hyh.cool/post/4/">
+    <link itemprop="mainEntityOfPage" href="https://hyh.cool/post/23/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/resources/img/avatar.jpg">
@@ -217,12 +217,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="LeetCode ----双指针技巧 | Blog">
+      <meta itemprop="name" content="LeetCode ----循环队列 | Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          LeetCode ----双指针技巧
+          LeetCode ----循环队列
         </h1>
 
         <div class="post-meta-container">
@@ -233,7 +233,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-08-12 18:00:00" itemprop="dateCreated datePublished" datetime="2022-08-12T18:00:00+08:00">2022-08-12</time>
+      <time title="创建时间：2022-10-24 18:00:00" itemprop="dateCreated datePublished" datetime="2022-10-24T18:00:00+08:00">2022-10-24</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -255,110 +255,188 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="双指针技巧">双指针技巧</h3>
-<h4 id="一个经典问题">一个经典问题</h4>
-<blockquote>
-<p>给定一个链表，判断链表中是否有环</p>
-</blockquote>
-<p>我们在链表中使用两个速度不同的指针时会遇到的情况：</p>
-<ol>
-<li>如果没有环，快指针将停在链表末尾。</li>
-<li>如果有环，快指针最终将与慢指针相遇。</li>
-</ol>
-<p>一个安全的选择是每次移动慢指针一步，而移动快指针两步，每一次迭代，快指针将额外移动一步，如果环的长度为M，经过M次迭代后，快指针会多绕环一周，并赶上慢指针。</p>
-<h4 id="环形链表">环形链表</h4>
-<blockquote>
-<p>题目描述：</p>
-<p>给定一个链表的头节点<code>head</code>，返回链表开始入环的第一个节点，如果链表无环，则返回<code>null</code>。</p>
-<p>如果链表中有某个节点，可以通过连续跟踪<code>next</code>指针再次到达，则链表中存在环。为了表示给定链表中的环，使用整数<code>pos</code>来表示链表尾连接到链表中的位置（索引从0开始）。如果<code>pos</code>是<code>-1</code>，则在该链表中没有环。</p>
-<p>注意：pos不作为参数进行传递，仅仅是为了标识链表的实际情况。不允许修改链表。</p>
-</blockquote>
-<h5 id="方法一：哈希表">方法一：哈希表</h5>
-<p><strong>思路与算法：</strong> 遍历链表中的每个节点，并将它记录下来；一旦遇到了此前遍历过的节点，就可以判定链表中存在环。借助哈希表可以实现。</p>
-<pre class="language-c" data-language="c"><code class="language-c"><span class="token keyword">struct</span> <span class="token class-name">hashTable</span>
+        <h2 id="循环队列设计">循环队列设计</h2>
+<p>循环队列，可以通过一个数组进行模拟，通过操作数组的索引构建一个虚拟的首尾相连的环。在循环队列结构中，设置一个队尾$rear$与队首$front$，且大小固定，结构如下图所示：</p>
+<img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210241642328.png"  style="zoom:33%;" />
+<p>在循环队列中，当队列为空，可知$front = rear$;而当所有队列空间全占满时，也有$front = rear$；<font color="#FF0000"><strong>为了区别这两种情况，假设队列使用的数组有$capacity$个存储空间，则此时规定循环队列最多只能有$capacity-1$个队列元素.当循环队列中只剩下一个空存储单元，则表示队列已满</strong></font>。</p>
+<p>根据以上条件，<font color="#FF0000">队列判空</font>的条件是：<br>
+$$<br>
+front = rear<br>
+$$<br>
+<font color="#FF0000">队列判满</font>的条件是：<br>
+$$<br>
+front = (rear + 1) \quad mod \quad capacity<br>
+$$<br>
+对于一个固定大小的数组，只要知道队尾$rear$与队首$front$，即可计算出队列当前的长度：<br>
+$$<br>
+(rear-front+capacity) \quad mod \quad capacity<br>
+$$<br>
+循环队列的属性如下：</p>
+<ul>
+<li>$elements$：一个固定大小的数组，用于保存循环队列的元素。</li>
+<li>$capacity$：循环队列的容量，即队列中最多可以容纳的元素数量。</li>
+<li>$front$：队列首元素对应的数组索引。</li>
+<li>$rear$：<font color = #FF0000>队列尾元素对应的索引的<strong>下一个索引</strong></font>*。</li>
+</ul>
+<p>循环队列的接口方法如下：</p>
+<ul>
+<li>$MyCircularQueueCreate(int\ k)$：初始化队列，同时$base$数组的空间初始化大小为$k+1$。$front，rear$全部初始化为0。</li>
+<li>$enQueue(int\ value)$：在队列的尾部插入一个元素，并同时将队尾的索引$rear$更新为$(rear+1)\ mod\ capacity$。</li>
+<li>$deQueue()$：从队首取出一个元素，并同时将队首的索引front更新为$(front+1)\ mod\ capacity$。</li>
+<li>$Front()$：返回队首的元素，需要检测队列是否为空。</li>
+<li>$Rear()$：返回队尾的元素，需要检测队列是否为空。</li>
+<li>$isEmpty()$：检测队列是否为空，根据之前的定义只需判断$rear$是否等于$front$。</li>
+<li>$isFull()$：检测队列是否已满，根据之前的定义只需判断$front$是否等于$(rear+1)\ mod\ capacity$。</li>
+</ul>
+<p>源码实现：</p>
+<pre class="language-c" data-language="c"><code class="language-c"><span class="token comment">//定义循环队列结构体</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span>
 <span class="token punctuation">&#123;</span>
-    <span class="token keyword">struct</span> <span class="token class-name">ListNode</span><span class="token operator">*</span> key<span class="token punctuation">;</span>
-    UT_hash_handle hh<span class="token punctuation">;</span> <span class="token comment">/*makes this structure hashable*/</span>
+    <span class="token keyword">int</span> front<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> rear<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> capacity<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> <span class="token operator">*</span>elements<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>MyCircularQueue<span class="token punctuation">;</span>
+
+<span class="token comment">//循环队列创建、初始化</span>
+MyCircularQueue<span class="token operator">*</span> <span class="token function">myCircularQueueCreate</span><span class="token punctuation">(</span><span class="token keyword">int</span> k<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    MyCircularQueue <span class="token operator">*</span>obj <span class="token operator">=</span> <span class="token punctuation">(</span>MyCircularQueue<span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span>MyCircularQueue<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    obj<span class="token operator">-></span>capacity <span class="token operator">=</span> k <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    obj<span class="token operator">-></span>rear <span class="token operator">=</span> obj<span class="token operator">-></span>front <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    obj<span class="token operator">-></span>elements <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token operator">*</span> obj<span class="token operator">-></span>capacity<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> obj<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 
-<span class="token keyword">struct</span> <span class="token class-name">hashTable</span><span class="token operator">*</span> hashTable<span class="token punctuation">;</span>
-
-<span class="token keyword">struct</span> <span class="token class-name">hashTable</span><span class="token operator">*</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">ListNode</span><span class="token operator">*</span> pkey<span class="token punctuation">)</span>
+<span class="token comment">//判断队列是否为满</span>
+bool <span class="token function">myCircularQueueIsFull</span><span class="token punctuation">(</span>MyCircularQueue <span class="token operator">*</span>obj<span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
-    <span class="token keyword">struct</span> <span class="token class-name">hashTable</span><span class="token operator">*</span> tmp<span class="token punctuation">;</span>
-    <span class="token function">HASH_FIND_PTR</span><span class="token punctuation">(</span>hashtable<span class="token punctuation">,</span> <span class="token operator">&amp;</span>pkey<span class="token punctuation">,</span> tmp<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//第一个参数：刚开始定义的空白哈希表;第二个参数：要查找的key值;第三个参数：新建的指针容器</span>
-    <span class="token keyword">return</span> tmp<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>obj<span class="token operator">-></span>rear <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> obj<span class="token operator">-></span>capacity <span class="token operator">==</span> obj<span class="token operator">-></span>front<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 
-<span class="token keyword">void</span> <span class="token function">insert</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">ListNode</span><span class="token operator">*</span> pkey<span class="token punctuation">)</span>
+<span class="token comment">//判断队列是否为空</span>
+bool <span class="token function">myCircularQueueIsEmpty</span><span class="token punctuation">(</span>MyCircularQueue <span class="token operator">*</span>obj<span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
-    <span class="token keyword">struct</span> <span class="token class-name">hashTable</span><span class="token operator">*</span> tmp <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">hashTable</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    tmp<span class="token operator">-></span>key <span class="token operator">=</span> pkey<span class="token punctuation">;</span>
-    <span class="token function">HASH_ADD_PTR</span><span class="token punctuation">(</span>hashtable<span class="token punctuation">,</span> key<span class="token punctuation">,</span> tmp<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//向哈希表中添加新的key值</span>
+    <span class="token keyword">return</span> obj<span class="token operator">-></span>rear <span class="token operator">==</span> obj<span class="token operator">-></span>front<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 
-<span class="token keyword">struct</span> <span class="token class-name">ListNode</span><span class="token operator">*</span> <span class="token function">detectCycle</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">ListNode</span><span class="token operator">*</span> head<span class="token punctuation">)</span>
+<span class="token comment">//入队</span>
+bool <span class="token function">myCircularQueueEnQueue</span><span class="token punctuation">(</span>MyCircularQueue <span class="token operator">*</span>obj<span class="token punctuation">,</span><span class="token keyword">int</span> value<span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
-    hashTable <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span>head <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token comment">//遍历链表中的节点</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">myCircularQueueIsFull</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span>
     <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">find</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
-        <span class="token punctuation">&#123;</span>
-            <span class="token keyword">return</span> head<span class="token punctuation">;</span>
-		<span class="token punctuation">&#125;</span>
-        <span class="token function">insert</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//记录节点到哈希表中</span>
-        head <span class="token operator">=</span> head<span class="token operator">-></span>next<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> false<span class="token punctuation">;</span>
 	<span class="token punctuation">&#125;</span>
-    <span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span></code></pre>
-<h6 id="复杂度分析">复杂度分析</h6>
-<ul>
-<li>时间复杂度：$O(N)$,其中$N$为链表中节点的数目。我们需要访问链表中的每一个节点。</li>
-<li>空间复杂度：$O(N)$,其中$N$为链表中节点的数目。我们需要将链表中的每个节点都保存在哈希表中。</li>
-</ul>
-<h5 id="方法二：快慢指针">方法二：快慢指针</h5>
-<p>思路与算法：我们使用两个指针，$fast$与$slow$。它们起始都位于链表的头部。随后，$slow$指针每次向后移动一个位置，而$fast$指针向后移动两个位置。如果链表中存在环，则$fast$指针最终将再次与$slow$指针在环中相遇。</p>
-<p>如下图所示，设链表中环外部分的长度为$a$。$slow$指针进入环后，又走了$b$的距离与$fast$相遇。此时$fast$指针已经走完了环的$n$圈，因此它走过的总距离为$a+n(b+c)+b=a+(n+1)b+nc$.</p>
-<p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202208291822183.png" alt=""></p>
-<p>根据题意，任意时刻，$fast$指针走过的距离都为$slow$指针的$2$倍。因此，可得：<br>
-$$<br>
-a+(n+1)b+nc = 2(a+b)<br>
-$$<br>
-即为：<br>
-$$<br>
-a=c+(n-1)(b+c)<br>
-$$<br>
-可以发现：从相遇点到入环点的距离加上$n-1$圈的环长，恰好等于从链表头部到入环点的距离。</p>
-<p>即当发现$slow$与$fast$相遇时，在额外使用一个指针$ptr$。起始，它指向链表头部；随后它与$slow$每次向后移动一个位置。最终，它们会在入环点相遇。</p>
-<pre class="language-c" data-language="c"><code class="language-c"><span class="token keyword">struct</span> <span class="token class-name">ListNode</span><span class="token operator">*</span> <span class="token function">detectCycle</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">ListNode</span><span class="token operator">*</span> head<span class="token punctuation">)</span>
+    obj<span class="token operator">-></span>elements<span class="token punctuation">[</span>obj<span class="token operator">-></span>rear<span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">;</span>
+    obj<span class="token operator">-></span>rear <span class="token operator">=</span> <span class="token punctuation">(</span>obj<span class="token operator">-></span>rear <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> obj<span class="token operator">-></span>capacity<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> true<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">//出队</span>
+bool <span class="token function">myCircularQueueDeQueue</span><span class="token punctuation">(</span>MyCircularQueue <span class="token operator">*</span>obj<span class="token punctuation">)</span>
 <span class="token punctuation">&#123;</span>
-	<span class="token keyword">struct</span> <span class="token class-name">ListNode</span> <span class="token operator">*</span>slow <span class="token operator">=</span> head<span class="token punctuation">,</span><span class="token operator">*</span>fast <span class="token operator">=</span> head<span class="token punctuation">;</span>
-	<span class="token keyword">while</span><span class="token punctuation">(</span>fast <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
-	<span class="token punctuation">&#123;</span>
-		slow <span class="token operator">=</span> slow<span class="token operator">-></span>next<span class="token punctuation">;</span>
-		<span class="token keyword">if</span><span class="token punctuation">(</span>fast<span class="token operator">-></span>next <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
-		<span class="token punctuation">&#123;</span>
-			<span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
-		<span class="token punctuation">&#125;</span>
-        fast <span class="token operator">=</span> fast<span class="token operator">-></span>next<span class="token operator">-></span>next<span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>fast <span class="token operator">==</span> slow<span class="token punctuation">)</span>
-        <span class="token punctuation">&#123;</span>
-            <span class="token keyword">struct</span> <span class="token class-name">ListNode</span> <span class="token operator">*</span>ptr <span class="token operator">=</span> head<span class="token punctuation">;</span>
-            <span class="token keyword">while</span><span class="token punctuation">(</span>ptr <span class="token operator">!=</span> slow<span class="token punctuation">)</span>
-            <span class="token punctuation">&#123;</span>
-                ptr <span class="token operator">=</span> ptr<span class="token operator">-></span>next<span class="token punctuation">;</span>
-                slow <span class="token operator">=</span> slow<span class="token operator">-></span>next<span class="token punctuation">;</span>
-			<span class="token punctuation">&#125;</span>
-            <span class="token keyword">return</span> ptr<span class="token punctuation">;</span>
-		<span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">myCircularQueueIsEmpty</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> false<span class="token punctuation">;</span>
 	<span class="token punctuation">&#125;</span>
-    <span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
+    obj<span class="token operator">-></span>front <span class="token operator">=</span> <span class="token punctuation">(</span>obj<span class="token operator">-></span>front <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> obj<span class="token operator">-></span>capacity<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> true<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">//返回队首元素</span>
+<span class="token keyword">int</span> <span class="token function">myCircularQueueFront</span><span class="token punctuation">(</span>MyCircularQueue <span class="token operator">*</span>obj<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">myCircularQueueIsEmpty</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> obj<span class="token operator">-></span>elements<span class="token punctuation">[</span>obj<span class="token operator">-></span>front<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">//返回队尾元素</span>
+<span class="token keyword">int</span> <span class="token function">myCircularQueueRear</span><span class="token punctuation">(</span>MyCircularQueue <span class="token operator">*</span>obj<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">myCircularQueueIsEmpty</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> obj<span class="token operator">-></span>elements<span class="token punctuation">[</span><span class="token punctuation">(</span>obj<span class="token operator">-></span>rear<span class="token operator">-</span><span class="token number">1</span><span class="token operator">+</span>obj<span class="token operator">-></span>capacity<span class="token punctuation">)</span><span class="token operator">%</span>obj<span class="token operator">-></span>capacity<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">//释放队列空间</span>
+<span class="token keyword">void</span> <span class="token function">myCircularQueueFree</span><span class="token punctuation">(</span>MyCircularQueue <span class="token operator">*</span>obj<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token function">free</span><span class="token punctuation">(</span>obj<span class="token operator">-></span>elements<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">free</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-<h6 id="复杂度分析-2">复杂度分析</h6>
-<ul>
-<li>时间复杂度：$O(N)$,其中$N$为链表中节点的数目。在最初判断快慢指针是否相遇时，$slow$指针走过的距离不会超过链表的总长度；随后寻找入环点时，走过的距离也不会超过链表的总长度。因此总的执行时间为$O(N)+O(N)=O(N)$.</li>
-<li>空间复杂度：$O(1)$。我们只使用了$slow、fast、ptr$三个指针。</li>
-</ul>
+<p><font color = #FF0000>在射频通信程序中，经常使用环形缓冲区作为存储通信中发送和接收的数据，上述代码可变形为<strong>通信环形队列</strong>作为开发使用</font>。</p>
+<pre class="language-c" data-language="c"><code class="language-c"><span class="token comment">//定义循环队列结构体</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span>
+<span class="token punctuation">&#123;</span>
+    INT16U front<span class="token punctuation">;</span>
+    INT16U rear<span class="token punctuation">;</span>
+    INT16U capacity<span class="token punctuation">;</span>
+    INT8U <span class="token operator">*</span>elements<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>Queue_t<span class="token punctuation">;</span>
+
+<span class="token comment">//环形队列创建</span>
+<span class="token keyword">void</span> <span class="token function">Queue_Create</span><span class="token punctuation">(</span>Queue_t <span class="token operator">*</span>queue<span class="token punctuation">,</span>INT8U <span class="token operator">*</span>buffer<span class="token punctuation">,</span>INT16U size<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    queue<span class="token operator">-></span>front <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    queue<span class="token operator">-></span>rear <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    queue<span class="token operator">-></span>capacity <span class="token operator">=</span> size <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    queue<span class="token operator">-></span>elements <span class="token operator">=</span> buffer<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">//判断队列是否为空</span>
+bool <span class="token function">Queue_IsEmpty</span><span class="token punctuation">(</span>Queue_t <span class="token operator">*</span>queue<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>queue<span class="token operator">-></span>front <span class="token operator">==</span> queue<span class="token operator">-></span>rear<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">//判断队列是否为满</span>
+bool <span class="token function">Queue_IsFull</span><span class="token punctuation">(</span>Queue_t <span class="token operator">*</span>queue<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>queue<span class="token operator">-></span>rear<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span>queue<span class="token operator">-></span>capacity <span class="token operator">==</span> queue<span class="token operator">-></span>front<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">//入队</span>
+bool <span class="token function">Queue_Push</span><span class="token punctuation">(</span>Queue_t <span class="token operator">*</span>queue<span class="token punctuation">,</span>INT8U val<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">Queue_IsFull</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> false<span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+    queue<span class="token operator">-></span>rear <span class="token operator">=</span> val<span class="token punctuation">;</span>
+    queue<span class="token operator">-></span>rear <span class="token operator">=</span> <span class="token punctuation">(</span>queue<span class="token operator">-></span>rear <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> queue<span class="token operator">-></span>capacity<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> true<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">//出队</span>
+bool <span class="token function">Queue_Pop</span><span class="token punctuation">(</span>Queue_t <span class="token operator">*</span>queue<span class="token punctuation">,</span>INT8U <span class="token operator">*</span>val<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    INT8U val<span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">Queue_IsEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> false<span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+    <span class="token operator">*</span>val <span class="token operator">=</span> queue<span class="token operator">-></span>elements<span class="token punctuation">[</span>queue<span class="token operator">-></span>front<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    queue<span class="token operator">-></span>front <span class="token operator">=</span> <span class="token punctuation">(</span>queue<span class="token operator">-></span>front<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">%</span> queue<span class="token operator">-></span>capacity<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> true<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">//获取队列有效数据大小</span>
+INT8U <span class="token function">Queue_GetValidSize</span><span class="token punctuation">(</span>Queue_t <span class="token operator">*</span>queue<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>queue<span class="token operator">-></span>rear <span class="token operator">-</span> queue<span class="token operator">-></span>front <span class="token operator">+</span> queue<span class="token operator">-></span>capacity<span class="token punctuation">)</span> <span class="token operator">%</span> queue<span class="token operator">-></span>capacity<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">//队列刷新</span>
+<span class="token keyword">void</span> <span class="token function">Queue_Flush</span><span class="token punctuation">(</span>Queue_t <span class="token operator">*</span>queue<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    queue<span class="token operator">-></span>front <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    queue<span class="token operator">-></span>rear <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span></code></pre>
 
     </div>
 
@@ -376,9 +454,9 @@ $$<br>
 
 
 <div class="license">
-  <div class="license-title">LeetCode ----双指针技巧</div>
+  <div class="license-title">LeetCode ----循环队列</div>
   <div class="license-link">
-    <a href="https://hyh.cool/post/4/">https://hyh.cool/post/4/</a>
+    <a href="https://hyh.cool/post/23/">https://hyh.cool/post/23/</a>
   </div>
   <div class="license-meta">
     <div class="license-meta-item">
@@ -390,7 +468,7 @@ $$<br>
       <div class="license-meta-item">
         <div class="license-meta-title">发布于</div>
         <div class="license-meta-text">
-          2022-08-12
+          2022-10-24
         </div>
       </div>
       <div class="license-meta-item">
@@ -415,20 +493,20 @@ $$<br>
 
           <div class="post-tags">
               <a href="/tags/LeetCode/" rel="tag"><i class="fa fa-tag"></i> LeetCode</a>
-              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"><i class="fa fa-tag"></i> 数据结构</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/post/7/" rel="prev" title="To do List">
-                  <i class="fa fa-chevron-left"></i> To do List
+                <a href="/post/24/" rel="prev" title="LeetCode ----贪心算法">
+                  <i class="fa fa-chevron-left"></i> LeetCode ----贪心算法
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/post/6/" rel="next" title="硬件设计学习笔记（记录平时学习到的知识点）">
-                  硬件设计学习笔记（记录平时学习到的知识点） <i class="fa fa-chevron-right"></i>
+                <a href="/post/22/" rel="next" title="《非暴力沟通》读书笔记">
+                  《非暴力沟通》读书笔记 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
