@@ -30,14 +30,19 @@
 <meta property="og:site_name" content="Blog">
 <meta property="og:description" content="一些常用算法运用太差，来这补习~~😢">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202208291822183.png">
-<meta property="article:published_time" content="2022-08-12T10:00:00.000Z">
-<meta property="article:modified_time" content="2022-10-25T13:29:46.926Z">
+<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210281519225.png">
+<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202211011105812.png">
+<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202211011137047.png">
+<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202211011400662.png">
+<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202211011400662.png">
+<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202211011418626.png">
+<meta property="article:published_time" content="2022-10-28T10:00:00.000Z">
+<meta property="article:modified_time" content="2022-11-01T14:28:06.000Z">
 <meta property="article:author" content="hyh">
 <meta property="article:tag" content="LeetCode">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202208291822183.png">
+<meta name="twitter:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210281519225.png">
 
 
 <link rel="canonical" href="https://hyh.cool/post/4/">
@@ -154,7 +159,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7"><span class="nav-text">双指针技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E4%B8%AA%E7%BB%8F%E5%85%B8%E9%97%AE%E9%A2%98"><span class="nav-text">一个经典问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8"><span class="nav-text">环形链表</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80%EF%BC%9A%E5%93%88%E5%B8%8C%E8%A1%A8"><span class="nav-text">方法一：哈希表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C%EF%BC%9A%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88"><span class="nav-text">方法二：快慢指针</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LeetCode-%E5%8F%8C%E6%8C%87%E9%92%88%E6%8A%80%E5%B7%A7"><span class="nav-text">LeetCode ----双指针技巧</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%AE%97%E6%B3%95%E8%A7%A3%E9%87%8A"><span class="nav-text">1.算法解释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E7%BC%A9%E5%87%8F%E6%90%9C%E7%B4%A2%E7%A9%BA%E9%97%B4"><span class="nav-text">2.缩减搜索空间</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#11-Container-With-Most-Water"><span class="nav-text">11.Container With Most Water</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0%EF%BC%9A"><span class="nav-text">题目描述：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A"><span class="nav-text">输入输出样例：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3%E6%80%9D%E8%B7%AF%EF%BC%9A"><span class="nav-text">题解思路：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E5%AE%9E%E7%8E%B0%EF%BC%9A"><span class="nav-text">源码实现：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#167-Two-Sum-II-Input-Array-Is-Sorted"><span class="nav-text">167.Two Sum II - Input Array Is Sorted</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0%EF%BC%9A-2"><span class="nav-text">题目描述：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-2"><span class="nav-text">输入输出样例：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3%E6%80%9D%E8%B7%AF%EF%BC%9A-2"><span class="nav-text">题解思路：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E5%AE%9E%E7%8E%B0%EF%BC%9A-2"><span class="nav-text">源码实现：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%BF%AB%E6%85%A2%E6%8C%87%E9%92%88"><span class="nav-text">3.快慢指针</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#141-Linked-List-Cycle"><span class="nav-text">141.Linked List Cycle</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0%EF%BC%9A-3"><span class="nav-text">题目描述：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-3"><span class="nav-text">输入输出样例：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3%E6%80%9D%E8%B7%AF%EF%BC%9A-3"><span class="nav-text">题解思路：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E5%AE%9E%E7%8E%B0%EF%BC%9A-3"><span class="nav-text">源码实现：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#142-Linked-List-Cycle-II"><span class="nav-text">142.Linked List Cycle II</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0%EF%BC%9A-4"><span class="nav-text">题目描述：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E6%A0%B7%E4%BE%8B%EF%BC%9A-4"><span class="nav-text">输入输出样例：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3%E6%80%9D%E8%B7%AF%EF%BC%9A-4"><span class="nav-text">题解思路：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%B5%81%E7%A8%8B%EF%BC%9A"><span class="nav-text">算法流程：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E5%AE%9E%E7%8E%B0%EF%BC%9A-4"><span class="nav-text">源码实现：</span></a></li></ol></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -233,7 +238,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2022-08-12 18:00:00" itemprop="dateCreated datePublished" datetime="2022-08-12T18:00:00+08:00">2022-08-12</time>
+      <time title="创建时间：2022-10-28 18:00:00" itemprop="dateCreated datePublished" datetime="2022-10-28T18:00:00+08:00">2022-10-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -255,110 +260,253 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="双指针技巧">双指针技巧</h3>
-<h4 id="一个经典问题">一个经典问题</h4>
+        <h2 id="LeetCode-双指针技巧">LeetCode ----双指针技巧</h2>
+<h3 id="1-算法解释">1.算法解释</h3>
+<p>双指针主要用于遍历数组，两个指针指向不同的元素，从而协同完成任务。也可以延伸到多个数组的多个指针。</p>
+<p>若两个指针指向同一数组，遍历方向相同但不会相交，则也称为<u>滑动窗口</u>（两个指针包围的区域即为当前的窗口），经常用于区间搜索。</p>
+<p>若两个指针指向同一数组，但是遍历方向相反，则可以用来进行搜索，待搜索的数组往往是排好序的。</p>
+<p>对于C++/C语言，一些常见的关于指针的操作如下：</p>
+<p><strong>指针与常量</strong>：</p>
+<pre class="language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> x<span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>p1 <span class="token operator">=</span> <span class="token operator">&amp;</span>x<span class="token punctuation">;</span><span class="token comment">//指针可以被修改，值也可以被修改。</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">*</span>p2 <span class="token operator">=</span> <span class="token operator">&amp;</span>x<span class="token punctuation">;</span><span class="token comment">//指针可以被修改，值不可以被修改(const int)。</span>
+<span class="token keyword">int</span> <span class="token operator">*</span><span class="token keyword">const</span> p3 <span class="token operator">=</span> <span class="token operator">&amp;</span>x<span class="token punctuation">;</span><span class="token comment">//指针不可以被修改(*const),值可以被修改。</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> <span class="token operator">*</span><span class="token keyword">const</span> p4 <span class="token operator">=</span> <span class="token operator">&amp;</span>x<span class="token punctuation">;</span><span class="token comment">//指针不可以被修改，值也不可以被修改。</span></code></pre>
+<p><strong>指针函数与函数指针</strong>：</p>
+<pre class="language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">//addition是指针函数，一个返回类型是指针的函数</span>
+<span class="token keyword">int</span><span class="token operator">*</span> <span class="token function">addition</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span><span class="token keyword">int</span> b<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span><span class="token operator">*</span> sum <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">(</span>a<span class="token operator">+</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> sum<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">subtraction</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span><span class="token keyword">int</span> b<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> a <span class="token operator">-</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">operation</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">,</span><span class="token keyword">int</span> y<span class="token punctuation">,</span><span class="token keyword">int</span><span class="token punctuation">(</span><span class="token operator">*</span>func<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token operator">*</span>func<span class="token punctuation">)</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>y<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">//minus 是函数指针,指向函数的指针</span>
+<span class="token keyword">int</span> <span class="token punctuation">(</span><span class="token operator">*</span>minus<span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">,</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token operator">=</span> subtraction<span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token operator">*</span>m <span class="token operator">=</span> <span class="token function">addition</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token function">operation</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token operator">*</span>m<span class="token punctuation">,</span>minus<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+<h3 id="2-缩减搜索空间">2.缩减搜索空间</h3>
+<h4 id="11-Container-With-Most-Water"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/container-with-most-water/">11.Container With Most Water</a></h4>
+<h5 id="题目描述：">题目描述：</h5>
 <blockquote>
-<p>给定一个链表，判断链表中是否有环</p>
+<p>给定一个长度为 n 的整数数组 height 。有 n 条垂线，第 i 条线的两个端点是 (i, 0) 和 (i, height[i]) 。</p>
+<p>找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。</p>
+<p>返回容器可以储存的最大水量。</p>
 </blockquote>
-<p>我们在链表中使用两个速度不同的指针时会遇到的情况：</p>
-<ol>
-<li>如果没有环，快指针将停在链表末尾。</li>
-<li>如果有环，快指针最终将与慢指针相遇。</li>
-</ol>
-<p>一个安全的选择是每次移动慢指针一步，而移动快指针两步，每一次迭代，快指针将额外移动一步，如果环的长度为M，经过M次迭代后，快指针会多绕环一周，并赶上慢指针。</p>
-<h4 id="环形链表">环形链表</h4>
+<h5 id="输入输出样例：">输入输出样例：</h5>
+<img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210281519225.png"  style="zoom: 50%;" />
 <blockquote>
-<p>题目描述：</p>
-<p>给定一个链表的头节点<code>head</code>，返回链表开始入环的第一个节点，如果链表无环，则返回<code>null</code>。</p>
-<p>如果链表中有某个节点，可以通过连续跟踪<code>next</code>指针再次到达，则链表中存在环。为了表示给定链表中的环，使用整数<code>pos</code>来表示链表尾连接到链表中的位置（索引从0开始）。如果<code>pos</code>是<code>-1</code>，则在该链表中没有环。</p>
-<p>注意：pos不作为参数进行传递，仅仅是为了标识链表的实际情况。不允许修改链表。</p>
+<p>输入：[1,8,6,2,5,4,8,3,7]<br>
+输出：49<br>
+解释：图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大值为 49。</p>
 </blockquote>
-<h5 id="方法一：哈希表">方法一：哈希表</h5>
-<p><strong>思路与算法：</strong> 遍历链表中的每个节点，并将它记录下来；一旦遇到了此前遍历过的节点，就可以判定链表中存在环。借助哈希表可以实现。</p>
-<pre class="language-c" data-language="c"><code class="language-c"><span class="token keyword">struct</span> <span class="token class-name">hashTable</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token keyword">struct</span> <span class="token class-name">ListNode</span><span class="token operator">*</span> key<span class="token punctuation">;</span>
-    UT_hash_handle hh<span class="token punctuation">;</span> <span class="token comment">/*makes this structure hashable*/</span>
-<span class="token punctuation">&#125;</span>
-
-<span class="token keyword">struct</span> <span class="token class-name">hashTable</span><span class="token operator">*</span> hashTable<span class="token punctuation">;</span>
-
-<span class="token keyword">struct</span> <span class="token class-name">hashTable</span><span class="token operator">*</span> <span class="token function">find</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">ListNode</span><span class="token operator">*</span> pkey<span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token keyword">struct</span> <span class="token class-name">hashTable</span><span class="token operator">*</span> tmp<span class="token punctuation">;</span>
-    <span class="token function">HASH_FIND_PTR</span><span class="token punctuation">(</span>hashtable<span class="token punctuation">,</span> <span class="token operator">&amp;</span>pkey<span class="token punctuation">,</span> tmp<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//第一个参数：刚开始定义的空白哈希表;第二个参数：要查找的key值;第三个参数：新建的指针容器</span>
-    <span class="token keyword">return</span> tmp<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-
-<span class="token keyword">void</span> <span class="token function">insert</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">ListNode</span><span class="token operator">*</span> pkey<span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token keyword">struct</span> <span class="token class-name">hashTable</span><span class="token operator">*</span> tmp <span class="token operator">=</span> <span class="token function">malloc</span><span class="token punctuation">(</span><span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">hashTable</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    tmp<span class="token operator">-></span>key <span class="token operator">=</span> pkey<span class="token punctuation">;</span>
-    <span class="token function">HASH_ADD_PTR</span><span class="token punctuation">(</span>hashtable<span class="token punctuation">,</span> key<span class="token punctuation">,</span> tmp<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//向哈希表中添加新的key值</span>
-<span class="token punctuation">&#125;</span>
-
-<span class="token keyword">struct</span> <span class="token class-name">ListNode</span><span class="token operator">*</span> <span class="token function">detectCycle</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">ListNode</span><span class="token operator">*</span> head<span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    hashTable <span class="token operator">=</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span>head <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token comment">//遍历链表中的节点</span>
-    <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">find</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
-        <span class="token punctuation">&#123;</span>
-            <span class="token keyword">return</span> head<span class="token punctuation">;</span>
-		<span class="token punctuation">&#125;</span>
-        <span class="token function">insert</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//记录节点到哈希表中</span>
-        head <span class="token operator">=</span> head<span class="token operator">-></span>next<span class="token punctuation">;</span>
-	<span class="token punctuation">&#125;</span>
-    <span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span></code></pre>
-<h6 id="复杂度分析">复杂度分析</h6>
+<h5 id="题解思路：">题解思路：</h5>
+<p>在初始时，左右指针分别指向数组的左右两端，设左右指针为$i，j$，指向的容器高度分别为$h_i,h_j$，此状态下$h_i,h_j$围起的面积为：<br>
+$$<br>
+S(i,j) = min(h_i,h_j) \times (j-i)<br>
+$$<br>
+无论长板或短板向中间收窄一格，都会导致容器<strong>底边宽度</strong>-1变短：</p>
 <ul>
-<li>时间复杂度：$O(N)$,其中$N$为链表中节点的数目。我们需要访问链表中的每一个节点。</li>
-<li>空间复杂度：$O(N)$,其中$N$为链表中节点的数目。我们需要将链表中的每个节点都保存在哈希表中。</li>
+<li>
+<p>若<strong>向内移动短板</strong>，围起面积的高度$min(h_i,h_j)$可能变大，因此下个围起的面积<strong>可能增大</strong>。</p>
+</li>
+<li>
+<p>若<strong>向内移动长板</strong>，围起面积的高度$min(h_i,h_j)$不变或者变小，因此下个围起的面积<strong>一定变小</strong>。</p>
+</li>
 </ul>
-<h5 id="方法二：快慢指针">方法二：快慢指针</h5>
-<p>思路与算法：我们使用两个指针，$fast$与$slow$。它们起始都位于链表的头部。随后，$slow$指针每次向后移动一个位置，而$fast$指针向后移动两个位置。如果链表中存在环，则$fast$指针最终将再次与$slow$指针在环中相遇。</p>
-<p>如下图所示，设链表中环外部分的长度为$a$。$slow$指针进入环后，又走了$b$的距离与$fast$相遇。此时$fast$指针已经走完了环的$n$圈，因此它走过的总距离为$a+n(b+c)+b=a+(n+1)b+nc$.</p>
-<p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202208291822183.png" alt=""></p>
-<p>根据题意，任意时刻，$fast$指针走过的距离都为$slow$指针的$2$倍。因此，可得：<br>
-$$<br>
-a+(n+1)b+nc = 2(a+b)<br>
-$$<br>
-即为：<br>
-$$<br>
-a=c+(n-1)(b+c)<br>
-$$<br>
-可以发现：从相遇点到入环点的距离加上$n-1$圈的环长，恰好等于从链表头部到入环点的距离。</p>
-<p>即当发现$slow$与$fast$相遇时，在额外使用一个指针$ptr$。起始，它指向链表头部；随后它与$slow$每次向后移动一个位置。最终，它们会在入环点相遇。</p>
-<pre class="language-c" data-language="c"><code class="language-c"><span class="token keyword">struct</span> <span class="token class-name">ListNode</span><span class="token operator">*</span> <span class="token function">detectCycle</span><span class="token punctuation">(</span><span class="token keyword">struct</span> <span class="token class-name">ListNode</span><span class="token operator">*</span> head<span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-	<span class="token keyword">struct</span> <span class="token class-name">ListNode</span> <span class="token operator">*</span>slow <span class="token operator">=</span> head<span class="token punctuation">,</span><span class="token operator">*</span>fast <span class="token operator">=</span> head<span class="token punctuation">;</span>
-	<span class="token keyword">while</span><span class="token punctuation">(</span>fast <span class="token operator">!=</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
-	<span class="token punctuation">&#123;</span>
-		slow <span class="token operator">=</span> slow<span class="token operator">-></span>next<span class="token punctuation">;</span>
-		<span class="token keyword">if</span><span class="token punctuation">(</span>fast<span class="token operator">-></span>next <span class="token operator">==</span> <span class="token constant">NULL</span><span class="token punctuation">)</span>
-		<span class="token punctuation">&#123;</span>
-			<span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
-		<span class="token punctuation">&#125;</span>
-        fast <span class="token operator">=</span> fast<span class="token operator">-></span>next<span class="token operator">-></span>next<span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>fast <span class="token operator">==</span> slow<span class="token punctuation">)</span>
+<p>因此，初始化双指针分列数组的左右两端，循环每轮将短的一端向内移动一格，并更新最大值，直到两个指针相遇时跳出；即可获得最大面积。</p>
+<h5 id="源码实现：">源码实现：</h5>
+<pre class="language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> <span class="token function">maxArea</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> height<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> size <span class="token operator">=</span> height<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> l<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>r<span class="token operator">=</span>size<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">//初始化双指针分列数组的左右两端</span>
+        <span class="token keyword">int</span> area <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>height<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">,</span>height<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> l<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>l <span class="token operator">!=</span> r<span class="token punctuation">)</span><span class="token comment">//左右指针相遇</span>
         <span class="token punctuation">&#123;</span>
-            <span class="token keyword">struct</span> <span class="token class-name">ListNode</span> <span class="token operator">*</span>ptr <span class="token operator">=</span> head<span class="token punctuation">;</span>
-            <span class="token keyword">while</span><span class="token punctuation">(</span>ptr <span class="token operator">!=</span> slow<span class="token punctuation">)</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>height<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> height<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token comment">//每轮将短的一端向内移动一个</span>
             <span class="token punctuation">&#123;</span>
-                ptr <span class="token operator">=</span> ptr<span class="token operator">-></span>next<span class="token punctuation">;</span>
-                slow <span class="token operator">=</span> slow<span class="token operator">-></span>next<span class="token punctuation">;</span>
-			<span class="token punctuation">&#125;</span>
-            <span class="token keyword">return</span> ptr<span class="token punctuation">;</span>
-		<span class="token punctuation">&#125;</span>
+                l<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">&#123;</span>
+                r<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            area <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>area<span class="token punctuation">,</span><span class="token function">min</span><span class="token punctuation">(</span>height<span class="token punctuation">[</span>l<span class="token punctuation">]</span><span class="token punctuation">,</span>height<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>r <span class="token operator">-</span> l<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//面积最大值更新</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> area<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span></code></pre>
+<h4 id="167-Two-Sum-II-Input-Array-Is-Sorted"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/two-sum-ii-input-array-is-sorted/">167.Two Sum II - Input Array Is Sorted</a></h4>
+<h5 id="题目描述：-2">题目描述：</h5>
+<blockquote>
+<p>给你一个<strong>下标从 1 开始</strong>的整数数组 $numbers$，该数组已<strong>按非递减顺序排列</strong>，请你从数组中找出满足相加之和等于目标数 $target$ 的两个数。如果设这两个数分别是 $numbers[index1]$ 和 $numbers[index2]$ ，则 $1 &lt;= index1 &lt; index2 &lt;= numbers.length$ 。</p>
+<p>以长度为 2 的整数数组 $[index1, index2]$ 的形式返回这两个整数的下标 $index1$ 和 $index2$。</p>
+<p>你可以假设每个输入<strong>只对应唯一的答案</strong>，而且你<strong>不可以</strong>重复使用相同的元素。</p>
+<p>你所设计的解决方案必须只使用常量级的额外空间。</p>
+</blockquote>
+<h5 id="输入输出样例：-2">输入输出样例：</h5>
+<blockquote>
+<p>输入：numbers = [2,7,11,15], target = 9<br>
+输出：[1,2]<br>
+解释：2 与 7 之和等于目标数 9 。因此 index1 = 1, index2 = 2 。返回 [1, 2] 。</p>
+</blockquote>
+<h5 id="题解思路：-2">题解思路：</h5>
+<p>以$n=8$为例，我们希望从中找出满足<code>A[i]+A[j]==target</code>的下标$(i,j)$.因为数组是<font color=#FF0000><strong>按非递减顺序排列</strong></font>的，所以可得出：</p>
+<img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202211011105812.png" style="zoom: 50%;" />
+<p>如果此时，我们判断<code>A[0]+A[7]&lt;target</code>,那么$A[0]+A[6]，A[0]+A[5]，… ,A[0]+A[2]，A[0]+A[1]$必然都小于$target$，这些都是不符合要求的解，可以一次性排除。这相当于$i=0$的情况全部排除。对应用双指针解法的代码，就是<code>i++</code>，对应于搜索空间，就是削减了一列的搜索空间，如下图所示。</p>
+<img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202211011137047.png"  style="zoom:50%;" />
+<p>同理，无论$A[i]+A[j]$的结果是大了还是小了，我们都可以排除掉一行或者一列的搜索空间。经过n步以后，就能排除所有的搜索空间。</p>
+<h5 id="源码实现：-2">源码实现：</h5>
+<pre class="language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">twoSum</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> numbers<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> size <span class="token operator">=</span> numbers<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> l<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">,</span>r<span class="token operator">=</span>size<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span><span class="token comment">//初始化双指针分列数组的左右两端</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>l <span class="token operator">!=</span> r<span class="token punctuation">)</span><span class="token comment">//左右指针相遇</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>numbers<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">+</span> numbers<span class="token punctuation">[</span>r<span class="token punctuation">]</span> <span class="token operator">&lt;</span> target<span class="token punctuation">)</span><span class="token comment">//结果比目标值小</span>
+            <span class="token punctuation">&#123;</span>
+                l<span class="token operator">++</span><span class="token punctuation">;</span><span class="token comment">//左指针向后走一格</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>numbers<span class="token punctuation">[</span>l<span class="token punctuation">]</span> <span class="token operator">+</span> numbers<span class="token punctuation">[</span>r<span class="token punctuation">]</span> <span class="token operator">></span> target<span class="token punctuation">)</span><span class="token comment">//结果比目标值大</span>
+            <span class="token punctuation">&#123;</span>
+                r<span class="token operator">--</span><span class="token punctuation">;</span><span class="token comment">//右指针向前走一格</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token keyword">else</span>
+            <span class="token punctuation">&#123;</span>
+                <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>l<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span>r<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span class="token comment">//题意为下标从1开始</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span></code></pre>
+<h3 id="3-快慢指针">3.快慢指针</h3>
+<h4 id="141-Linked-List-Cycle"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/linked-list-cycle/">141.Linked List Cycle</a></h4>
+<h5 id="题目描述：-3">题目描述：</h5>
+<blockquote>
+<p>给你一个链表的头节点 <code>head</code> ，判断链表中是否有环。</p>
+<p>如果链表中有某个节点，可以通过连续跟踪 <code>next</code> 指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数 <code>pos</code> 来表示链表尾连接到链表中的位置（<strong>索引从 0 开始</strong>）。注意：<code>pos</code> <strong>不作为参数进行传递</strong> 。仅仅是为了标识链表的实际情况。</p>
+<p>如果链表中存在环 ，则返回 <code>true</code> 。 否则，返回 <code>false</code> 。</p>
+</blockquote>
+<h5 id="输入输出样例：-3">输入输出样例：</h5>
+<img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202211011400662.png"  style="zoom:50%;" />
+<pre class="language-txt" data-language="txt"><code class="language-txt">输入：head = [3,2,0,-4], pos = 1
+输出：true
+解释：链表中有一个环，其尾部连接到第二个节点。</code></pre>
+<h5 id="题解思路：-3">题解思路：</h5>
+<p>对于链表找环路的问题，有一个通用解法----<font color=#FF0000><strong>快慢指针（Floyd判圈法）</strong></font>.给定两个指针，分别命名为$fast与slow$。起始位置在链表的头部。每次$fast$前进两步，$slow$前进一步。如果$fast$可以走到尽头，那么说明没有环路；如果$fast$在某一时刻在$slow$相遇，那么说明有环路。</p>
+<h5 id="源码实现：-3">源码实现：</h5>
+<pre class="language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">bool</span> <span class="token function">hasCycle</span><span class="token punctuation">(</span>ListNode<span class="token operator">*</span> head<span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        ListNode<span class="token operator">*</span> slow <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        ListNode<span class="token operator">*</span> fast <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        <span class="token keyword">do</span>
+        <span class="token punctuation">&#123;</span>
+           <span class="token keyword">if</span><span class="token punctuation">(</span>fast <span class="token operator">==</span> <span class="token keyword">nullptr</span> <span class="token operator">||</span> fast<span class="token operator">-></span>next <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span>
+           <span class="token punctuation">&#123;</span>
+               <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+		   <span class="token punctuation">&#125;</span>
+           slow <span class="token operator">=</span> slow<span class="token operator">-></span>next<span class="token punctuation">;</span>
+           fast <span class="token operator">=</span> fast<span class="token operator">-></span>next<span class="token operator">-></span>next<span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span><span class="token keyword">while</span><span class="token punctuation">(</span>slow <span class="token operator">!=</span> fast<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
 	<span class="token punctuation">&#125;</span>
-    <span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span></code></pre>
-<h6 id="复杂度分析-2">复杂度分析</h6>
+<p><font color=#FF0000><strong>为什么使用的是do-while循环？</strong></font></p>
+<p>如果我们使用的是<code>while</code>循环，循环条件先于循环体。由于循环条件判断快慢指针是否重合，如果我们将两个指针初始化为head，那么while就不会执行。</p>
+<h4 id="142-Linked-List-Cycle-II"><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/linked-list-cycle-ii/">142.Linked List Cycle II</a></h4>
+<h5 id="题目描述：-4">题目描述：</h5>
+<blockquote>
+<p>给定一个链表的头节点<code>head</code>，返回链表开始入环的第一个节点。 如果链表无环，则返回<code>null</code>。</p>
+<p>如果链表中有某个节点，可以通过连续跟踪<code>next</code>指针再次到达，则链表中存在环。 为了表示给定链表中的环，评测系统内部使用整数<code>pos</code>来表示链表尾连接到链表中的位置**（索引从 0 开始）**。如果<code>pos</code>是 <code>-1</code>，则在该链表中没有环。注意：<code>pos</code> 不作为参数进行传递，仅仅是为了标识链表的实际情况。</p>
+<p>不允许修改链表。</p>
+</blockquote>
+<h5 id="输入输出样例：-4">输入输出样例：</h5>
+<img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202211011400662.png"  style="zoom:50%;" />
+<pre class="language-txt" data-language="txt"><code class="language-txt">输入：head = [3,2,0,-4], pos = 1
+输出：返回索引为 1 的链表节点
+解释：链表中有一个环，其尾部连接到第二个节点。</code></pre>
+<h5 id="题解思路：-4">题解思路：</h5>
+<p>对于链表找环路的问题，有一个通用解法----<font color=#FF0000><strong>快慢指针（Floyd判圈法）</strong></font>.给定两个指针，分别命名为$fast与slow$。它们起始都位于链表的头部。$fast$每次前进两步，$slow$前进一步。随后$slow$指针进入环后，又走了$b$的距离与$fast$相遇。此时$fast$指针已经走完了环的$n$圈，因此它走过的总距离为$a+n(b+c)+b=a+(n+1)b+nc$。</p>
+<p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202211011418626.png" alt=""></p>
+<p>根据上述可得，fast指针走过的距离都为slow指针的2倍，即：</p>
+<p>即为：<br>
+$$<br>
+a + (n+1)b+nc = 2(a+b)<br>
+$$<br>
+<font color=#FF0000><strong>为什么会在slow跑不完一圈就相遇？</strong></font></p>
+<blockquote>
+<p>假设圈长为$L$，$slow$进入环的时候，假设fast距离它$n$步$(n&lt;L)$,$fast$一次走两步，$slow$一次走一步，所以没走一步，它们的距离会缩短1；那么它们的距离从$n$到$0$的过程中$slow$走了$n$步，而$n&lt;L$,即$slow$用不了一圈就会被追上。</p>
+</blockquote>
+<p>整理上式可得：<br>
+$$<br>
+a = c + (n-1)(b+c)<br>
+$$<br>
+可以发现：<font color=#FF0000><strong>从相遇点到入环点的距离加上$n-1$圈的环长</strong></font>，恰好等于<font color=#FF0000><strong>从链表头部到入环点的距离</strong></font>。</p>
+<p>因此，在算法实现上，当发现$slow$与$fast$相遇时，我们再额外使用一个指针$ptr$或者直接使用$fast$。起始，它指向链表头部；随后，它和$slow$每次向后移动一个位置，最终它们会在入环点相遇。</p>
+<h5 id="算法流程：">算法流程：</h5>
+<p><strong>1.双指针第一次相遇</strong>：</p>
+<p>设两指针<code>fast</code>，<code>slow</code>指向链表头部<code>head</code>，<code>fast</code>每轮走2步，<code>slow</code>每轮走1步：</p>
+<p>①第一种结果：<code>fast</code>指针走到链表末端，说明链表无环，直接返回<code>null</code>；</p>
+<p>②第二种结果，若有环，两指针必然会相遇。</p>
+<p>当<code>fast == slow</code>时，两指针在环中第一次相遇。此时分析$fast$和$slow$走过的<strong>步数关系</strong>：</p>
+<p>设链表共有$a+b$个节点，其中链表头部到链表入口有$a$个节点（不计链表环的入口节点），链表环有$b$个节点（这里注意a和b是未知数）；设两指针分别走了$f，s$步，则有：</p>
 <ul>
-<li>时间复杂度：$O(N)$,其中$N$为链表中节点的数目。在最初判断快慢指针是否相遇时，$slow$指针走过的距离不会超过链表的总长度；随后寻找入环点时，走过的距离也不会超过链表的总长度。因此总的执行时间为$O(N)+O(N)=O(N)$.</li>
-<li>空间复杂度：$O(1)$。我们只使用了$slow、fast、ptr$三个指针。</li>
+<li><code>fast</code>走的步数是<code>slow</code>步数的2倍，即$f=2s$；</li>
+<li><code>fast</code>比<code>slow</code>多走了$n$个环的长度，即$f=s+nb$；（两个指针都走过a步，然后在环内绕圈直到重合，重合时fast比slow多走了环的长度的整数倍）</li>
+<li>以上两式相减得：$f=2nb$，$s=nb$，即<code>fast</code>和<code>slow</code> 指针分别走了 $2n$，$n$ 个 环的周长 （注意： $n$ 是未知数，不同链表的情况不同）。</li>
 </ul>
+<p><strong>2.目前情况分析</strong>：</p>
+<p>如果让指针从链表头部一直向前走并统计步数$k$，那么所有 走到链表入口节点时的步数 是：$k=a+nb$（先走 a 步到入口节点，之后每绕 1 圈环（ b 步）都会再次到入口节点）.</p>
+<p>而目前，<code>slow</code> 指针走过的步数为 $nb$ 步。因此，我们只要想办法让 <code>slow</code> 再走 $a$ 步停下来，就可以到环的入口。</p>
+<p><font color=#FF0000><strong>但是我们不知道 a 的值</strong></font>。依然是使用双指针法。我们构建一个指针，此指针需要有以下性质：此指针和<code>slow</code> 一起向前走 $a$ 步后，两者在入口节点重合。那么从哪里走到入口节点需要 a 步？答案是链表头部<code>head</code>。</p>
+<p><strong>3.双指针第二次相遇</strong>：</p>
+<p><code>slow</code>指针<strong>位置不变</strong>，将<code>fast</code>指针重新<strong>指向链表头部节点</strong>；<code>slow</code>和<code>fast</code>同时每次向后走一步；此时$f=0，s=nb$；</p>
+<p>当<code>fast</code>指针走到$f=a$步时，<code>slow</code>指针走到$s=a+nb$步，此时<strong>两指针重合，并同时指向链表环入口</strong>。</p>
+<p><strong>4.返回slow指针指向的节点</strong>。</p>
+<h5 id="源码实现：-4">源码实现：</h5>
+<pre class="language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/**
+ * Definition for singly-linked list.
+ * struct ListNode &#123;
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) &#123;&#125;
+ * &#125;;
+ */</span>
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    ListNode <span class="token operator">*</span><span class="token function">detectCycle</span><span class="token punctuation">(</span>ListNode <span class="token operator">*</span>head<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        ListNode <span class="token operator">*</span>fast <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        ListNode <span class="token operator">*</span>slow <span class="token operator">=</span> head<span class="token punctuation">;</span><span class="token comment">//初始化快慢指针</span>
+        <span class="token keyword">do</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>fast <span class="token operator">==</span> <span class="token keyword">nullptr</span> <span class="token operator">||</span> fast<span class="token operator">-></span>next <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span>
+            <span class="token punctuation">&#123;</span>
+                <span class="token keyword">return</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            fast <span class="token operator">=</span> fast<span class="token operator">-></span>next<span class="token operator">-></span>next<span class="token punctuation">;</span>
+            slow <span class="token operator">=</span> slow<span class="token operator">-></span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token keyword">while</span><span class="token punctuation">(</span>fast <span class="token operator">!=</span> slow<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//两指针第一次相遇</span>
+        fast <span class="token operator">=</span> head<span class="token punctuation">;</span><span class="token comment">//将fast指针重新指向链表头部节点;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>fast <span class="token operator">!=</span> slow<span class="token punctuation">)</span><span class="token comment">//两指针第二次相遇</span>
+        <span class="token punctuation">&#123;</span>
+            fast <span class="token operator">=</span> fast<span class="token operator">-></span>next<span class="token punctuation">;</span>
+            slow <span class="token operator">=</span> slow<span class="token operator">-></span>next<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> fast<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span></code></pre>
 
     </div>
 
@@ -390,13 +538,13 @@ $$<br>
       <div class="license-meta-item">
         <div class="license-meta-title">发布于</div>
         <div class="license-meta-text">
-          2022-08-12
+          2022-10-28
         </div>
       </div>
       <div class="license-meta-item">
         <div class="license-meta-title">更新于</div>
         <div class="license-meta-text">
-          2022-10-25
+          2022-11-01
         </div>
       </div>
     <div class="license-meta-item">
@@ -422,13 +570,10 @@ $$<br>
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/post/7/" rel="prev" title="To do List">
-                  <i class="fa fa-chevron-left"></i> To do List
-                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/post/6/" rel="next" title="硬件设计学习笔记（记录平时学习到的知识点）">
-                  硬件设计学习笔记（记录平时学习到的知识点） <i class="fa fa-chevron-right"></i>
+                <a href="/post/24/" rel="next" title="LeetCode ----贪心算法">
+                  LeetCode ----贪心算法 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>

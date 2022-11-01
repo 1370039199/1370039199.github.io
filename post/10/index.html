@@ -31,8 +31,10 @@
 <meta property="og:description" content="迈向全栈的第一步~🐲，也是为了以后与硬件工程师沟通，能理解硬件工程师说的是什么意思🤔">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208201305529.jpeg">
+<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210291926394.png">
+<meta property="og:image" content="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210291948641.png">
 <meta property="article:published_time" content="2022-08-20T10:00:00.000Z">
-<meta property="article:modified_time" content="2022-10-04T01:01:05.940Z">
+<meta property="article:modified_time" content="2022-10-29T11:57:06.000Z">
 <meta property="article:author" content="hyh">
 <meta property="article:tag" content="硬件设计">
 <meta name="twitter:card" content="summary">
@@ -153,7 +155,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E6%9E%81%E7%AE%A1%E5%92%8CMOS%E7%AE%A1"><span class="nav-text">三极管和MOS管</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E6%9E%81%E7%AE%A1%E5%92%8CMOS%E7%AE%A1%E9%80%89%E5%9E%8B%E4%B8%8E%E5%BA%94%E7%94%A8"><span class="nav-text">三极管和MOS管选型与应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%88%86%E7%B1%BB%E5%8F%8A%E7%89%B9%E7%82%B9"><span class="nav-text">1.分类及特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4%E6%AD%A5%E9%80%89%E5%9E%8B"><span class="nav-text">2.4步选型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%85%B8%E5%9E%8B%E5%BA%94%E7%94%A8"><span class="nav-text">3.典型应用</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -254,8 +256,59 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h3 id="三极管和MOS管">三极管和MOS管</h3>
-<img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208201305529.jpeg"  style="zoom:67%;" />
+        <h2 id="三极管和MOS管选型与应用">三极管和MOS管选型与应用</h2>
+<img data-src="https://hyh1370039199.oss-cn-chengdu.aliyuncs.com/img/202208201305529.jpeg"  style="zoom: 25%;" />
+<h3 id="1-分类及特点">1.分类及特点</h3>
+<table>
+<thead>
+<tr>
+<th>三极管</th>
+<th>MOS管</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>流控器件</td>
+<td>压控器件</td>
+</tr>
+<tr>
+<td>基极有电流流出</td>
+<td>栅极无电流流出</td>
+</tr>
+<tr>
+<td>成本低</td>
+<td>高输入阻抗</td>
+</tr>
+</tbody>
+</table>
+<img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210291926394.png" style="zoom:33%;" />
+<p>产品级应用设计大多不再使用三极管放大功能，本章只进行MOS用作开关功能的讲解。</p>
+<blockquote>
+<p>区别PMOS、NMOS管：可以利用P-&gt;N的流向，那么左图就是靠近栅极的为N，即为NMOS；右图靠近栅极的为P，即为PMOS。 内部体二极管的方向与靠近栅极电流方向保持一致</p>
+</blockquote>
+<h3 id="2-4步选型">2.4步选型</h3>
+<ol>
+<li>
+<p><strong>第一步：PIN定义及封装</strong>    另外料子替代</p>
+</li>
+<li>
+<p><strong>第二步：门限</strong>       额定值：$V_{GS(TH)}$、$V_{DS}$、$V_{CC}$</p>
+</li>
+<li>
+<p><strong>第三步：Rds-On和功率计算</strong></p>
+</li>
+</ol>
+<p>$$<br>
+P = Current^2 * R_ {DS}<br>
+$$</p>
+<ol start="4">
+<li><strong>第四步：耗散功率Power Dissipation</strong></li>
+</ol>
+<p>$$<br>
+P_D = \frac{ TJ_{ max } - T_{Ambient} } { R_{\Theta JA}}<br>
+$$</p>
+<p><img data-src="https://hyh1370039199-1313349927.cos.ap-chengdu.myqcloud.com/img/202210291948641.png" alt=""></p>
+<h3 id="3-典型应用">3.典型应用</h3>
 
     </div>
 
@@ -293,7 +346,7 @@
       <div class="license-meta-item">
         <div class="license-meta-title">更新于</div>
         <div class="license-meta-text">
-          2022-10-04
+          2022-10-29
         </div>
       </div>
     <div class="license-meta-item">
